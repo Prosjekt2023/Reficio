@@ -15,13 +15,30 @@
         .form-group {
             margin-bottom: 20px;
         }
+        .error-message {
+            display: none;
+            color: red;
+            margin-top: 5px;
+        }
     </style>
+    <script>
+        function validatePassword() {
+            var password = document.getElementById("Password").value;
+            var confirmPassword = document.getElementById("ConfirmPassword").value;
+            if (password !== confirmPassword) {
+                var errorMessage = document.getElementById("errorMessage");
+                errorMessage.style.display = "block";
+                return false;
+            }
+            return true;
+        }
+    </script>
 </head>
 <body>
 <div>
     <h2>Register</h2>
 
-    <form asp-controller="Account" asp-action="Register" method="post">
+    <form asp-controller="Account" asp-action="Register" method="post" onsubmit="return validatePassword()">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="form-group">
             <label asp-for="Email">Email:</label>
@@ -30,12 +47,13 @@
         </div>
         <div class="form-group">
             <label asp-for="Password">Password:</label>
-            <input asp-for="Password" class="form-control" placeholder="Skriv inn passord" />
+            <input asp-for="Password" id="Password" class="form-control" placeholder="Skriv inn passord" />
             <span asp-validation-for="Password" class="text-danger"></span>
         </div>
         <div class="form-group">
             <label asp-for="ConfirmPassword">Confirm Password:</label>
-            <input asp-for="ConfirmPassword" class="form-control" placeholder="Bekreft passordet" />
+            <input asp-for="ConfirmPassword" id="ConfirmPassword" class="form-control" placeholder="Bekreft passordet" />
+            <span id="errorMessage" class="error-message">Passordene samsvarer ikke</span>
             <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
         </div>
         <button type="submit" class="btn btn-primary">Register</button>
@@ -43,4 +61,6 @@
     <div style="margin-top: 20px;">
         <a asp-controller="Login" asp-action="Index">Logg inn</a>
     </div>
+</div>
 </body>
+</html>
