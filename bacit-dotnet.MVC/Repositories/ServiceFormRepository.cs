@@ -9,7 +9,7 @@ using bacit_dotnet.MVC.Models.ServiceForm;
 
 namespace bacit_dotnet.MVC.Repositories
 {
-    public class ServiceFormRepository
+    public class ServiceFormRepository : IServiceFormRepository
     {
         private readonly IConfiguration _config;
 
@@ -35,21 +35,21 @@ namespace bacit_dotnet.MVC.Repositories
             }
         }
         
-        /*public IEnumerable<ServiceFormViewModel> GetSomeOrderInfo()
+        public IEnumerable<ServiceFormViewModel> GetSomeOrderInfo()
         {
             using (IDbConnection dbConnection = Connection)
             {
                 dbConnection.Open();
-                return dbConnection.Query<ServiceFormViewModel>("SELECT Customer, DateReceived, OrderNumber FROM ServiceFormEntry");
+                return dbConnection.Query<ServiceFormViewModel>("SELECT Id, Customer, DateReceived, OrderNumber FROM ServiceFormEntry");
             }
-        }*/
+        }
 
         public void Insert(ServiceFormViewModel serviceFormViewModel)
         {
             using (IDbConnection dbConnection = Connection)
             {
                 dbConnection.Open();
-                dbConnection.Execute("INSERT INTO ServiceFormEntry (Customer, DateReceived, Address, Email, OrderNumber, Phone, ProductType, Year, Service, Warranty, SerialNumber, Agreement, RepairDescription, UsedParts, WorkHours, CompletionDate,ReplacedPartsReturned, ShippingMethod, CustomerSignature, RepairerSignature) VALUES (@Customer, @DateReceived, @Address, @Email, @OrderNumber, @Phone, @ProductType, @Year, @Service, @Warranty, @SerialNumber, @Agreement, @RepairDescription, @UsedParts, @WorkHours, @CompletionDate, @ReplacedPartsReturned, @ShippingMethod, @CustomerSignature, @RepairerSignature)", serviceFormViewModel);
+                dbConnection.Execute("INSERT INTO ServiceFormEntry (Id, Customer, DateReceived, Address, Email, OrderNumber, Phone, ProductType, Year, Service, Warranty, SerialNumber, Agreement, RepairDescription, UsedParts, WorkHours, CompletionDate,ReplacedPartsReturned, ShippingMethod, CustomerSignature, RepairerSignature) VALUES (@Customer, @DateReceived, @Address, @Email, @OrderNumber, @Phone, @ProductType, @Year, @Service, @Warranty, @SerialNumber, @Agreement, @RepairDescription, @UsedParts, @WorkHours, @CompletionDate, @ReplacedPartsReturned, @ShippingMethod, @CustomerSignature, @RepairerSignature)", serviceFormViewModel);
             }
         }
     }

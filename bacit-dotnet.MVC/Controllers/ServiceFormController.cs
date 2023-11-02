@@ -25,11 +25,12 @@ namespace bacit_dotnet.MVC.Controllers
             if (ModelState.IsValid)
             {
                 _repository.Insert(serviceFormViewModel);
-                return RedirectToAction("Index", "ServiceOrdre");
+                return RedirectToAction("Index", "ServiceOrder");
             }
             
             return View(serviceFormViewModel);
         }
         
+        //public IActionResult Post()
     }
 }

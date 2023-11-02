@@ -1,5 +1,9 @@
 @model bacit_dotnet.MVC.Models.ServiceForm.ServiceFormViewModel
 
+@{
+    ViewData["Title"] = "ServiceSkjema";
+}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,7 +21,6 @@
     <hr class="divider">    
 
     <form asp-controller="ServiceForm" asp-action="Index" method="post">
-           @Html.ValidationSummary()
          @Html.AntiForgeryToken()
         <div class="form-row">
             <div class="form-col">
@@ -45,7 +48,7 @@
                     <span asp-validation-for="Address" class="text-danger"></span>
                 </div>
                 <div class="form-col">
-                    <label asp-for="Email" class="control-label">E-Mail:</label>
+                    <label asp-for="Email" class="control-label">E-post:</label>
                     <input asp-for="Email" class="form-control"/>
                     <span asp-validation-for="Email" class="text-danger"></span>
                 </div>

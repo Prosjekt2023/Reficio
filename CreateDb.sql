@@ -1,9 +1,11 @@
 --drop database ReficioDB;
 create database if not exists ReficioDB;
 use ReficioDB;
+
+-- Create table ServiceFormEntry, if it doesn't exists
 create table if not EXISTS ServiceFormEntry
 (
-      ServiceFormId INT not null unique auto_increment PRIMARY KEY,
+      Id INT not null unique auto_increment PRIMARY KEY,
       Customer NVARCHAR(255) NOT NULL,
       DateReceived DATE NOT NULL,
       Address NVARCHAR(255),
@@ -32,15 +34,6 @@ create table if not EXISTS ServiceFormEntry
    
     CONSTRAINT U_User_ID_PK PRIMARY KEY (Id)
 );
-
-create table if not exists CheckListEntry
-(
-  CheckListId INT not null unique auto_increment,
-  CheckPoint TEXT,
-  status ENUM('OK', 'Bør Skiftes', 'Defekt'),
-  
-);
-
 
 create table if not EXISTS AspNetRoles
 (
@@ -121,7 +114,82 @@ create table if not EXISTS AspNetRoleClaims
         references AspNetUsers(Id),
     foreign key(RoleId) 
         references AspNetRoles(Id)
-); 
+);
 
-        
-     
+
+-- Create table checklist, checkpoints, and junction table checklistcheckpoints
+
+-- Table for the main Checklist
+CREATE TABLE IF NOT EXISTS Checklist
+(
+    ChecklistID INT AUTO_INCREMENT PRIMARY KEY,
+    Name        VARCHAR(255),
+    Signature   VARCHAR(255), -- Changed "Signatur" to "Signature"
+    Date        DATE NOT NULL,
+    Comments    TEXT
+);
+
+-- Table for the checkpoints (Checkpoints brukes kun for øyeblikket )
+CREATE TABLE IF NOT EXISTS CheckpointsEntry
+(
+    CheckpointID            INT AUTO_INCREMENT PRIMARY KEY,
+    ClutchCheck             VARCHAR(50),
+    BrakeCheck              VARCHAR(50),
+    DrumBearingCheck        VARCHAR(50),
+    PTOCheck                VARCHAR(50),
+    ChainTensionCheck       VARCHAR(50),
+    WireCheck               VARCHAR(50),
+    PinionBearingCheck      VARCHAR(50),
+    ChainWheelKeyCheck      VARCHAR(50),
+    HydraulicCylinderCheck  VARCHAR(50),
+    HoseCheck               VARCHAR(50),
+    HydraulicBlockTest      VARCHAR(50),
+    TankOilChange           VARCHAR(50),
+    GearboxOilChange        VARCHAR(50),
+    RingCylinderSealsCheck  VARCHAR(50),
+    BrakeCylinderSealsCheck VARCHAR(50),
+    WinchWiringCheck        VARCHAR(50),
+    RadioCheck              VARCHAR(50),
+    ButtonBoxCheck          VARCHAR(50),
+    PressureSettings        VARCHAR(50),
+    FunctionTest            VARCHAR(50),
+    TractionForceKN         VARCHAR(50),
+    BrakeForceKN            VARCHAR(50),
+    freeform                VARCHAR(50),
+    Sign                    VARCHAR(50),
+    CompletionDate           DATE NOT NULL
+);
+
+-- Many-to-Many junction Table to connect Checklist to Checkpoint
+CREATE TABLE IF NOT EXISTS ChecklistCheckpoints
+(
+    ChecklistID  INT,
+    CheckpointID INT,
+    Status       VARCHAR(50), -- 'OK', 'BØR Skiftes', 'Defekt'
+    PRIMARY KEY (ChecklistID, CheckpointID),
+    FOREIGN KEY (ChecklistID) REFERENCES Checklist (ChecklistID),
+    FOREIGN KEY (CheckpointID) REFERENCES CheckpointsEntry (CheckpointID)
+);
+
+
+-- Tabel-for-userAccount 
+CREATE TABLE IF NOT EXISTS userAccount (
+    userID INT PRIMARY KEY auto_increment,
+    password VARCHAR(50) not null,
+    loginStatus bool not null, -- Gjorde om til bool type
+    fullName VARCHAR(100) not null,
+    address VARCHAR(100) not null,
+    email VARCHAR(50) not null
+);
+
+-- Tabel-for-Mekaniker
+CREATE table if not exists mekaniker (
+    userID int,
+    FOREIGN KEY (userID) references userAccount (userID)
+);
+
+-- Tabel-for-Service_ansatt
+CREATE TABLE IF NOT EXISTS service_ansatt (
+    userID int,
+    FOREIGN KEY (userID) references userAccount (userID)
+);
