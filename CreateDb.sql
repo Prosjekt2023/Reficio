@@ -1,11 +1,11 @@
---drop database ReficioDB;
+drop database ReficioDB;
 create database if not exists ReficioDB;
 use ReficioDB;
 
 -- Create table ServiceFormEntry, if it doesn't exists
 create table if not EXISTS ServiceFormEntry
 (
-      Id INT not null unique auto_increment PRIMARY KEY,
+      ServiceFormId INT not null unique auto_increment PRIMARY KEY,
       Customer NVARCHAR(255) NOT NULL,
       DateReceived DATE NOT NULL,
       Address NVARCHAR(255),
@@ -27,26 +27,20 @@ create table if not EXISTS ServiceFormEntry
       CustomerSignature NVARCHAR(255),
       RepairerSignature NVARCHAR(255)
 );
-(
-    Id int not null unique auto_increment,
-    Name varchar(255),
-    Email varchar(255) UNIQUE,
-   
-    CONSTRAINT U_User_ID_PK PRIMARY KEY (Id)
-);
 
-create table if not EXISTS AspNetRoles
+
+/*create table if not EXISTS AspNetRoles
 (
-    Id varchar(255) not null,
+    RolesId varchar(255) not null,
     Name varchar(255),
     NormalizedName  varchar(255),
     ConcurrencyStamp  varchar(255),
-    CONSTRAINT U_ROLE_ID_PK PRIMARY KEY (Id)
-);
-insert into AspNetRoles(id, Name, NormalizedName) values('Administrator', 'Administrator', 'Administrator');
-create table if not EXISTS AspNetUsers
+    CONSTRAINT U_ROLE_ID_PK PRIMARY KEY (RolesId)
+);*/
+-- insert into AspNetRoles(RolesId, Name, NormalizedName) values('Administrator', 'Administrator', 'Administrator');
+/*create table if not EXISTS AspNetUsers
 (
-         Id varchar(255) not null unique,
+         RolesId varchar(255) not null unique,
          UserName varchar(255),
          NormalizedUserName varchar(255),
          Email varchar(255),
@@ -61,18 +55,18 @@ create table if not EXISTS AspNetUsers
          LockoutEnd TIMESTAMP,
          LockoutEnabled bit not null,
          AccessFailedCount int not null,
-          CONSTRAINT PK_AspNetUsers PRIMARY KEY (Id)
-);
-create table if not EXISTS AspNetUserTokens
+          CONSTRAINT PK_AspNetUsers PRIMARY KEY (RolesId)
+);*/
+/*create table if not EXISTS AspNetUserTokens
 (
     UserId varchar(255) not null,
     LoginProvider varchar(255) not null ,
     Name  varchar(255) not null,
     Value  varchar(255),
     CONSTRAINT PK_AspNetUserTokens PRIMARY KEY (UserId, LoginProvider)
-);
+);*/
 
-create table if not EXISTS AspNetRoleClaims
+/*create table if not EXISTS AspNetRoleClaims
 (
     Id int UNIQUE auto_increment,
     ClaimType varchar(255) not null ,
@@ -80,10 +74,10 @@ create table if not EXISTS AspNetRoleClaims
     RoleId  varchar(255),
     CONSTRAINT PK_AspNetRoleClaims PRIMARY KEY (Id),
     foreign key(RoleId) 
-        references AspNetRoles(Id)
-);      
+        references AspNetRoles(RolesId)
+);*/    
 
- create table if not EXISTS AspNetUserClaims
+/*create table if not EXISTS AspNetUserClaims
 (
     Id int UNIQUE auto_increment,
     ClaimType varchar(255) ,
@@ -91,10 +85,10 @@ create table if not EXISTS AspNetRoleClaims
     UserId  varchar(255),
     CONSTRAINT PK_AspNetRoleClaims PRIMARY KEY (Id),
     foreign key(UserId) 
-        references AspNetUsers(Id)
-);           
+        references AspNetUsers(RolesId)
+);*/        
 
- create table if not EXISTS AspNetUserLogins
+/*create table if not EXISTS AspNetUserLogins
 (
     LoginProvider int UNIQUE auto_increment,
     ProviderKey varchar(255) not null ,
@@ -102,19 +96,19 @@ create table if not EXISTS AspNetRoleClaims
     UserId  varchar(255) not null,
     CONSTRAINT PK_AspNetUserLogins PRIMARY KEY (LoginProvider),
     foreign key(UserId) 
-        references AspNetUsers(Id)
-);         
+        references AspNetUsers(RolesId)
+);*/       
 
- create table if not EXISTS AspNetUserRoles
+/*create table if not EXISTS AspNetUserRoles
 (
     UserId varchar(255) not null,
     RoleId varchar(255) not null,
     CONSTRAINT PK_AspNetUserRoles PRIMARY KEY (UserId,RoleId),
     foreign key(UserId) 
-        references AspNetUsers(Id),
+        references AspNetUsers(RolesId),
     foreign key(RoleId) 
-        references AspNetRoles(Id)
-);
+        references AspNetRoles(RolesId)
+);*/
 
 
 -- Create table checklist, checkpoints, and junction table checklistcheckpoints
