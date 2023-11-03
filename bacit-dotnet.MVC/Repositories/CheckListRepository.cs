@@ -8,7 +8,7 @@ using bacit_dotnet.MVC.Models.CheckList;
 
 namespace bacit_dotnet.MVC.Repositories
 {
-    public class CheckListRepository 
+    public class CheckListRepository : ICheckListRepository
     {
         private readonly IConfiguration _config;
 
@@ -58,7 +58,7 @@ namespace bacit_dotnet.MVC.Repositories
                 // Insert the associated checkpoints into the CheckpointsEntry table
                 var checkpoint = new CheckListViewModel
                 {
-                    CheckpointID = checklistId,
+                    CheckpointId = checklistId,
                     ClutchCheck = checkListViewModel.ClutchCheck,
                     BrakeCheck = checkListViewModel.BrakeCheck,
                     DrumBearingCheck = checkListViewModel.DrumBearingCheck,
