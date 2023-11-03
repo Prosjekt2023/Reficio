@@ -4,7 +4,7 @@ namespace bacit_dotnet.MVC.Models.CheckList;
 
 public class CheckListViewModel
 {
-    public int CheckpointID { get; set; }
+    public int CheckpointId { get; set; }
     public string ClutchCheck { get; set; }
     public string BrakeCheck { get; set; }
     public string DrumBearingCheck { get; set; }

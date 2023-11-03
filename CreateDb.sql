@@ -122,17 +122,16 @@ create table if not EXISTS AspNetRoleClaims
 -- Table for the main Checklist
 CREATE TABLE IF NOT EXISTS Checklist
 (
-    ChecklistID INT AUTO_INCREMENT PRIMARY KEY,
-    Name        VARCHAR(255),
-    Signature   VARCHAR(255), -- Changed "Signatur" to "Signature"
-    Date        DATE NOT NULL,
-    Comments    TEXT
+    ChecklistId INT AUTO_INCREMENT PRIMARY KEY,
+    Sign   VARCHAR(255), -- "Signature"
+    Freeform    TEXT,
+    CompletionDate  DATE NOT NULL
 );
 
--- Table for the checkpoints (Checkpoints brukes kun for øyeblikket )
+-- Table for the checkpoints )
 CREATE TABLE IF NOT EXISTS CheckpointsEntry
 (
-    CheckpointID            INT AUTO_INCREMENT PRIMARY KEY,
+    CheckpointId            INT AUTO_INCREMENT PRIMARY KEY,
     ClutchCheck             VARCHAR(50),
     BrakeCheck              VARCHAR(50),
     DrumBearingCheck        VARCHAR(50),
@@ -154,21 +153,17 @@ CREATE TABLE IF NOT EXISTS CheckpointsEntry
     PressureSettings        VARCHAR(50),
     FunctionTest            VARCHAR(50),
     TractionForceKN         VARCHAR(50),
-    BrakeForceKN            VARCHAR(50),
-    freeform                VARCHAR(50),
-    Sign                    VARCHAR(50),
-    CompletionDate           DATE NOT NULL
+    BrakeForceKN            VARCHAR(50)
 );
 
 -- Many-to-Many junction Table to connect Checklist to Checkpoint
 CREATE TABLE IF NOT EXISTS ChecklistCheckpoints
 (
-    ChecklistID  INT,
-    CheckpointID INT,
-    Status       VARCHAR(50), -- 'OK', 'BØR Skiftes', 'Defekt'
-    PRIMARY KEY (ChecklistID, CheckpointID),
-    FOREIGN KEY (ChecklistID) REFERENCES Checklist (ChecklistID),
-    FOREIGN KEY (CheckpointID) REFERENCES CheckpointsEntry (CheckpointID)
+    ChecklistId  INT,
+    CheckpointId INT,
+    PRIMARY KEY (ChecklistId, CheckpointId),
+    FOREIGN KEY (ChecklistId) REFERENCES Checklist (ChecklistId),
+    FOREIGN KEY (CheckpointId) REFERENCES CheckpointsEntry (CheckpointId)
 );
 
 
