@@ -28,6 +28,7 @@ namespace bacit_dotnet.MVC.Controllers
             this.userRepository = userRepository;
             _logger = loggerFactory.CreateLogger<AccountController>();
         }
+        
         // Account/Register/PasswordMatch 
         [HttpPost]
         [ValidateAntiForgeryToken]
