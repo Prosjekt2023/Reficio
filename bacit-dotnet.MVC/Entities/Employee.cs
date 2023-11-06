@@ -15,11 +15,10 @@ namespace bacit_dotnet.MVC.Entities
         [JsonIgnore]
         public string passwordhash { get; set; }
         public RoleEntity role { get; set; }
+        
         [JsonIgnore]
         public byte[] salt { get; set; }
-
-        public List<TeamEntity> teams { get; set; }
-        public List<SuggestionEntity> suggestions { get; set; }
+        
         public List<RoleEntity> roles { get; set; }
     }
 }
