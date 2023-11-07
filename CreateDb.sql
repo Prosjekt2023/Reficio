@@ -1,4 +1,4 @@
-drop database ReficioDB;
+drop database if exists ReficioDB;
 create database if not exists ReficioDB;
 use ReficioDB;
 
