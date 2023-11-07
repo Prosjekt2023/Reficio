@@ -50,7 +50,7 @@ namespace bacit_dotnet.MVC.Repositories
                     new
                     {
                         checkListViewModel.Sign,
-                        checkListViewModel.freeform,
+                        checkListViewModel.Freeform,
                         checkListViewModel.CompletionDate
                     }
                 );
