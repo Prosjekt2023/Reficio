@@ -4,7 +4,7 @@ namespace bacit_dotnet.MVC.Models.ServiceForm
 {
     public class ServiceFormViewModel
     {
-        public int Id { get; set; }
+        public int ServiceFormId { get; set; }
 
         [Required(ErrorMessage = "Customer is required.")]
         public string Customer { get; set; }
