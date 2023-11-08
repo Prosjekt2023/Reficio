@@ -54,6 +54,16 @@ namespace bacit_dotnet.MVC.Repositories
                 return dbConnection.Query<ServiceFormViewModel>("SELECT ServiceFormId, Customer, DateReceived, OrderNumber FROM ServiceFormEntry");
             }
         }
+        
+        public ServiceFormViewModel GetRelevantData(int id)
+        {
+            using (IDbConnection dbConnection = Connection)
+            {
+                dbConnection.Open();
+                var query = "SELECT ServiceFormId, OrderNumber, Customer, Email, Phone, Address, DateReceived FROM ServiceFormEntry WHERE ServiceFormId = @Id";
+                return dbConnection.QuerySingleOrDefault<ServiceFormViewModel>(query, new { Id = id });
+            }
+        }
 
         public void Insert(ServiceFormViewModel serviceFormViewModel)
         {
