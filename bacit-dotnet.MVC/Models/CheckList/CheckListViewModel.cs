@@ -28,7 +28,7 @@ public class CheckListViewModel
     public string TractionForceKN { get; set; }
     public string BrakeForceKN { get; set; }
     
-    public string freeform { get; set; }
+    public string Freeform { get; set; }
     
     public string Sign { get; set; }
     
