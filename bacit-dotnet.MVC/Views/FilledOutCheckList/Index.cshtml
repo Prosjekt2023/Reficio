@@ -98,7 +98,7 @@
             <span validation-for="Bør_skiftes" class="PTOCheck"></span>
         </td>
         <td>
-            <input type="radio" id="Defekt" name="PTOcHECK" value="@Model.PTOCheck" readonly="readonly" />
+            <input type="radio" id="Defekt" name="PTOCheck" value="@Model.PTOCheck" readonly="readonly" />
             <label for="Defekt"></label>
             <span validation-for="Defekt" class="PTOCheck"></span>
         </td>
@@ -106,18 +106,21 @@
         <tr>
             <td>Sjekk kjedestrammer</td>
             <td>
-                <input type="radio" id="OK" name="ChainTensionCheck" value="OK" />
+                <input type="radio" id="OK" name="ChainTensionCheck" value="@Model.ChainTensionCheck" readonly="readonly" />
                 <label for="OK"></label>
+                <span validation-for="OK" class="ChainTensionCheck"></span>
             </td>
             
             <td>
-                <input type="radio" id="Bør_skiftes" name="ChainTensionCheck" value="Bør_skiftes" />
+                <input type="radio" id="Bør_skiftes" name="ChainTensionCheck" value="@Model.ChainTensionCheck" readonly="readonly" />
                 <label for="Bør_skiftes"></label>
+                <span validation-for="Bør_skiftes" class="ChainTensionCheck"></span>
             </td>
             
             <td>
-                <input type="radio" id="Defekt" name="ChainTensionCheck" value="Defekt"/>
+                <input type="radio" id="Defekt" name="ChainTensionCheck" value="@Model.ChainTensionCheck" readonly="readonly" />
                 <label for="Defekt"></label>   
+                <span validation-for="Defekt" class="ChainTensionCheck"></span>
             </td>
             
         </tr>
@@ -328,58 +331,64 @@
         <tr>
             <td>Sjekk og test radio</td>
             <td>
-                <input type="radio" id="OK" name="RadioCheck" value="OK" />
+                <input type="radio" id="OK" name="RadioCheck" value="@Model.RadioCheck" readonly="readonly"/>
                 <label for="OK"></label>
+                 <span validation-for="OK" class="RadioCheck"></span>
             </td>
             
             <td>
-                <input type="radio" id="Bør_skiftes" name="RadioCheck" value="Bør_skiftes" />
+                <input type="radio" id="Bør_skiftes" name="RadioCheck" value="@Model.RadioCheck" readonly="readonly"/>
                 <label for="Bør_skiftes"></label>
+                <span validation-for="Bør_skiftes" class="RadioCheck"></span>
             </td>
             
             <td>
-                <input type="radio" id="Defekt" name="RadioCheck" value="Defekt"/>
+                <input type="radio" id="Defekt" name="RadioCheck" value="@Model.RadioCheck" readonly="readonly"/>
                 <label for="Defekt"></label>        
-                 <input type="hidden" asp-for="RadioCheck" />
+                 <span validation-for="Defekt" class="RadioCheck"></span>
             </td>
             
         </tr>
         <tr>
             <td>Sjekk og test knappekasse</td>
             <td>
-                <input type="radio" id="OK" name="ButtonBoxCheck" value="OK" />
+                <input type="radio" id="OK" name="ButtonBoxCheck" value="@Model.ButtonBoxCheck" readonly="readonly"/>
                 <label for="OK"></label>
+                 <span validation-for="OK" class="ButtonBoxCheck"></span>
             </td>
             
             <td>
-                <input type="radio" id="Bør_skiftes" name="ButtonBoxCheck" value="Bør_skiftes" />
+                <input type="radio" id="Bør_skiftes" name="ButtonBoxCheck" value="@Model.ButtonBoxCheck" readonly="readonly"/>
                 <label for="Bør_skiftes"></label>
+                 <span validation-for="Bør_skiftes" class="ButtonBoxCheck"></span>
             </td>
             
             <td>
-                <input type="radio" id="Defekt" name="ButtonBoxCheck" value="Defekt"/>
+                <input type="radio" id="Defekt" name="ButtonBoxCheck" value="@Model.ButtonBoxCheck" readonly="readonly"/>
                 <label for="Defekt"></label>     
-                   <input type="hidden" asp-for="ButtonBoxCheck" />
+                <span validation-for="Defekt" class="ButtonBoxCheck"></span>
             </td>
-            
+               
         </tr>
         <tr>
             <td rowspan="1">Trykk settinger</td>
             <td>xx- Bar</td> <!-- Spør nøsted om, og endre -->
             <td>
-                <input type="radio" id="OK" name="PressureSettings" value="OK" /> 
+                <input type="radio" id="OK" name="PressureSettings" value="@Model.PressureSettings" readonly="readonly"/>
                 <label for="OK"></label>
+                <span validation-for="OK" class="PressureSettings"></span>
             </td>
             
             <td>
-                <input type="radio" id="Bør_skiftes" name="PressureSettings" value="Bør_skiftes" />
+                <input type="radio" id="Bør_skiftes" name="PressureSettings" value="@Model.PressureSettings" readonly="readonly"/>
                 <label for="Bør_skiftes"></label>
+               <span validation-for="Bør_skiftes" class="PressureSettings"></span>
             </td>
             
             <td>
-                <input type="radio" id="Defekt" name="PressureSettings" value="Defekt"/>
+                <input type="radio" id="Defekt" name="PressureSettings" value="@Model.PressureSettings" readonly="readonly"/>
                 <label for="Defekt"></label>   
-                   <input type="hidden" asp-for="PressureSettings" />
+                <span validation-for="Defekt" class="PressureSettings"></span>
             </td>
         </tr>
         <tr>
