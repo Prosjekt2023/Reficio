@@ -15,7 +15,7 @@ namespace bacit_dotnet.MVC.Controllers
 
         public IActionResult Index()
         {
-            var Checklist = _repository.GetSomeOrderInfo();
+            var Checklist = _repository.GetAll();
             return View(Checklist);
         }
     }

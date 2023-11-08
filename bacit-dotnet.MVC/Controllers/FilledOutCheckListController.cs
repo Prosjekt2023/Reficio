@@ -1,30 +1,25 @@
 using Microsoft.AspNetCore.Mvc;
 using bacit_dotnet.MVC.Repositories;
 
-namespace bacit_dotnet.MVC.Controllers;
-
-public class FilledOutCheckListController : Controller
+namespace bacit_dotnet.MVC.Controllers
 {
-    private readonly CheckListRepository _repository;
+    public class FilledOutCheckListController : Controller
+    {
+        private readonly CheckListRepository _repository;
 
-    public FilledOutCheckListController(CheckListRepository repository)
-    {
-        _repository = repository;
-    }
-    
-    /*public IActionResult Index()
-    {
-        var CheckList = _repository.GetAll();
-        return View(CheckList);
-    }*/
-    
-    public IActionResult Index(int id)
-    {
-        var CheckList = _repository.GetAll(id);
-        if (CheckList == null)
+        public FilledOutCheckListController(CheckListRepository repository)
         {
-            return NotFound();
+            _repository = repository;
         }
-        return View(CheckList);
+
+        public IActionResult Index(int id)
+        {
+            var ChecklistCheckpoints = _repository.GetAll();
+            if (ChecklistCheckpoints== null)
+            {
+                return NotFound();
+            }
+            return View(ChecklistCheckpoints);
+        }
     }
 }
