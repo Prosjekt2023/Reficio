@@ -20,7 +20,7 @@ public class FilledOutCheckListController : Controller
     
     public IActionResult Index(int id)
     {
-        var CheckList = _repository.GetOneRowById(id);
+        var CheckList = _repository.GetAll(id);
         if (CheckList == null)
         {
             return NotFound();
