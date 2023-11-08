@@ -1,0 +1,28 @@
+.flex-box {
+    display: flex; /* This line is crucial for enabling flexbox */
+    justify-content: space-between; /* This will separate the button and the content */
+    align-items: center; /* This will vertically center-align the items if they have different heights */
+}
+
+/* If you want only the button to align to the right, you can use the following */
+.flex-box dt,
+.flex-box dd {
+    flex: 1; /* This will allow the dt and dd elements to grow and fill the space */
+}
+
+.flex-box a.btn {
+    margin-left: auto; /* This will push the button to the right */
+    text-align: right; /* This will align the button text to the right if needed */
+}
+
+.flex-box.full-width {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.flex-box.full-width a.btn {
+    margin-left: auto;
+    text-align: right;
+}

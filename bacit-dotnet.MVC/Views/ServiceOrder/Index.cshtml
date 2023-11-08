@@ -9,7 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ServiceOrdre</title>
     <link rel="stylesheet" href="/css/ServiceOrder.css">
-
+    <!--<link rel="stylesheet" href="css/TableCellSize.css">-->
+    
 </head>
 
 <body>
@@ -21,14 +22,8 @@
                 <th>Serviceskjema Id</th>
                 <th>Kunde:</th>
                 <th>Mottatt dato:</th>
-                <!--<th>Adresse:</th>-->
-                <!--<th>E-Mail:</th>-->
                 <th>Ordrenummer:</th>
-                <!--<th>Telefon:</th>-->
-                <!--<th>Produkttype:</th>-->
-                <!--<th>Årsmodell:</th>-->
-                <!--<th>Service/rep:</th>-->
-                <!--<th>Garanti:</th>-->
+                
             </tr>
             </thead>
             <tbody>
@@ -37,22 +32,22 @@
             {
                 <tr>
                     <td>
-                        <a class="nav-link text-dark" asp-area="" asp-controller="FilledOutServiceForm" asp-action="Index" asp-route-id="@serviceFormEntry.ServiceFormId">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="ServiceOrderConnector" asp-action="Index" asp-route-id="@serviceFormEntry.ServiceFormId">
                             @serviceFormEntry.ServiceFormId
                         </a>
                     </td>
                     <td>
-                        <a class="nav-link text-dark" asp-area="" asp-controller="FilledOutServiceForm" asp-action="Index" asp-route-id="@serviceFormEntry.ServiceFormId">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="ServiceOrderConnector" asp-action="Index" asp-route-id="@serviceFormEntry.ServiceFormId">
                             @serviceFormEntry.Customer
                         </a>
                     </td>
                     <td>
-                        <a class="nav-link text-dark" asp-area="" asp-controller="FilledOutServiceForm" asp-action="Index" asp-route-id="@serviceFormEntry.ServiceFormId">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="ServiceOrderConnector" asp-action="Index" asp-route-id="@serviceFormEntry.ServiceFormId">
                             @Html.DisplayFor(model => serviceFormEntry.DateReceived)
                         </a>
                     </td>
                     <td>
-                        <a class="nav-link text-dark" asp-area="" asp-controller="FilledOutServiceForm" asp-action="Index" asp-route-id="@serviceFormEntry.ServiceFormId">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="ServiceOrderConnector" asp-action="Index" asp-route-id="@serviceFormEntry.ServiceFormId">
                             @serviceFormEntry.OrderNumber
                         </a>
                     </td>
