@@ -169,18 +169,21 @@
         <tr>
             <td>Sjekk kile på kjedehjul</td>
             <td>
-                <input type="radio" id="OK" name="ChainWheelKeyCheck" value="OK" />
+                <input type="radio" id="OK" name="ChainWheelKeyCheck" value="@Model.ChainWheelKeyCheck" readonly="readonly" />
                 <label for="OK"></label>
+                <span validation-for="OK" class="ChainWheelKeyCheck"></span>
             </td>
             
             <td>
-                <input type="radio" id="Bør_skiftes" name="ChainWheelKeyCheck" value="Bør_skiftes" />
+                <input type="radio" id="Bør_skiftes" name="ChainWheelKeyCheck" value="@Model.ChainWheelKeyCheck" readonly="readonly" />
                 <label for="Bør_skiftes"></label>
+                <span validation-for="Bør_skiftes" class="ChainWheelKeyCheck"></span>
             </td>
             
             <td>
-                <input type="radio" id="Defekt" name="ChainWheelKeyCheck" value="Defekt"/>
-                <label for="Defekt"></label>   
+                <input type="radio" id="Defekt" name="ChainWheelKeyCheck" value="@Model.ChainWheelKeyCheck" readonly="readonly"/>
+                <label for="Defekt"></label>
+                <span validation-for="Defekt" class="ChainWheelKeyCheck"></span>
             </td>
             
         </tr>
@@ -189,128 +192,149 @@
             <td rowspan="7">Hydraulisk</td>
             <td>Sjekk hydraulikk sylinder for lekkasje</td>
             <td>
-                <input type="radio" id="OK" name="HydraulicCylinderCheck" value="OK" />
+                <input type="radio" id="OK" name="HydraulicCylinderCheck" value="@Model.HydraulicCylinderCheck" readonly="readonly" />
                 <label for="OK"></label>
+                <span validation-for="OK" class="HydraulicCylinderCheck"></span>
             </td>
             
             <td>
-                <input type="radio" id="Bør_skiftes" name="HydraulicCylinderCheck" value="Bør_skiftes" />
+                <input type="radio" id="Bør_skiftes" name="HydraulicCylinderCheck" value="@Model.HydraulicCylinderCheck" readonly="readonly" />
                 <label for="Bør_skiftes"></label>
+                <span validation-for="Bør_skiftes" class="HydraulicCylinderCheck"></span>
             </td>
             
             <td>
-                <input type="radio" id="Defekt" name="HydraulicCylinderCheck" value="Defekt"/>
-                <label for="Defekt"></label>       
+                <input type="radio" id="Defekt" name="HydraulicCylinderCheck" value="@Model.HydraulicCylinderCheck" readonly="readonly"/>
+                <label for="Defekt"></label>
+                <span validation-for="Defekt" class="HydraulicCylinderCheck"></span>
             </td>
             
         </tr>
         <tr>
             <td>Sjekk slanger for skader og lekkasje</td>
             <td>
-                <input type="radio" id="OK" name="HoseCheck" value="OK" />
+                <input type="radio" id="OK" name="HoseCheck" value="@Model.HoseCheck" readonly="readonly"/>
                 <label for="OK"></label>
+                <span validation-for="OK" class="HoseCheck"></span>
             </td>
             
             <td>
-                <input type="radio" id="Bør_skiftes" name="HoseCheck" value="Bør_skiftes" />
+                <input type="radio" id="Bør_skiftes" name="HoseCheck" value="@Model.HoseCheck" readonly="readonly"/>
                 <label for="Bør_skiftes"></label>
+                <span validation-for="Bør_skiftes" class="HoseCheck"></span>
             </td>
             
             <td>
-                <input type="radio" id="Defekt" name="HoseCheck" value="Defekt"/>
-                <label for="Defekt"></label>       
+                <input type="radio" id="Defekt" name="HoseCheck" value="@Model.HoseCheck" readonly="readonly"/>
+                <label for="Defekt"></label>
+                <span validation-for="Defekt" class="HoseCheck"></span>
             </td>
             
         </tr>
         <tr>
             <td>Test hydraulikkblokk i testbenk</td>
             <td>
-                <input type="radio" id="OK" name="HydraulicBlockTest" value="OK" />
+                <input type="radio" id="OK" name="HydraulicBlockTest" value="@Model.HydraulicBlockTest" readonly="readonly" />
                 <label for="OK"></label>
+                <span validation-for="OK" class="HydraulicBlockTest"></span>
             </td>
             
             <td>
-                <input type="radio" id="Bør_skiftes" name="HydraulicBlockTest" value="Bør_skiftes" />
+                <input type="radio" id="Bør_skiftes" name="HydraulicBlockTest" value="@Model.HydraulicBlockTest" readonly="readonly" />
                 <label for="Bør_skiftes"></label>
+                <span validation-for="Bør_skiftes" class="HydraulicBlockTest"></span>
             </td>
             
             <td>
-                <input type="radio" id="Defekt" name="HydraulicBlockTest" value="Defekt"/>
-                <label for="Defekt"></label>  
+                <input type="radio" id="Defekt" name="HydraulicBlockTest" value="@Model.HydraulicBlockTest" readonly="readonly"/>
+                <label for="Defekt"></label>
+                <span validation-for="Defekt" class="HydraulicBlockTest"></span>
             </td>
             
         </tr>
         <tr>
             <td>Skift olje i tank</td>
             <td>
-                <input type="radio" id="OK" name="TankOilChange" value="OK" />
+                <input type="radio" id="OK" name="TankOilChange" value="@Model.TankOilChange" readonly="readonly" />
                 <label for="OK"></label>
+                <span validation-for="OK" class="TankOilChange"></span>
             </td>
             
             <td>
-                <input type="radio" id="Bør_skiftes" name="TankOilChange" value="Bør_skiftes" />
+                <input type="radio" id="Bør_skiftes" name="TankOilChange" value="@Model.TankOilChange" readonly="readonly" />
                 <label for="Bør_skiftes"></label>
+                <span validation-for="Bør_skiftes" class="TankOilChange"></span>
             </td>
             
             <td>
-                <input type="radio" id="Defekt" name="TankOilChange" value="Defekt"/>
-                <label for="Defekt"></label>       
+                <input type="radio" id="Defekt" name="TankOilChange" value="@Model.TankOilChange" readonly="readonly"/>
+                <label for="Defekt"></label>
+                <span validation-for="Defekt" class="TankOilChange"></span>
             </td>
             
         </tr>
         <tr>
             <td>Skift olje på gir boks</td>
             <td>
-                <input type="radio" id="OK" name="GearboxOilChange" value="OK" />
+                <input type="radio" id="OK" name="GearboxOilChange" value="@Model.GearboxOilChange" readonly="readonly" />
                 <label for="OK"></label>
+                <span validation-for="OK" class="GearboxOilChange"></span>
             </td>
             
             <td>
-                <input type="radio" id="Bør_skiftes" name="GearboxOilChange" value="Bør_skiftes" />
+                <input type="radio" id="Bør_skiftes" name="GearboxOilChange" value="@Model.GearboxOilChange" readonly="readonly" />
                 <label for="Bør_skiftes"></label>
+                <span validation-for="Bør_skiftes" class="GearboxOilChange"></span>
             </td>
             
             <td>
-                <input type="radio" id="Defekt" name="GearboxOilChange" value="Defekt"/>
-                <label for="Defekt"></label>     
+                <input type="radio" id="Defekt" name="GearboxOilChange" value="@Model.GearboxOilChange" readonly="readonly"/>
+                <label for="Defekt"></label>
+                <span validation-for="Defekt" class="GearboxOilChange"></span>
             </td>
             
         </tr>
         <tr>
             <td>Sjekk Ringsylinder åpne og skift tetninger</td>
             <td>
-                <input type="radio" id="OK" name="RingCylinderSealsCheck" value="OK" />
+                <input type="radio" id="OK" name="RingCylinderSealsCheck" value="@Model.RingCylinderSealsCheck" readonly="readonly" />
                 <label for="OK"></label>
+                <span validation-for="OK" class="RingCylinderSealsCheck"></span>
             </td>
             
             <td>
-                <input type="radio" id="Bør_skiftes" name="RingCylinderSealsCheck" value="Bør_skiftes" />
+                <input type="radio" id="Bør_skiftes" name="RingCylinderSealsCheck" value="@Model.RingCylinderSealsCheck" readonly="readonly" />
                 <label for="Bør_skiftes"></label>
+                <span validation-for="Bør_skiftes" class="RingCylinderSealsCheck"></span>
             </td>
             
             <td>
-                <input type="radio" id="Defekt" name="RingCylinderSealsCheck" value="Defekt"/>
+                <input type="radio" id="Defekt" name="RingCylinderSealsCheck" value="@Model.RingCylinderSealsCheck" readonly="readonly"/>
                 <label for="Defekt"></label>        
-                 <input type="hidden" asp-for="RingCylinderSealsCheck" />
+                <input type="hidden" asp-for="RingCylinderSealsCheck" />
+                <span validation-for="Defekt" class="RingCylinderSealsCheck"></span>
             </td>
             
         </tr>
         <tr>
             <td>Sjekk bremse sylinder åpne og skift tetninger</td>
             <td>
-                <input type="radio" id="OK" name="BrakeCylinderSealsCheck" value="OK" />
+                <input type="radio" id="OK" name="BrakeCylinderSealsCheck" value="@Model.BrakeCylinderSealsCheck" readonly="readonly" />
                 <label for="OK"></label>
+                <span validation-for="OK" class="BrakeCylinderSealsCheck"></span>
             </td>
             
             <td>
-                <input type="radio" id="Bør_skiftes" name="BrakeCylinderSealsCheck" value="Bør_skiftes" />
+                <input type="radio" id="Bør_skiftes" name="BrakeCylinderSealsCheck" value="@Model.BrakeCylinderSealsCheck" readonly="readonly" />
                 <label for="Bør_skiftes"></label>
+                <span validation-for="Bør_skiftes" class="BrakeCylinderSealsCheck"></span>
             </td>
             
             <td>
-                <input type="radio" id="Defekt" name="BrakeCylinderSealsCheck" value="Defekt"/>
+                <input type="radio" id="Defekt" name="BrakeCylinderSealsCheck" value="@Model.BrakeCylinderSealsCheck" readonly="readonly"/>
                 <label for="Defekt"></label>    
-                 <input type="hidden" asp-for="BrakeCylinderSealsCheck" />
+                <input type="hidden" asp-for="BrakeCylinderSealsCheck" />
+                <span validation-for="Defekt" class="BrakeCylinderSealsCheck"></span>
             </td>
             
         </tr>
@@ -318,19 +342,22 @@
             <td rowspan="3">Elektro</td>
             <td>Sjekk ledningsnett på vinsj</td>
             <td>
-                <input type="radio" id="OK" name="WinchWiringCheck" value="OK" />
+                <input type="radio" id="OK" name="WinchWiringCheck" value="@Model.WinchWiringCheck" readonly="readonly" />
                 <label for="OK"></label>
+                <span validation-for="OK" class="WinchWiringCheck"></span>
             </td>
             
             <td>
-                <input type="radio" id="Bør_skiftes" name="WinchWiringCheck" value="Bør_skiftes" />
+                <input type="radio" id="Bør_skiftes" name="WinchWiringCheck" value="@Model.WinchWiringCheck" readonly="readonly" />
                 <label for="Bør_skiftes"></label>
+                <span validation-for="Bør_skiftes" class="WinchWiringCheck"></span>
             </td>
             
             <td>
-                <input type="radio" id="Defekt" name="WinchWiringCheck" value="Defekt"/>
+                <input type="radio" id="Defekt" name="WinchWiringCheck" value="@Model.WinchWiringCheck" readonly="readonly"/>
                 <label for="Defekt"></label>        
                 <input type="hidden" asp-for="WinchWiringCheck" />
+                <span validation-for="Defekt" class="WinchWiringCheck"></span>
             </td>
             
         </tr>
