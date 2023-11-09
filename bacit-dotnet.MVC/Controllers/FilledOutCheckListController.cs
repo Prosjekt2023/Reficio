@@ -1,5 +1,8 @@
-using Microsoft.AspNetCore.Mvc;
 using bacit_dotnet.MVC.Repositories;
+using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic; // Required for IEnumerable
+using bacit_dotnet.MVC.Models.CheckList; // Required for CheckListViewModel
+
 
 namespace bacit_dotnet.MVC.Controllers
 {
@@ -12,14 +15,13 @@ namespace bacit_dotnet.MVC.Controllers
             _repository = repository;
         }
 
-        public IActionResult Index(int id)
+        // This action method retrieves all checklist entries and displays them
+        public IActionResult Index()
         {
-            var ChecklistCheckpoints = _repository.GetAll();
-            if (ChecklistCheckpoints== null)
-            {
-                return NotFound();
-            }
-            return View(ChecklistCheckpoints);
+            IEnumerable<CheckListViewModel> checkLists = _repository.GetAll();
+            return View(checkLists);
         }
+
+        // Additional action methods can be added here if needed
     }
 }
