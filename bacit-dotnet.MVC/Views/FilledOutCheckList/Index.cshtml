@@ -127,36 +127,42 @@
         <tr>
             <td>Sjekk wire</td>
             <td>
-                <input type="radio" id="OK" name="WireCheck" value="OK" />
+                <input type="radio" id="OK" name="WireCheck" value="@Model.WireCheck" readonly="readonly" />
                 <label for="OK"></label>
+                  <span validation-for="OK" class="WireCheck"></span>
             </td>
             
             <td>
-                <input type="radio" id="Bør_skiftes" name="WireCheck" value="Bør_skiftes" />
+                <input type="radio" id="Bør_skiftes" name="WireCheck" value="@Model.WireCheck" readonly="readonly" />
                 <label for="Bør_skiftes"></label>
+                  <span validation-for="Bør_skiftes" class="WireCheck"></span>
             </td>
             
             <td>
-                <input type="radio" id="Defekt" name="WireCheck" value="Defekt"/>
+                <input type="radio" id="Defekt" name="WireCheck" value="@Model.WireCheck" readonly="readonly" />
                 <label for="Defekt"></label>    
+                  <span validation-for="Defekt" class="WireCheck"></span>
             </td>
             
         </tr>
         <tr>
             <td>Sjekk pinion lager</td>
             <td>
-                <input type="radio" id="OK" name="PinionBearingCheck" value="OK" />
+                <input type="radio" id="OK" name="PinionBearingCheck" value="@Model.PinionBearingCheck" readonly="readonly" />
                 <label for="OK"></label>
+                <span validation-for="OK" class="PinionBearingCheck"></span>
             </td>
             
             <td>
-                <input type="radio" id="Bør_skiftes" name="PinionBearingCheck" value="Bør_skiftes" />
+                <input type="radio" id="Bør_skiftes" name="PinionBearingCheck" value="@Model.PinionBearingCheck" readonly="readonly" />
                 <label for="Bør_skiftes"></label>
+                <span validation-for="Bør_skiftes" class="PinionBearingCheckeck"></span>
             </td>
             
             <td>
-                <input type="radio" id="Defekt" name="PinionBearingCheck" value="Defekt"/>
-                <label for="Defekt"></label>      
+                <input type="radio" id="Defekt" name="PinionBearingCheck" value="@Model.PinionBearingCheck" readonly="readonly" />
+                <label for="Defekt"></label>     
+                <span validation-for="Defekt" class="PinionBearingCheckeck"></span>
             </td>
             
         </tr>
