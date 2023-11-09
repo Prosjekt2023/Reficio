@@ -12,12 +12,6 @@ public class FilledOutServiceFormController : Controller
         _repository = repository;
     }
     
-    /*public IActionResult Index()
-    {
-        var serviceFormEntry = _repository.GetAll();
-        return View(serviceFormEntry);
-    }*/
-    
     public IActionResult Index(int id)
     {
         var serviceFormEntry = _repository.GetOneRowById(id);
