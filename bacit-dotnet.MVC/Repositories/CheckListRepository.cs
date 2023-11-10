@@ -97,17 +97,6 @@ namespace bacit_dotnet.MVC.Repositories
                     "@FunctionTest, @TractionForceKN, @BrakeForceKN)",
                     checkpoint
                 );
-
-                // Associate the checklist with its associated checkpoints in the ChecklistCheckpoints table
-                dbConnection.Execute(
-                    "INSERT INTO ChecklistCheckpoints (ChecklistId, CheckpointId) " +
-                    "VALUES (@ChecklistId, @CheckpointId)",
-                    new
-                    {
-                        ChecklistId = checklistId,
-                        CheckpointId = checklistId
-                    }
-                );
             }
         }
     }
