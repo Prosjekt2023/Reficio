@@ -6,5 +6,5 @@ namespace bacit_dotnet.MVC.Repositories;
     {
         public IEnumerable<CheckListViewModel> GetAll();
         
-        
+        public IEnumerable<CheckListViewModel> GetSomeOrderInfo();
     }

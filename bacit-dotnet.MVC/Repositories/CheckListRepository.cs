@@ -47,6 +47,16 @@ namespace bacit_dotnet.MVC.Repositories
                 return dbConnection.QuerySingleOrDefault<CheckListViewModel>(query, new { Id = id });
             }
         }
+        
+        
+        public IEnumerable<CheckListViewModel> GetSomeOrderInfo()
+        {
+            using (IDbConnection dbConnection = Connection)
+            {
+                dbConnection.Open();
+                return dbConnection.Query<CheckListViewModel>("SELECT ChecklistId, Sign, Freeform, CompletionDate FROM Checklist");
+            }
+        }
 
         public void Insert(CheckListViewModel checkListViewModel)
         {
