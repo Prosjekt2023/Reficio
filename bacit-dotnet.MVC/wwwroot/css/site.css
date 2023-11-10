@@ -23,4 +23,15 @@ body {
   height: auto; 
 }
 
+.navbar {
+  visibility: visible;
+}
+
+.bg-custom {
+  background-color: #000033 !important; /* Mørke blå bakgrunnsfarge */
+}
+
+.custom-nav-text .nav-link {
+  color: #f2f2f2 !important; /* Hvit tekst farge */
+}
 
