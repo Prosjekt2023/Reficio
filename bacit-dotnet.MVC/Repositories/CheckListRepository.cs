@@ -36,6 +36,17 @@ namespace bacit_dotnet.MVC.Repositories
                 return results;
             }
         }
+        
+        
+        public CheckListViewModel GetOneRowById(int id)
+        {
+            using (IDbConnection dbConnection = Connection)
+            {
+                dbConnection.Open();
+                var query = "SELECT * FROM Checklist WHERE ChecklistId = @Id";
+                return dbConnection.QuerySingleOrDefault<CheckListViewModel>(query, new { Id = id });
+            }
+        }
 
         public void Insert(CheckListViewModel checkListViewModel)
         {

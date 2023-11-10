@@ -31,22 +31,22 @@
             {
                 <tr>
                     <td>
-                        <a class="nav-link text-dark" asp-area="" asp-controller="FilledOutCheckList" asp-action="Index" asp-route-id="@Checklist.CheckpointId">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="FilledOutCheckList" asp-action="Index" asp-route-id="@Checklist.ChecklistId">
                             @Checklist.CheckpointId
                         </a>
                     </td>
                     <td>
-                        <a class="nav-link text-dark" asp-area="" asp-controller="FilledOutCheckList" asp-action="Index" asp-route-id="@Checklist.Sign">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="FilledOutCheckList" asp-action="Index" asp-route-id="@Checklist.ChecklistId">
                             @Checklist.Sign
                         </a>
                     </td>
                     <td>
-                        <a class="nav-link text-dark" asp-area="" asp-controller="FilledOutCheckList" asp-action="Index" asp-route-id="@Checklist.Freeform">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="FilledOutCheckList" asp-action="Index" asp-route-id="@Checklist.ChecklistId">
                             @Checklist.Freeform
                         </a>
                     </td>
                     <td>
-                        <a class="nav-link text-dark" asp-area="" asp-controller="FilledOutCheckList" asp-action="Index" asp-route-id="@Checklist.CompletionDate">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="FilledOutCheckList" asp-action="Index" asp-route-id="@Checklist.ChecklistId">
                             @Html.DisplayFor(model => Checklist.CompletionDate)
                         </a>
                     </td>
