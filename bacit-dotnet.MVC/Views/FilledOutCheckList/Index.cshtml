@@ -1,93 +1,476 @@
-@model IEnumerable<bacit_dotnet.MVC.Models.CheckList.CheckListViewModel>
+@model bacit_dotnet.MVC.Models.CheckList.CheckListViewModel
 
 @{
-    ViewData["Title"] = "Completed Checklists";
+    ViewData["Title"] = "Utfylt Sjekkliste";
 }
 
 <!DOCTYPE html>
-<html lang="en">
+
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewData["Title"]</title>
+    <title>Utfylt Sjekkliste</title>
     <link rel="stylesheet" href="/css/Checklist.css">
 </head>
 <body>
 
-<h2>@ViewData["Title"]</h2>
 
-@if (Model != null && Model.Any())
-{
-    <table>
-        <thead>
-            <tr>
-                <th>Checkpoint ID</th>
-                <th>Clutch Check</th>
-                <th>Brake Check</th>
-                <th>Drum Bearing Check</th>
-                <th>PTO Check</th>
-                <th>Chain Tension Check</th>
-                <th>Wire Check</th>
-                <th>Pinion Bearing Check</th>
-                <th>Chain Wheel Key Check</th>
-                <th>Hydraulic Cylinder Check</th>
-                <th>Hose Check</th>
-                <th>Hydraulic Block Test</th>
-                <th>Tank Oil Change</th>
-                <th>Gearbox Oil Change</th>
-                <th>Ring Cylinder Seals Check</th>
-                <th>Brake Cylinder Seals Check</th>
-                <th>Winch Wiring Check</th>
-                <th>Radio Check</th>
-                <th>Button Box Check</th>
-                <th>Pressure Settings</th>
-                <th>Function Test</th>
-                <th>Traction Force KN</th>
-                <th>Brake Force KN</th>
-                <th>Completion Date</th>
-                <th>Comments</th>
-                <th>Signature</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var checklist in Model)
-            {
-                <tr>
-                    <td>@checklist.CheckpointId</td>
-                    <td>@checklist.ClutchCheck</td>
-                    <td>@checklist.BrakeCheck</td>
-                    <td>@checklist.DrumBearingCheck</td>
-                    <td>@checklist.PTOCheck</td>
-                    <td>@checklist.ChainTensionCheck</td>
-                    <td>@checklist.WireCheck</td>
-                    <td>@checklist.PinionBearingCheck</td>
-                    <td>@checklist.ChainWheelKeyCheck</td>
-                    <td>@checklist.HydraulicCylinderCheck</td>
-                    <td>@checklist.HoseCheck</td>
-                    <td>@checklist.HydraulicBlockTest</td>
-                    <td>@checklist.TankOilChange</td>
-                    <td>@checklist.GearboxOilChange</td>
-                    <td>@checklist.RingCylinderSealsCheck</td>
-                    <td>@checklist.BrakeCylinderSealsCheck</td>
-                    <td>@checklist.WinchWiringCheck</td>
-                    <td>@checklist.RadioCheck</td>
-                    <td>@checklist.ButtonBoxCheck</td>
-                    <td>@checklist.PressureSettings</td>
-                    <td>@checklist.FunctionTest</td>
-                    <td>@checklist.TractionForceKN</td>
-                    <td>@checklist.BrakeForceKN</td>
-                    <td>@checklist.CompletionDate.ToString("dd/MM/yyyy")</td>
-                    <td>@checklist.Freeform</td>
-                    <td>@checklist.Sign</td>
-                </tr>
-            }
-        </tbody>
+
+
+<h2>Sjekkliste</h2>
+
+            @Html.ValidationSummary()
+          @Html.AntiForgeryToken()
+ <table>
+      <tr>
+        <th>Kategorier</th>
+        <th>Sjekkpunkter</th>
+        <th>OK</th>
+        <th>Bør Skiftes</th>
+        <th>Defekt</th>
+      </tr>
+        <tr>
+<td rowspan="8">Mekanisk</td>
+        <td>Sjekk Clutchcheck lameller for slitasje</td>
+        <td>
+            <input type="radio" id="OK" name="Clutchcheck" value="@Model.ClutchCheck" readonly="readonly" />
+            <label for="OK"></label>
+            <span validation-for="OK" class="ClutchCheck"></span>
+        </td>
+        <td>
+            <input type="radio" id="Bør_skiftes" name="Clutchcheck" value="@Model.ClutchCheck" readonly="readonly" />
+            <label for="Bør_skiftes"></label>
+            <span validation-for="Bør_skiftes" class="ClutchCheck"></span>
+        </td>
+        <td>
+            <input type="radio" id="Defekt" name="Clutchcheck" value="@Model.ClutchCheck" readonly="readonly" />
+            <label for="Defekt"></label>
+            <span validation-for="Defekt" class="ClutchCheck"></span>
+        </td>
+    </tr>
+    <tr>
+        <td>Sjekk Bremser. Bånd/ Pal</td>
+        <td>
+            <input type="radio" id="OK" name="BrakeCheck" value="@Model.BrakeCheck" readonly="readonly" />
+            <label for="OK"></label>
+            <span validation-for="OK" class="BrakeCheck"></span>
+        </td>
+        <td>
+            <input type="radio" id="Bør_skiftes" name="BrakeCheck" value="@Model.BrakeCheck" readonly="readonly" />
+            <label for="Bør_skiftes"></label>
+            <span validation-for="Bør_skiftes" class="BrakeCheck"></span>
+        </td>
+        <td>
+            <input type="radio" id="Defekt" name="BrakeCheck" value="@Model.BrakeCheck" readonly="readonly" />
+            <label for="Defekt"></label>
+            <span validation-for="Defekt" class="BrakeCheck"></span>
+        </td>
+    </tr>
+    <tr>
+        <td>Sjekk lager for trommel</td>
+        <td>
+            <input type="radio" id="OK" name="DrumBearingCheck" value="@Model.DrumBearingCheck" readonly="readonly" />
+            <label for="OK"></label>
+            <span validation-for="OK" class="DrumBearingCheck"></span>
+        </td>
+        <td>
+            <input type="radio" id="Bør_skiftes" name="DrumBearingCheck" value="@Model.DrumBearingCheck" readonly="readonly" />
+            <label for="Bør_skiftes"></label>
+            <span validation-for="Bør_skiftes" class="DrumBearingCheck"></span>
+        </td>
+        <td>
+            <input type="radio" id="Defekt" name="DrumBearingCheck" value="@Model.DrumBearingCheck" readonly="readonly" />
+            <label for="Defekt"></label>
+            <span validation-for="Defekt" class="DrumBearingCheck"></span>
+        </td>
+    </tr>
+    <tr>
+        <td>Sjekk PTO og opplagring</td>
+        <td>
+            <input type="radio" id="OK" name="PTOCheck" value="@Model.PTOCheck" readonly="readonly" />
+            <label for="OK"></label>
+            <span validation-for="OK" class="PTOCheck"></span>
+        </td>
+        <td>
+            <input type="radio" id="Bør_skiftes" name="PTOCheck" value="@Model.PTOCheck" readonly="readonly" />
+            <label for="Bør_skiftes"></label>
+            <span validation-for="Bør_skiftes" class="PTOCheck"></span>
+        </td>
+        <td>
+            <input type="radio" id="Defekt" name="PTOcHECK" value="@Model.PTOCheck" readonly="readonly" />
+            <label for="Defekt"></label>
+            <span validation-for="Defekt" class="PTOCheck"></span>
+        </td>
+    </tr>
+        <tr>
+            <td>Sjekk kjedestrammer</td>
+            <td>
+                <input type="radio" id="OK" name="ChainTensionCheck" value="OK" />
+                <label for="OK"></label>
+            </td>
+            
+            <td>
+                <input type="radio" id="Bør_skiftes" name="ChainTensionCheck" value="Bør_skiftes" />
+                <label for="Bør_skiftes"></label>
+            </td>
+            
+            <td>
+                <input type="radio" id="Defekt" name="ChainTensionCheck" value="Defekt"/>
+                <label for="Defekt"></label>   
+            </td>
+            
+        </tr>
+        <tr>
+            <td>Sjekk wire</td>
+            <td>
+                <input type="radio" id="OK" name="WireCheck" value="OK" />
+                <label for="OK"></label>
+            </td>
+            
+            <td>
+                <input type="radio" id="Bør_skiftes" name="WireCheck" value="Bør_skiftes" />
+                <label for="Bør_skiftes"></label>
+            </td>
+            
+            <td>
+                <input type="radio" id="Defekt" name="WireCheck" value="Defekt"/>
+                <label for="Defekt"></label>    
+            </td>
+            
+        </tr>
+        <tr>
+            <td>Sjekk pinion lager</td>
+            <td>
+                <input type="radio" id="OK" name="PinionBearingCheck" value="OK" />
+                <label for="OK"></label>
+            </td>
+            
+            <td>
+                <input type="radio" id="Bør_skiftes" name="PinionBearingCheck" value="Bør_skiftes" />
+                <label for="Bør_skiftes"></label>
+            </td>
+            
+            <td>
+                <input type="radio" id="Defekt" name="PinionBearingCheck" value="Defekt"/>
+                <label for="Defekt"></label>      
+            </td>
+            
+        </tr>
+        <tr>
+            <td>Sjekk kile på kjedehjul</td>
+            <td>
+                <input type="radio" id="OK" name="ChainWheelKeyCheck" value="OK" />
+                <label for="OK"></label>
+            </td>
+            
+            <td>
+                <input type="radio" id="Bør_skiftes" name="ChainWheelKeyCheck" value="Bør_skiftes" />
+                <label for="Bør_skiftes"></label>
+            </td>
+            
+            <td>
+                <input type="radio" id="Defekt" name="ChainWheelKeyCheck" value="Defekt"/>
+                <label for="Defekt"></label>   
+            </td>
+            
+        </tr>
+        
+        <tr>
+            <td rowspan="7">Hydraulisk</td>
+            <td>Sjekk hydraulikk sylinder for lekkasje</td>
+            <td>
+                <input type="radio" id="OK" name="HydraulicCylinderCheck" value="OK" />
+                <label for="OK"></label>
+            </td>
+            
+            <td>
+                <input type="radio" id="Bør_skiftes" name="HydraulicCylinderCheck" value="Bør_skiftes" />
+                <label for="Bør_skiftes"></label>
+            </td>
+            
+            <td>
+                <input type="radio" id="Defekt" name="HydraulicCylinderCheck" value="Defekt"/>
+                <label for="Defekt"></label>       
+            </td>
+            
+        </tr>
+        <tr>
+            <td>Sjekk slanger for skader og lekkasje</td>
+            <td>
+                <input type="radio" id="OK" name="HoseCheck" value="OK" />
+                <label for="OK"></label>
+            </td>
+            
+            <td>
+                <input type="radio" id="Bør_skiftes" name="HoseCheck" value="Bør_skiftes" />
+                <label for="Bør_skiftes"></label>
+            </td>
+            
+            <td>
+                <input type="radio" id="Defekt" name="HoseCheck" value="Defekt"/>
+                <label for="Defekt"></label>       
+            </td>
+            
+        </tr>
+        <tr>
+            <td>Test hydraulikkblokk i testbenk</td>
+            <td>
+                <input type="radio" id="OK" name="HydraulicBlockTest" value="OK" />
+                <label for="OK"></label>
+            </td>
+            
+            <td>
+                <input type="radio" id="Bør_skiftes" name="HydraulicBlockTest" value="Bør_skiftes" />
+                <label for="Bør_skiftes"></label>
+            </td>
+            
+            <td>
+                <input type="radio" id="Defekt" name="HydraulicBlockTest" value="Defekt"/>
+                <label for="Defekt"></label>  
+            </td>
+            
+        </tr>
+        <tr>
+            <td>Skift olje i tank</td>
+            <td>
+                <input type="radio" id="OK" name="TankOilChange" value="OK" />
+                <label for="OK"></label>
+            </td>
+            
+            <td>
+                <input type="radio" id="Bør_skiftes" name="TankOilChange" value="Bør_skiftes" />
+                <label for="Bør_skiftes"></label>
+            </td>
+            
+            <td>
+                <input type="radio" id="Defekt" name="TankOilChange" value="Defekt"/>
+                <label for="Defekt"></label>       
+            </td>
+            
+        </tr>
+        <tr>
+            <td>Skift olje på gir boks</td>
+            <td>
+                <input type="radio" id="OK" name="GearboxOilChange" value="OK" />
+                <label for="OK"></label>
+            </td>
+            
+            <td>
+                <input type="radio" id="Bør_skiftes" name="GearboxOilChange" value="Bør_skiftes" />
+                <label for="Bør_skiftes"></label>
+            </td>
+            
+            <td>
+                <input type="radio" id="Defekt" name="GearboxOilChange" value="Defekt"/>
+                <label for="Defekt"></label>     
+            </td>
+            
+        </tr>
+        <tr>
+            <td>Sjekk Ringsylinder åpne og skift tetninger</td>
+            <td>
+                <input type="radio" id="OK" name="RingCylinderSealsCheck" value="OK" />
+                <label for="OK"></label>
+            </td>
+            
+            <td>
+                <input type="radio" id="Bør_skiftes" name="RingCylinderSealsCheck" value="Bør_skiftes" />
+                <label for="Bør_skiftes"></label>
+            </td>
+            
+            <td>
+                <input type="radio" id="Defekt" name="RingCylinderSealsCheck" value="Defekt"/>
+                <label for="Defekt"></label>        
+                 <input type="hidden" asp-for="RingCylinderSealsCheck" />
+            </td>
+            
+        </tr>
+        <tr>
+            <td>Sjekk bremse sylinder åpne og skift tetninger</td>
+            <td>
+                <input type="radio" id="OK" name="BrakeCylinderSealsCheck" value="OK" />
+                <label for="OK"></label>
+            </td>
+            
+            <td>
+                <input type="radio" id="Bør_skiftes" name="BrakeCylinderSealsCheck" value="Bør_skiftes" />
+                <label for="Bør_skiftes"></label>
+            </td>
+            
+            <td>
+                <input type="radio" id="Defekt" name="BrakeCylinderSealsCheck" value="Defekt"/>
+                <label for="Defekt"></label>    
+                 <input type="hidden" asp-for="BrakeCylinderSealsCheck" />
+            </td>
+            
+        </tr>
+        <tr>
+            <td rowspan="3">Elektro</td>
+            <td>Sjekk ledningsnett på vinsj</td>
+            <td>
+                <input type="radio" id="OK" name="WinchWiringCheck" value="OK" />
+                <label for="OK"></label>
+            </td>
+            
+            <td>
+                <input type="radio" id="Bør_skiftes" name="WinchWiringCheck" value="Bør_skiftes" />
+                <label for="Bør_skiftes"></label>
+            </td>
+            
+            <td>
+                <input type="radio" id="Defekt" name="WinchWiringCheck" value="Defekt"/>
+                <label for="Defekt"></label>        
+                <input type="hidden" asp-for="WinchWiringCheck" />
+            </td>
+            
+        </tr>
+        <tr>
+            <td>Sjekk og test radio</td>
+            <td>
+                <input type="radio" id="OK" name="RadioCheck" value="OK" />
+                <label for="OK"></label>
+            </td>
+            
+            <td>
+                <input type="radio" id="Bør_skiftes" name="RadioCheck" value="Bør_skiftes" />
+                <label for="Bør_skiftes"></label>
+            </td>
+            
+            <td>
+                <input type="radio" id="Defekt" name="RadioCheck" value="Defekt"/>
+                <label for="Defekt"></label>        
+                 <input type="hidden" asp-for="RadioCheck" />
+            </td>
+            
+        </tr>
+        <tr>
+            <td>Sjekk og test knappekasse</td>
+            <td>
+                <input type="radio" id="OK" name="ButtonBoxCheck" value="OK" />
+                <label for="OK"></label>
+            </td>
+            
+            <td>
+                <input type="radio" id="Bør_skiftes" name="ButtonBoxCheck" value="Bør_skiftes" />
+                <label for="Bør_skiftes"></label>
+            </td>
+            
+            <td>
+                <input type="radio" id="Defekt" name="ButtonBoxCheck" value="Defekt"/>
+                <label for="Defekt"></label>     
+                   <input type="hidden" asp-for="ButtonBoxCheck" />
+            </td>
+            
+        </tr>
+        <tr>
+            <td rowspan="1">Trykk settinger</td>
+            <td>xx- Bar</td> <!-- Spør nøsted om, og endre -->
+            <td>
+                <input type="radio" id="OK" name="PressureSettings" value="OK" /> 
+                <label for="OK"></label>
+            </td>
+            
+            <td>
+                <input type="radio" id="Bør_skiftes" name="PressureSettings" value="Bør_skiftes" />
+                <label for="Bør_skiftes"></label>
+            </td>
+            
+            <td>
+                <input type="radio" id="Defekt" name="PressureSettings" value="Defekt"/>
+                <label for="Defekt"></label>   
+                   <input type="hidden" asp-for="PressureSettings" />
+            </td>
+        </tr>
+        <tr>
+            <td rowspan="3">Funksjonstest</td>
+            <td>Test vinsj og kjør alle funksjoner</td>
+            <td>
+                <input type="radio" id="OK" name="FunctionTest" value="@Model.FunctionTest" readonly="readonly"/>
+                <label for="OK"></label>
+                 <span validation-for="OK" class="FunctionTest"></span>
+            </td>
+            
+            <td>
+                <input type="radio" id="Bør_skiftes" name="FunctionTest" value="@Model.FunctionTest" readonly="readonly"/>
+                <label for="Bør_skiftes"></label>
+                 <span validation-for="Bør_skiftes" class="FunctionTest"></span>
+            </td>
+            
+            <td>
+                <input type="radio" id="Defekt" name="FunctionTest" value="@Model.FunctionTest" readonly="readonly"/>
+                <label for="Defekt"></label>   
+                <span validation-for="Defekt" class="FunctionTest"></span>
+            </td>
+            
+        </tr>
+        <tr>
+            <td>Trekkraft KN</td>
+            <td>
+                <input type="radio" id="OK" name="TractionForceKN" value="@Model.TractionForceKN" readonly="readonly"/>
+                <label for="OK"></label>
+                 <span validation-for="OK" class="TractionForceKN"></span>
+            </td>
+            
+            <td>
+                <input type="radio" id="Bør_skiftes" name="TractionForceKN" value="@Model.TractionForceKN" readonly="readonly"/>
+                <label for="Bør_skiftes"></label>
+                 <span validation-for="Bør_skiftes" class="TractionForceKN"></span>
+            </td>
+            
+            <td>
+                <input type="radio" id="Defekt" name="TractionForceKN" value="@Model.TractionForceKN" readonly="readonly"/>
+                <label for="Defekt"></label>  
+                <span validation-for="Defekt" class="TractionForceKN"></span>
+            </td>
+            
+        </tr>
+        <tr>
+            <td>Bremsekraft KN</td>
+            <td>
+                <input type="radio" id="OK" name="BrakeForceKN" value="@Model.BrakeForceKN" readonly="readonly"/>
+                <label for="OK"></label>
+                <span validation-for="OK" class="BrakeForceKN"></span>
+            </td>
+            
+            <td>
+                <input type="radio" id="Bør_skiftes" name="BrakeForceKN" value="@Model.BrakeForceKN" readonly="readonly"/>
+                <label for="Bør_skiftes"></label>
+                 <span validation-for="Bør_skiftes" class="BrakeForceKN"></span>
+            </td>
+            
+            <td>
+                <input type="radio" id="Defekt" name="BrakeForceKN" value="@Model.BrakeForceKN" readonly="readonly"/>
+                <label for="Defekt"></label>     
+                <span validation-for="Defekt" class="BrakeForceKN"></span>
+            </td>
+            
+        </tr>
     </table>
-}
-else
-{
-    <p>No checklist entries found.</p>
-}
+
+
+
+
+
+<br>
+<label for="freeform">Kommentar:</label>
+<input for="Address" class="form-control" type="text" value="@Model.Freeform" readonly="readonly"/>
+<span validation-for="Address" class="text-danger"></span>
+<br>
+<textarea id="freeform" name="freeform" rows="6" cols="115"></textarea>
+<br>
+<br>
+<label for="Sign">Signatur:</label>
+<input for="Sign" class="form-control" type="text" value="@Model.Sign" readonly="readonly"/>
+<span validation-for="Sign" class="text-danger"></span>
+<br>
+<input type="text" id="Sign" name="Sign">
+<br>
+<label for="CompletionDate">date:</label>
+<input for="CompletionDate" class="form-control" type="text" value="@Html.DisplayFor(model => Model.CompletionDate)" readonly="readonly"/>
+<span validation-for="CompletionDate" class="text-danger"></span>
+<br><br/>
+<button type="submit" class="btn btn-primary">Send inn</button>
 
 </body>
 </html>

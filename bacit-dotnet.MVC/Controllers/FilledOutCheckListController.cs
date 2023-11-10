@@ -1,27 +1,24 @@
-using bacit_dotnet.MVC.Repositories;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic; // Required for IEnumerable
-using bacit_dotnet.MVC.Models.CheckList; // Required for CheckListViewModel
+using bacit_dotnet.MVC.Repositories;
 
+namespace bacit_dotnet.MVC.Controllers;
 
-namespace bacit_dotnet.MVC.Controllers
+public class FilledOutCheckListController : Controller
 {
-    public class FilledOutCheckListController : Controller
+    private readonly CheckListRepository _repository;
+
+    public FilledOutCheckListController(CheckListRepository repository)
     {
-        private readonly CheckListRepository _repository;
-
-        public FilledOutCheckListController(CheckListRepository repository)
+        _repository = repository;
+    }
+    
+    public IActionResult Index(int id)
+    {
+        var Checklist = _repository.GetOneRowById(id);
+        if (Checklist == null)
         {
-            _repository = repository;
+            return NotFound();
         }
-
-        // This action method retrieves all checklist entries and displays them
-        public IActionResult Index()
-        {
-            IEnumerable<CheckListViewModel> checkLists = _repository.GetAll();
-            return View(checkLists);
-        }
-
-        // Additional action methods can be added here if needed
+        return View(Checklist);
     }
 }

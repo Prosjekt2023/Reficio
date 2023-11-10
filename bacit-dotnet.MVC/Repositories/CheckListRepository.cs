@@ -36,6 +36,17 @@ namespace bacit_dotnet.MVC.Repositories
                 return results;
             }
         }
+        
+        
+        public CheckListViewModel GetOneRowById(int id)
+        {
+            using (IDbConnection dbConnection = Connection)
+            {
+                dbConnection.Open();
+                var query = "SELECT * FROM Checklist WHERE ChecklistId = @Id";
+                return dbConnection.QuerySingleOrDefault<CheckListViewModel>(query, new { Id = id });
+            }
+        }
 
         public void Insert(CheckListViewModel checkListViewModel)
         {
@@ -96,17 +107,6 @@ namespace bacit_dotnet.MVC.Repositories
                     "@WinchWiringCheck, @RadioCheck, @ButtonBoxCheck, @PressureSettings, " +
                     "@FunctionTest, @TractionForceKN, @BrakeForceKN)",
                     checkpoint
-                );
-
-                // Associate the checklist with its associated checkpoints in the ChecklistCheckpoints table
-                dbConnection.Execute(
-                    "INSERT INTO ChecklistCheckpoints (ChecklistId, CheckpointId) " +
-                    "VALUES (@ChecklistId, @CheckpointId)",
-                    new
-                    {
-                        ChecklistId = checklistId,
-                        CheckpointId = checklistId
-                    }
                 );
             }
         }

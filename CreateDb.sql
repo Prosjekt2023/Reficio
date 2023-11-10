@@ -111,55 +111,44 @@ create table if not EXISTS ServiceFormEntry
 );*/
 
 
--- Create table checklist, checkpoints, and junction table checklistcheckpoints
-
--- Table for the main Checklist
+-- Table for the checklist
 CREATE TABLE IF NOT EXISTS Checklist
 (
     ChecklistId INT AUTO_INCREMENT PRIMARY KEY,
-    Sign   VARCHAR(255), -- "Signature"
-    Freeform    TEXT,
-    CompletionDate  DATE NOT NULL
+    Sign VARCHAR(255), -- Signature
+    Freeform TEXT, -- Any additional freeform text or comments
+    CompletionDate DATE NOT NULL -- The date the checklist was completed
 );
 
--- Table for the checkpoints )
+-- Table for the checkpoints
 CREATE TABLE IF NOT EXISTS CheckpointsEntry
 (
-    CheckpointId            INT AUTO_INCREMENT PRIMARY KEY,
-    ClutchCheck             VARCHAR(50),
-    BrakeCheck              VARCHAR(50),
-    DrumBearingCheck        VARCHAR(50),
-    PTOCheck                VARCHAR(50),
-    ChainTensionCheck       VARCHAR(50),
-    WireCheck               VARCHAR(50),
-    PinionBearingCheck      VARCHAR(50),
-    ChainWheelKeyCheck      VARCHAR(50),
-    HydraulicCylinderCheck  VARCHAR(50),
-    HoseCheck               VARCHAR(50),
-    HydraulicBlockTest      VARCHAR(50),
-    TankOilChange           VARCHAR(50),
-    GearboxOilChange        VARCHAR(50),
-    RingCylinderSealsCheck  VARCHAR(50),
+    CheckpointId INT AUTO_INCREMENT PRIMARY KEY,
+    ChecklistId INT UNIQUE, -- This ensures that each CheckpointsEntry can only be associated with one Checklist
+    ClutchCheck VARCHAR(50),
+    BrakeCheck VARCHAR(50),
+    DrumBearingCheck VARCHAR(50),
+    PTOCheck VARCHAR(50),
+    ChainTensionCheck VARCHAR(50),
+    WireCheck VARCHAR(50),
+    PinionBearingCheck VARCHAR(50),
+    ChainWheelKeyCheck VARCHAR(50),
+    HydraulicCylinderCheck VARCHAR(50),
+    HoseCheck VARCHAR(50),
+    HydraulicBlockTest VARCHAR(50),
+    TankOilChange VARCHAR(50),
+    GearboxOilChange VARCHAR(50),
+    RingCylinderSealsCheck VARCHAR(50),
     BrakeCylinderSealsCheck VARCHAR(50),
-    WinchWiringCheck        VARCHAR(50),
-    RadioCheck              VARCHAR(50),
-    ButtonBoxCheck          VARCHAR(50),
-    PressureSettings        VARCHAR(50),
-    FunctionTest            VARCHAR(50),
-    TractionForceKN         VARCHAR(50),
-    BrakeForceKN            VARCHAR(50)
+    WinchWiringCheck VARCHAR(50),
+    RadioCheck VARCHAR(50),
+    ButtonBoxCheck VARCHAR(50),
+    PressureSettings VARCHAR(50),
+    FunctionTest VARCHAR(50),
+    TractionForceKN VARCHAR(50),
+    BrakeForceKN VARCHAR(50),
+    FOREIGN KEY (ChecklistId) REFERENCES Checklist (ChecklistId)
 );
-
--- Many-to-Many junction Table to connect Checklist to Checkpoint
-CREATE TABLE IF NOT EXISTS ChecklistCheckpoints
-(
-    ChecklistId  INT,
-    CheckpointId INT,
-    PRIMARY KEY (ChecklistId, CheckpointId),
-    FOREIGN KEY (ChecklistId) REFERENCES Checklist (ChecklistId),
-    FOREIGN KEY (CheckpointId) REFERENCES CheckpointsEntry (CheckpointId)
-);
-
 
 -- Tabel-for-userAccount 
 CREATE TABLE IF NOT EXISTS userAccount (
