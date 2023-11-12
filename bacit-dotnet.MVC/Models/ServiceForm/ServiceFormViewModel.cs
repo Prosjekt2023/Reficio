@@ -12,7 +12,6 @@ namespace bacit_dotnet.MVC.Models.ServiceForm
         [Required(ErrorMessage = "DateReceived is required.")]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime DateReceived { get; set; }
-
         
         public string Address { get; set; }
         public string Email { get; set; }
