@@ -23,3 +23,7 @@ input[type='radio'] {
     transform: scale(1.5);
 }
 
+input[type="radio"][disabled] {
+    /* Styling for disabled radio buttons */
+    opacity: 0.6; /* Example: slightly faded appearance */
+}

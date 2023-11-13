@@ -11,7 +11,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Utfylt Sjekkliste</title>
-    <link rel="stylesheet" href="/css/Checklist.css">
+    <link rel="stylesheet" href="/css/checkList.css">
 </head>
 <body>
 
@@ -30,25 +30,25 @@
         <th>Bør Skiftes</th>
         <th>Defekt</th>
       </tr>
-        <tr>
-<td rowspan="8">Mekanisk</td>
-        <td>Sjekk Clutchcheck lameller for slitasje</td>
-        <td>
-            <input type="radio" id="OK" name="Clutchcheck" value="@Model.ClutchCheck" readonly="readonly" />
-            <label for="OK"></label>
-            <span validation-for="OK" class="ClutchCheck"></span>
-        </td>
-        <td>
-            <input type="radio" id="Bør_skiftes" name="Clutchcheck" value="@Model.ClutchCheck" readonly="readonly" />
-            <label for="Bør_skiftes"></label>
-            <span validation-for="Bør_skiftes" class="ClutchCheck"></span>
-        </td>
-        <td>
-            <input type="radio" id="Defekt" name="Clutchcheck" value="@Model.ClutchCheck" readonly="readonly" />
-            <label for="Defekt"></label>
-            <span validation-for="Defekt" class="ClutchCheck"></span>
-        </td>
-    </tr>
+<tr>
+    <td rowspan="8">Mekanisk</td>
+    <td>Sjekk Clutchcheck lameller for slitasje</td>
+    <td>
+        <input type="radio" id="OK" name="ClutchCheck" value="OK" 
+               @(Model.ClutchCheck == "OK" ? "checked" : "") disabled />
+        <label for="OK"></label>
+    </td>
+    <td>
+        <input type="radio" id="Bør_skiftes" name="ClutchCheck" value="Bør_skiftes" 
+               @(Model.ClutchCheck == "Bør_skiftes" ? "checked" : "") disabled />
+        <label for="Bør_skiftes"></label>
+    </td>
+    <td>
+        <input type="radio" id="Defekt" name="ClutchCheck" value="Defekt" 
+               @(Model.ClutchCheck == "Defekt" ? "checked" : "") disabled />
+        <label for="Defekt"></label>
+    </td>
+</tr>
     <tr>
         <td>Sjekk Bremser. Bånd/ Pal</td>
         <td>
