@@ -5,7 +5,6 @@ namespace bacit_dotnet.MVC.Models.CheckList;
 public class CheckListViewModel
 {
     public int CheckpointId { get; set; }
-    
     public int ChecklistId { get; set; } // Foreign key reference to the Checklist
     public string ClutchCheck { get; set; }
     public string BrakeCheck { get; set; }
