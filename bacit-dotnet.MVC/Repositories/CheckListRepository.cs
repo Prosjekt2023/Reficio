@@ -37,7 +37,6 @@ namespace bacit_dotnet.MVC.Repositories
             }
         }
         
-        
         public CheckListViewModel GetOneRowById(int id)
         {
             using (IDbConnection dbConnection = Connection)
@@ -47,7 +46,6 @@ namespace bacit_dotnet.MVC.Repositories
                 return dbConnection.QuerySingleOrDefault<CheckListViewModel>(query, new { Id = id });
             }
         }
-        
         
         public IEnumerable<CheckListViewModel> GetSomeOrderInfo()
         {
@@ -76,47 +74,24 @@ namespace bacit_dotnet.MVC.Repositories
                     }
                 );
 
+                // Update the ChecklistId in the model with the newly created ChecklistId
+                checkListViewModel.ChecklistId = checklistId;
+
                 // Insert the associated checkpoints into the CheckpointsEntry table
-                var checkpoint = new CheckListViewModel
-                {
-                    CheckpointId = checklistId,
-                    ClutchCheck = checkListViewModel.ClutchCheck,
-                    BrakeCheck = checkListViewModel.BrakeCheck,
-                    DrumBearingCheck = checkListViewModel.DrumBearingCheck,
-                    PTOCheck = checkListViewModel.PTOCheck,
-                    ChainTensionCheck = checkListViewModel.ChainTensionCheck,
-                    WireCheck = checkListViewModel.WireCheck,
-                    PinionBearingCheck = checkListViewModel.PinionBearingCheck,
-                    ChainWheelKeyCheck = checkListViewModel.ChainWheelKeyCheck,
-                    HydraulicCylinderCheck = checkListViewModel.HydraulicCylinderCheck,
-                    HoseCheck = checkListViewModel.HoseCheck,
-                    HydraulicBlockTest = checkListViewModel.HydraulicBlockTest,
-                    TankOilChange = checkListViewModel.TankOilChange,
-                    GearboxOilChange = checkListViewModel.GearboxOilChange,
-                    RingCylinderSealsCheck = checkListViewModel.RingCylinderSealsCheck,
-                    BrakeCylinderSealsCheck = checkListViewModel.BrakeCylinderSealsCheck,
-                    WinchWiringCheck = checkListViewModel.WinchWiringCheck,
-                    RadioCheck = checkListViewModel.RadioCheck,
-                    ButtonBoxCheck = checkListViewModel.ButtonBoxCheck,
-                    PressureSettings = checkListViewModel.PressureSettings,
-                    FunctionTest = checkListViewModel.FunctionTest,
-                    TractionForceKN = checkListViewModel.TractionForceKN,
-                    BrakeForceKN = checkListViewModel.BrakeForceKN
-                };
                 dbConnection.Execute(
-                    "INSERT INTO CheckpointsEntry (ClutchCheck, BrakeCheck, DrumBearingCheck, PTOCheck, " +
+                    "INSERT INTO CheckpointsEntry (ChecklistId, ClutchCheck, BrakeCheck, DrumBearingCheck, PTOCheck, " +
                     "ChainTensionCheck, WireCheck, PinionBearingCheck, ChainWheelKeyCheck, " +
                     "HydraulicCylinderCheck, HoseCheck, HydraulicBlockTest, TankOilChange, " +
                     "GearboxOilChange, RingCylinderSealsCheck, BrakeCylinderSealsCheck, " +
                     "WinchWiringCheck, RadioCheck, ButtonBoxCheck, PressureSettings, " +
                     "FunctionTest, TractionForceKN, BrakeForceKN) " +
-                    "VALUES (@ClutchCheck, @BrakeCheck, @DrumBearingCheck, @PTOCheck, " +
+                    "VALUES (@ChecklistId, @ClutchCheck, @BrakeCheck, @DrumBearingCheck, @PTOCheck, " +
                     "@ChainTensionCheck, @WireCheck, @PinionBearingCheck, @ChainWheelKeyCheck, " +
                     "@HydraulicCylinderCheck, @HoseCheck, @HydraulicBlockTest, @TankOilChange, " +
                     "@GearboxOilChange, @RingCylinderSealsCheck, @BrakeCylinderSealsCheck, " +
                     "@WinchWiringCheck, @RadioCheck, @ButtonBoxCheck, @PressureSettings, " +
                     "@FunctionTest, @TractionForceKN, @BrakeForceKN)",
-                    checkpoint
+                    checkListViewModel
                 );
             }
         }
