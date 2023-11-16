@@ -1,0 +1,13 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using bacit_dotnet.MVC.DataAccess
+@using bacit_dotnet.MVC.Controllers
+@inject SignInManager<ReficioApplicationUser> SignInManager
+@{
+    var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
+}
+<ul class="nav nav-pills flex-column">
+    <li class="nav-item"><a class="nav-link @ManageNavPagesController.IndexNavClass(ViewContext)" id="profile" asp-page="./Index">Profil</a></li>
+    <li class="nav-item"><a class="nav-link @ManageNavPagesController.EmailNavClass(ViewContext)" id="email" asp-page="./Email">E-post</a></li>
+    <li class="nav-item"><a class="nav-link @ManageNavPagesController.ChangePasswordNavClass(ViewContext)" id="change-password" asp-page="./ChangePassword">Passord</a></li>
+    <li class="nav-item"><a class="nav-link @ManageNavPagesController.PersonalDataNavClass(ViewContext)" id="personal-data" asp-page="./PersonalData">Slett konto</a></li>
+</ul>

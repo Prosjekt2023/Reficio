@@ -1,0 +1,26 @@
+﻿@page
+@using bacit_dotnet.MVC.Controllers
+@model bacit_dotnet.MVC.Controllers.PersonalDataModel
+@{
+    ViewData["Title"] = "Slett konto";
+    ViewData["ActivePage"] = ManageNavPagesController.PersonalData;
+}
+
+<h3>@ViewData["Title"]</h3>
+
+<div class="row">
+    <div class="col-md-6">
+        <p>Din konto inneholder personlige data som du har gitt oss. Denne siden lar deg slette disse dataene.</p>
+        <p>
+            <strong>Å slette disse dataene vil permanent fjerne kontoen din, og dette kan ikke gjenopprettes.</strong>
+        </p>
+
+        <p>
+            <a id="delete" asp-page="DeletePersonalData" class="btn btn-danger">Slett konto</a>
+        </p>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

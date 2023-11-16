@@ -23,7 +23,7 @@ namespace bacit_dotnet.MVC
         {
             var builder = WebApplication.CreateBuilder(args);
             builder.WebHost.ConfigureKestrel(x => x.AddServerHeader = false);
-
+            
             // Add services to the container.
             builder.Services.AddControllersWithViews(options =>
             {
@@ -33,23 +33,23 @@ namespace bacit_dotnet.MVC
             // Configure the database connection.
             builder.Services.AddScoped<IDbConnection>(_ =>
             {
-                var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+                var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new
+                    InvalidOperationException("Connection string 'DefaultConnection' not found.");
                 return new MySqlConnection(connectionString);
             });
 
             // Register your repository here.
             builder.Services.AddTransient<ServiceFormRepository>();
-
             builder.Services.AddTransient<CheckListRepository>();
 
             SetupDataConnections(builder);
 
-            builder.Services.AddTransient<IUserRepository, InMemoryUserRepository>();
-            builder.Services.AddTransient<IUserRepository, SqlUserRepository>();
-            builder.Services.AddTransient<IUserRepository, DapperUserRepository>();
-
-            SetupAuthentication(builder);
-
+            builder.Services.AddDefaultIdentity<ReficioApplicationUser>().AddDefaultTokenProviders()
+                .AddRoles<IdentityRole>()
+                .AddEntityFrameworkStores<DataContext>();
+            
+            //SetupAuthentication(builder);
+            
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -60,13 +60,14 @@ namespace bacit_dotnet.MVC
                 app.UseHsts();
             }
 
+            //app.UseHttpsRedirection();
             app.UseStaticFiles();
 
             app.UseRouting();
 
             UseAuthentication(app);
 
-            app.MapControllerRoute(name: "default", pattern: "{controller=Account}/{action=Login}/{id?}");
+            app.MapControllerRoute(name: "default", pattern: "{controller=Home}/{action=Index}/{id?}");
             app.MapControllers();
 
             app.Run();
@@ -97,7 +98,7 @@ namespace bacit_dotnet.MVC
             app.UseAuthorization();
         }
 
-        private static void SetupAuthentication(WebApplicationBuilder builder)
+        /*private static void SetupAuthentication(WebApplicationBuilder builder)
         {
             //Setup for Authentication
             builder.Services.Configure<IdentityOptions>(options =>
@@ -113,7 +114,7 @@ namespace bacit_dotnet.MVC
             });
 
             builder.Services
-                .AddIdentityCore<IdentityUser>()
+                .AddDefaultIdentity<IdentityUser>()
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<DataContext>()
                 .AddSignInManager()
@@ -138,6 +139,6 @@ namespace bacit_dotnet.MVC
                 Console.WriteLine(htmlMessage);
                 return Task.CompletedTask;
             }
-        }
+        }*/
     }
 }

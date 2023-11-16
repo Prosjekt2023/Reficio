@@ -1,0 +1,31 @@
+﻿@page
+@using bacit_dotnet.MVC.Controllers
+@model bacit_dotnet.MVC.Controllers.IndexModel
+@{
+    ViewData["Title"] = "Profil";
+    ViewData["ActivePage"] = ManageNavPagesController.Index;
+}
+
+<h3>@ViewData["Title"]</h3>
+
+<div class="row">
+    <div class="col-md-6">
+        <form id="profile-form" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+            <div class="form-floating mb-3">
+                <input asp-for="Username" class="form-control" placeholder="Vennligst velg ditt brukernavn." disabled />
+                <label asp-for="Username" class="form-label">Brukernavn</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Input.PhoneNumber" class="form-control" placeholder="Vennligst skriv inn telefonnummeret ditt." />
+                <label asp-for="Input.PhoneNumber" class="form-label">Telefonnummer</label>
+                <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+            </div>
+            <button id="update-profile-button" type="submit" class="w-100 btn btn-lg btn-primary">Lagre</button>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

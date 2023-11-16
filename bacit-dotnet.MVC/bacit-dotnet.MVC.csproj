@@ -26,15 +26,18 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Migrations\" />
-	</ItemGroup>
-
-	<ItemGroup>
 	  <_ContentIncludedByDefault Remove="Views\SignOut\index.cshtml" />
 	  <_ContentIncludedByDefault Remove="Views\ServiceForm\Index.cshtml" />
 	  <_ContentIncludedByDefault Remove="Views\ServiceOverview\Create.cshtml" />
 	  <_ContentIncludedByDefault Remove="Views\ServiceOverview\Index.cshtml" />
 	  <_ContentIncludedByDefault Remove="Views\Suggestions\index.cshtml" />
+	  <_ContentIncludedByDefault Remove="Views\Manage\ChangePassword.cshtml" />
+	  <_ContentIncludedByDefault Remove="Views\Manage\Email.cshtml" />
+	  <_ContentIncludedByDefault Remove="Views\Manage\Index.cshtml" />
+	  <_ContentIncludedByDefault Remove="Views\Manage\PersonalData.cshtml" />
+	  <_ContentIncludedByDefault Remove="Views\Manage\_Layout.cshtml" />
+	  <_ContentIncludedByDefault Remove="Views\Manage\_ManageNav.cshtml" />
+	  <_ContentIncludedByDefault Remove="Views\Manage\_ViewImports.cshtml" />
 	</ItemGroup>
 
 </Project>
