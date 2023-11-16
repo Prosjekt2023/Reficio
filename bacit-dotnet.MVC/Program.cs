@@ -31,23 +31,26 @@ namespace bacit_dotnet.MVC
             });
 
             // Configure the database connection.
-            builder.Services.AddScoped<IDbConnection>(_ =>
+            var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+            builder.Services.AddScoped<IDbConnection>(_ => new MySqlConnection(connectionString));
+            
+            /*builder.Services.AddScoped<IDbConnection>(_ =>
             {
                 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
                 return new MySqlConnection(connectionString);
-            });
+            });*/
 
             // Register your repository here.
             builder.Services.AddTransient<ServiceFormRepository>();
-
             builder.Services.AddTransient<CheckListRepository>();
-
-            SetupDataConnections(builder);
+            
 
             builder.Services.AddTransient<IUserRepository, InMemoryUserRepository>();
             builder.Services.AddTransient<IUserRepository, SqlUserRepository>();
             builder.Services.AddTransient<IUserRepository, DapperUserRepository>();
-
+            builder.Services.AddScoped<IUserRepository, EFUserRepository>();
+                
+            SetupDataConnections(builder);
             SetupAuthentication(builder);
 
             var app = builder.Build();
@@ -60,6 +63,7 @@ namespace bacit_dotnet.MVC
                 app.UseHsts();
             }
 
+            //app.UseHttpsRedirection();
             app.UseStaticFiles();
 
             app.UseRouting();
