@@ -1,6 +1,5 @@
 @model bacit_dotnet.MVC.Models.ServiceForm.ServiceFormViewModel
 
-
 @{
     ViewData["Title"] = "Utfylt ServiceSkjema";
 }
@@ -11,14 +10,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Utfylt ServiceSkjema</title>
+    <title>Utfylt Serviceskjema</title>
     <link rel="stylesheet" href="/css/ServiceForm.css">
 </head>
 
 <body>
 
 <div class="form-container">
-    <h2>Serviceskjema for: @Model.Customer</h2>
+    <h2>Serviceskjema for : @Model.Customer</h2>
     <hr class="divider">
     
     <div class="form-row">
@@ -159,29 +158,29 @@
                 </div>
             </div>
     
-            <div class="form-group">
-                <div class="form-row">
-                    <div class="form-col">
-                        <label for="CustomerSignature" class="control-label">Sign. kunde:</label>
-                        <input for="CustomerSignature" class="form-control" type="text" value="@Model.CustomerSignature" readonly="readonly"/>
-                        <span validation-for="CustomerSignature" class="text-danger"></span>
-                    </div>
-                    <div class="form-col">
-                        <label for="RepairerSignature" class="control-label">Sign. reparatør:</label>
-                        <input for="RepairerSignature" class="form-control" type="text" value="@Model.RepairerSignature" readonly="readonly"/>
-                        <span validation-for="RepairerSignature" class="text-danger"></span>
-                    </div>
-                </div>
+    <div class="form-group">
+        <div class="form-row">
+            <div class="form-col">
+                <label for="CustomerSignature" class="control-label">Sign. kunde:</label>
+                <input for="CustomerSignature" class="form-control" type="text" value="@Model.CustomerSignature" readonly="readonly"/>
+                <span validation-for="CustomerSignature" class="text-danger"></span>
             </div>
-</div>
-
-
-    <!-- If there are actions to be taken on this page, add buttons here -->
-        <div class="row mt-4">
-            <div class="col-md-12">
-                <a asp-controller="ServiceOrder" asp-action="Index" class="btn btn-secondary">Tilbake til liste</a>
+            <div class="form-col">
+                <label for="RepairerSignature" class="control-label">Sign. reparatør:</label>
+                <input for="RepairerSignature" class="form-control" type="text" value="@Model.RepairerSignature" readonly="readonly"/>
+                <span validation-for="RepairerSignature" class="text-danger"></span>
             </div>
         </div>
+    </div>
+    
+    <!-- If there are actions to be taken on this page, add buttons here -->
+    <div class="row mt-4">
+        <div class="col-md-12">
+            <a asp-controller="ServiceOrder" asp-action="Index" class="btn btn-secondary">Tilbake til oversikt</a>
+        </div>
+    </div>
+    
+</div>
 
 </body>
 </html>
