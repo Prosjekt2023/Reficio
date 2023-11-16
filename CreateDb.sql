@@ -29,16 +29,17 @@ create table if not EXISTS ServiceFormEntry
 );
 
 
-/*create table if not EXISTS AspNetRoles
+create table if not EXISTS AspNetRoles
 (
     RolesId varchar(255) not null,
     Name varchar(255),
     NormalizedName  varchar(255),
     ConcurrencyStamp  varchar(255),
     CONSTRAINT U_ROLE_ID_PK PRIMARY KEY (RolesId)
-);*/
+);
+
 -- insert into AspNetRoles(RolesId, Name, NormalizedName) values('Administrator', 'Administrator', 'Administrator');
-/*create table if not EXISTS AspNetUsers
+create table if not EXISTS AspNetUsers
 (
          RolesId varchar(255) not null unique,
          UserName varchar(255),
@@ -56,17 +57,17 @@ create table if not EXISTS ServiceFormEntry
          LockoutEnabled bit not null,
          AccessFailedCount int not null,
           CONSTRAINT PK_AspNetUsers PRIMARY KEY (RolesId)
-);*/
-/*create table if not EXISTS AspNetUserTokens
+);
+create table if not EXISTS AspNetUserTokens
 (
     UserId varchar(255) not null,
     LoginProvider varchar(255) not null ,
     Name  varchar(255) not null,
     Value  varchar(255),
     CONSTRAINT PK_AspNetUserTokens PRIMARY KEY (UserId, LoginProvider)
-);*/
+);
 
-/*create table if not EXISTS AspNetRoleClaims
+create table if not EXISTS AspNetRoleClaims
 (
     Id int UNIQUE auto_increment,
     ClaimType varchar(255) not null ,
@@ -75,9 +76,9 @@ create table if not EXISTS ServiceFormEntry
     CONSTRAINT PK_AspNetRoleClaims PRIMARY KEY (Id),
     foreign key(RoleId) 
         references AspNetRoles(RolesId)
-);*/    
+);    
 
-/*create table if not EXISTS AspNetUserClaims
+create table if not EXISTS AspNetUserClaims
 (
     Id int UNIQUE auto_increment,
     ClaimType varchar(255) ,
@@ -86,9 +87,9 @@ create table if not EXISTS ServiceFormEntry
     CONSTRAINT PK_AspNetRoleClaims PRIMARY KEY (Id),
     foreign key(UserId) 
         references AspNetUsers(RolesId)
-);*/        
+);        
 
-/*create table if not EXISTS AspNetUserLogins
+create table if not EXISTS AspNetUserLogins
 (
     LoginProvider int UNIQUE auto_increment,
     ProviderKey varchar(255) not null ,
@@ -97,9 +98,9 @@ create table if not EXISTS ServiceFormEntry
     CONSTRAINT PK_AspNetUserLogins PRIMARY KEY (LoginProvider),
     foreign key(UserId) 
         references AspNetUsers(RolesId)
-);*/       
+);       
 
-/*create table if not EXISTS AspNetUserRoles
+create table if not EXISTS AspNetUserRoles
 (
     UserId varchar(255) not null,
     RoleId varchar(255) not null,
@@ -108,7 +109,7 @@ create table if not EXISTS ServiceFormEntry
         references AspNetUsers(RolesId),
     foreign key(RoleId) 
         references AspNetRoles(RolesId)
-);*/
+);
 
 
 -- Table for the checklist
