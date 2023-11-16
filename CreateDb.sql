@@ -2,61 +2,42 @@ drop database if exists ReficioDB;
 create database if not exists ReficioDB;
 use ReficioDB;
 
--- Create table ServiceFormEntry, if it doesn't exists
-create table if not EXISTS ServiceFormEntry
+create table if not EXISTS users
 (
-      ServiceFormId INT not null unique auto_increment PRIMARY KEY,
-      Customer NVARCHAR(255) NOT NULL,
-      DateReceived DATE NOT NULL,
-      Address NVARCHAR(255),
-      Email NVARCHAR(255),
-      OrderNumber INT,
-      Phone INT,
-      ProductType NVARCHAR(255),
-      Year INT,
-      Service NVARCHAR(255),
-      Warranty NVARCHAR(255),
-      SerialNumber INT,
-      Agreement NVARCHAR(255),
-      RepairDescription NVARCHAR(255),
-      UsedParts NVARCHAR(255),
-      WorkHours NVARCHAR(255),
-      CompletionDate NVARCHAR(255),
-      ReplacedPartsReturned NVARCHAR(255),
-      ShippingMethod NVARCHAR(255),
-      CustomerSignature NVARCHAR(255),
-      RepairerSignature NVARCHAR(255)
-);
+    Id int not null unique auto_increment,
+    Name varchar(255),
+    Email varchar(255) UNIQUE,
 
+    CONSTRAINT U_User_ID_PK PRIMARY KEY (Id)
+);
 
 create table if not EXISTS AspNetRoles
 (
-    RolesId varchar(255) not null,
+    Id varchar(255) not null,
     Name varchar(255),
     NormalizedName  varchar(255),
     ConcurrencyStamp  varchar(255),
-    CONSTRAINT U_ROLE_ID_PK PRIMARY KEY (RolesId)
+    CONSTRAINT U_ROLE_ID_PK PRIMARY KEY (Id)
 );
-
--- insert into AspNetRoles(RolesId, Name, NormalizedName) values('Administrator', 'Administrator', 'Administrator');
+insert into AspNetRoles(id, Name, NormalizedName) values('Administrator', 'Administrator', 'Administrator');
 create table if not EXISTS AspNetUsers
 (
-         RolesId varchar(255) not null unique,
-         UserName varchar(255),
-         NormalizedUserName varchar(255),
-         Email varchar(255),
-         NormalizedEmail varchar(255),
-         EmailConfirmed bit not null,
-         PasswordHash varchar(255),
-         SecurityStamp varchar(255),
-         ConcurrencyStamp varchar(255),
-         PhoneNumber varchar(50),
-         PhoneNumberConfirmed bit not null,
-         TwoFactorEnabled bit not null,
-         LockoutEnd TIMESTAMP,
-         LockoutEnabled bit not null,
-         AccessFailedCount int not null,
-          CONSTRAINT PK_AspNetUsers PRIMARY KEY (RolesId)
+    Id varchar(255) not null unique,
+    UserName varchar(255),
+    NormalizedUserName varchar(255),
+    Email varchar(255),
+    NormalizedEmail varchar(255),
+    EmailConfirmed bit not null,
+    PasswordHash varchar(255),
+    SecurityStamp varchar(255),
+    ConcurrencyStamp varchar(255),
+    PhoneNumber varchar(50),
+    PhoneNumberConfirmed bit not null,
+    TwoFactorEnabled bit not null,
+    LockoutEnd TIMESTAMP,
+    LockoutEnabled bit not null,
+    AccessFailedCount int not null,
+    CONSTRAINT PK_AspNetUsers PRIMARY KEY (Id)
 );
 create table if not EXISTS AspNetUserTokens
 (
@@ -74,9 +55,9 @@ create table if not EXISTS AspNetRoleClaims
     ClaimValue  varchar(255) not null,
     RoleId  varchar(255),
     CONSTRAINT PK_AspNetRoleClaims PRIMARY KEY (Id),
-    foreign key(RoleId) 
-        references AspNetRoles(RolesId)
-);    
+    foreign key(RoleId)
+        references AspNetRoles(Id)
+);
 
 create table if not EXISTS AspNetUserClaims
 (
@@ -85,9 +66,9 @@ create table if not EXISTS AspNetUserClaims
     ClaimValue  varchar(255),
     UserId  varchar(255),
     CONSTRAINT PK_AspNetRoleClaims PRIMARY KEY (Id),
-    foreign key(UserId) 
-        references AspNetUsers(RolesId)
-);        
+    foreign key(UserId)
+        references AspNetUsers(Id)
+);
 
 create table if not EXISTS AspNetUserLogins
 (
@@ -96,21 +77,47 @@ create table if not EXISTS AspNetUserLogins
     ProviderDisplayName  varchar(255) not null,
     UserId  varchar(255) not null,
     CONSTRAINT PK_AspNetUserLogins PRIMARY KEY (LoginProvider),
-    foreign key(UserId) 
-        references AspNetUsers(RolesId)
-);       
+    foreign key(UserId)
+        references AspNetUsers(Id)
+);
 
 create table if not EXISTS AspNetUserRoles
 (
     UserId varchar(255) not null,
     RoleId varchar(255) not null,
     CONSTRAINT PK_AspNetUserRoles PRIMARY KEY (UserId,RoleId),
-    foreign key(UserId) 
-        references AspNetUsers(RolesId),
-    foreign key(RoleId) 
-        references AspNetRoles(RolesId)
+    foreign key(UserId)
+        references AspNetUsers(Id),
+    foreign key(RoleId)
+        references AspNetRoles(Id)
 );
 
+
+-- Create table ServiceFormEntry, if it doesn't exists
+create table if not EXISTS ServiceFormEntry
+(
+    ServiceFormId INT not null unique auto_increment PRIMARY KEY,
+    Customer NVARCHAR(255) NOT NULL,
+    DateReceived DATE NOT NULL,
+    Address NVARCHAR(255),
+    Email NVARCHAR(255),
+    OrderNumber INT,
+    Phone INT,
+    ProductType NVARCHAR(255),
+    Year INT,
+    Service NVARCHAR(255),
+    Warranty NVARCHAR(255),
+    SerialNumber INT,
+    Agreement NVARCHAR(255),
+    RepairDescription NVARCHAR(255),
+    UsedParts NVARCHAR(255),
+    WorkHours NVARCHAR(255),
+    CompletionDate NVARCHAR(255),
+    ReplacedPartsReturned NVARCHAR(255),
+    ShippingMethod NVARCHAR(255),
+    CustomerSignature NVARCHAR(255),
+    RepairerSignature NVARCHAR(255)
+);
 
 -- Table for the checklist
 CREATE TABLE IF NOT EXISTS Checklist
@@ -152,23 +159,11 @@ CREATE TABLE IF NOT EXISTS CheckpointsEntry
 );
 
 -- Tabel-for-userAccount 
-CREATE TABLE IF NOT EXISTS userAccount (
+/*CREATE TABLE IF NOT EXISTS userAccount (
     userID INT PRIMARY KEY auto_increment,
     password VARCHAR(50) not null,
     loginStatus bool not null, -- Gjorde om til bool type
     fullName VARCHAR(100) not null,
     address VARCHAR(100) not null,
     email VARCHAR(50) not null
-);
-
--- Tabel-for-Mekaniker
-CREATE table if not exists mekaniker (
-    userID int,
-    FOREIGN KEY (userID) references userAccount (userID)
-);
-
--- Tabel-for-Service_ansatt
-CREATE TABLE IF NOT EXISTS service_ansatt (
-    userID int,
-    FOREIGN KEY (userID) references userAccount (userID)
-);
+);*/
