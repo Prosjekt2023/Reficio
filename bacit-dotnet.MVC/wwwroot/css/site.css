@@ -21,12 +21,6 @@ body {
   margin-bottom: 60px;
 }
 
-.logo {
-    width: 125px;
-    height: auto;
-}
-
-/* Your existing CSS */
 .navbar-nav .nav-item {
   position: relative;
 }
@@ -54,4 +48,10 @@ body {
 .navbar-nav .nav-link.active::after {
   width: 100%;
 }
+
+.logo {
+  width: 125px;
+  height: auto;
+}
+
 
