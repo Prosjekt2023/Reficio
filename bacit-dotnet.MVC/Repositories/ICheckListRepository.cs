@@ -1,4 +1,4 @@
-using bacit_dotnet.MVC.Models.Composite;
+using bacit_dotnet.MVC.Models.CheckList;
 
 namespace bacit_dotnet.MVC.Repositories;
 
@@ -7,4 +7,6 @@ namespace bacit_dotnet.MVC.Repositories;
         public IEnumerable<CheckListViewModel> GetAll();
         
         public IEnumerable<CheckListViewModel> GetSomeOrderInfo();
+        
+        void Insert(CheckListViewModel checkListViewModel);
     }

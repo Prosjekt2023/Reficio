@@ -4,6 +4,7 @@ using MySqlConnector;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using bacit_dotnet.MVC.Models.CheckList;
 using bacit_dotnet.MVC.Models.Composite;
 
 namespace bacit_dotnet.MVC.Repositories

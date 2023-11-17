@@ -1,4 +1,5 @@
-using bacit_dotnet.MVC.Models.Composite;
+
+using bacit_dotnet.MVC.Models.ServiceForm;
 
 namespace bacit_dotnet.MVC.Repositories;
 
@@ -8,5 +9,6 @@ namespace bacit_dotnet.MVC.Repositories;
 
         public IEnumerable<ServiceFormViewModel> GetSomeOrderInfo();
         
+        void Insert(ServiceFormViewModel serviceFormViewModel);
         
     }
