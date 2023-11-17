@@ -7,7 +7,7 @@
     <title>@ViewData["Title"] - Nøsted &</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
- 
+
 
 </head>
 
@@ -16,7 +16,7 @@
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-custom border-bottom box-shadow mb-3">
         <div class="container-fluid">
             <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
-              <img src="/nwhitelogo.png" alt="Nøsted Logo" class="logo">
+                <img src="/nwhitelogo.png" alt="Nøsted Logo" class="logo">
 
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -26,24 +26,31 @@
             <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                 <ul class="navbar-nav flex-grow-1 custom-nav-text">
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Hjem</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="ServiceForm" asp-action="Index">Serviceskjema</a> <!-- Add this line -->
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="ServiceOrder" asp-action="Index">Serviceordre</a> <!-- Add this line -->
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="CheckList" asp-action="Index">Sjekkliste</a>
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index" onclick="setActiveLink(this); return false;">Hjem</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="CheckListOrder" asp-action="Index">Sjekkliste oversikt</a>
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Index" onclick="setActiveLink(this); return false;">Brukere</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="SignOut" asp-action="Index">Logg ut</a>
+                        <a class="nav-link text-dark" asp-area="" asp-controller="AppRoles" asp-action="Index" onclick="setActiveLink(this); return false;">Roller</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="ServiceForm" asp-action="Index" onclick="setActiveLink(this); return false;">Serviceskjema</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="ServiceOrder" asp-action="Index"onclick="setActiveLink(this); return false;">Serviceordre</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="CheckList" asp-action="Index" onclick="setActiveLink(this); return false;">Sjekkliste</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="CheckListOrder" asp-action="Index" onclick="setActiveLink(this); return false;">Sjekkliste oversikt</a>
                     </li>
                 </ul>
             </div>
