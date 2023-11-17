@@ -119,20 +119,10 @@ create table if not EXISTS ServiceFormEntry
     RepairerSignature NVARCHAR(255)
 );
 
--- Table for the checklist
+-- Table for the Checklist
 CREATE TABLE IF NOT EXISTS Checklist
 (
     ChecklistId INT AUTO_INCREMENT PRIMARY KEY,
-    Sign VARCHAR(255), -- Signature
-    Freeform TEXT, -- Any additional freeform text or comments
-    CompletionDate DATE NOT NULL -- The date the checklist was completed
-);
-
--- Table for the checkpoints
-CREATE TABLE IF NOT EXISTS CheckpointsEntry
-(
-    CheckpointId INT AUTO_INCREMENT PRIMARY KEY,
-    ChecklistId INT UNIQUE, -- This ensures that each CheckpointsEntry can only be associated with one Checklist
     ClutchCheck VARCHAR(50),
     BrakeCheck VARCHAR(50),
     DrumBearingCheck VARCHAR(50),
@@ -155,7 +145,9 @@ CREATE TABLE IF NOT EXISTS CheckpointsEntry
     FunctionTest VARCHAR(50),
     TractionForceKN VARCHAR(50),
     BrakeForceKN VARCHAR(50),
-    FOREIGN KEY (ChecklistId) REFERENCES Checklist (ChecklistId)
+    Sign VARCHAR(255), -- Signature
+    Freeform TEXT, -- Any additional freeform text or comments
+    CompletionDate DATE NOT NULL -- The date the checklist was completed
 );
 
 -- Tabel-for-userAccount 
