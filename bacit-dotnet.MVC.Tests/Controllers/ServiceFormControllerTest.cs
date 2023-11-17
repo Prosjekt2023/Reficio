@@ -34,7 +34,7 @@ namespace YourNamespace.Tests
             var controller = new ServiceFormController(repositoryMock.Object);
             var validModel = new ServiceFormViewModel
             {
-                // Sett gyldige egenskaper for modellen her
+                // Set valid properties for the model here
             };
 
             // Act
@@ -54,9 +54,9 @@ namespace YourNamespace.Tests
             var controller = new ServiceFormController(repositoryMock.Object);
             var invalidModel = new ServiceFormViewModel
             {
-                // Sett ugyldige egenskaper for modellen her
+                // Set invalid properties for the model here
             };
-            controller.ModelState.AddModelError("Egenskapsnavn", "Feilmelding");
+            controller.ModelState.AddModelError("PropertyName", "Error message");
 
             // Act
             var result = controller.Index(invalidModel);

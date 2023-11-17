@@ -12,6 +12,10 @@ namespace bacit_dotnet.MVC.Repositories
     public class ServiceFormRepository
     {
         private readonly IConfiguration _config;
+        public ServiceFormRepository()
+        {
+            // Legg til eventuell initialisering her
+        }
 
         public ServiceFormRepository(IConfiguration config)
         {

@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using bacit_dotnet.MVC.Models.ServiceForm;
+using bacit_dotnet.MVC.Models.ServiceForm;  
 using bacit_dotnet.MVC.Repositories;
 
 namespace bacit_dotnet.MVC.Controllers
@@ -8,6 +8,7 @@ namespace bacit_dotnet.MVC.Controllers
     {
         private readonly ServiceFormRepository _repository;
 
+        // Add the parameter to the constructor
         public ServiceFormController(ServiceFormRepository repository)
         {
             _repository = repository;
@@ -24,13 +25,14 @@ namespace bacit_dotnet.MVC.Controllers
         {
             if (ModelState.IsValid)
             {
+                // Use the injected repository
                 _repository.Insert(serviceFormViewModel);
                 return RedirectToAction("Index", "ServiceOrder");
             }
-            
+
             return View(serviceFormViewModel);
         }
-        
-        //public IActionResult Post()
+
+        // Other controller actions
     }
 }
