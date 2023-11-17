@@ -5,9 +5,9 @@ namespace bacit_dotnet.MVC.Controllers
 {
     public class CheckListOrderController : Controller
     {
-        private readonly CheckListRepository _repository;
+        private readonly ICheckListRepository _repository;
 
-        public CheckListOrderController(CheckListRepository repository)
+        public CheckListOrderController(ICheckListRepository repository)
         {
             _repository = repository;
         }

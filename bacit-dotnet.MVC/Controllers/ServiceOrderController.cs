@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using bacit_dotnet.MVC.Models.Composite;
 using bacit_dotnet.MVC.Repositories;
 
 namespace bacit_dotnet.MVC.Controllers
@@ -8,9 +7,9 @@ namespace bacit_dotnet.MVC.Controllers
     [Authorize]
     public class ServiceOrderController : Controller
     {
-        private readonly ServiceFormRepository _repository;
+        private readonly IServiceFormRepository _repository;
 
-        public ServiceOrderController(ServiceFormRepository repository)
+        public ServiceOrderController(IServiceFormRepository repository)
         {
             _repository = repository;
         }

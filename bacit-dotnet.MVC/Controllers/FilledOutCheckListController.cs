@@ -7,9 +7,9 @@ namespace bacit_dotnet.MVC.Controllers
     [Authorize]
     public class FilledOutCheckListController : Controller
     {
-        private readonly CheckListRepository _repository;
+        private readonly ICheckListRepository _repository;
 
-        public FilledOutCheckListController(CheckListRepository repository)
+        public FilledOutCheckListController(ICheckListRepository repository)
         {
             _repository = repository;
         }
