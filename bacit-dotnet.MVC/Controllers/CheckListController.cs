@@ -1,4 +1,4 @@
-using bacit_dotnet.MVC.Models.CheckList;
+using bacit_dotnet.MVC.Models.Composite;
 using Microsoft.AspNetCore.Mvc;
 using bacit_dotnet.MVC.Repositories;
 

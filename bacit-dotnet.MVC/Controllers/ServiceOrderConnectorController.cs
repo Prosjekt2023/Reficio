@@ -1,25 +1,38 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using bacit_dotnet.MVC.Models.Composite;
 using bacit_dotnet.MVC.Repositories;
 
 namespace bacit_dotnet.MVC.Controllers
 {
+    [Authorize]
     public class ServiceOrderConnectorController : Controller
     {
-        private readonly ServiceFormRepository _repository;
-        
-        public ServiceOrderConnectorController(ServiceFormRepository repository)
+        private readonly ServiceFormRepository _serviceFormRepository;
+        private readonly CheckListRepository _checkListRepository; // Assuming you have a CheckListRepository
+
+        public ServiceOrderConnectorController(ServiceFormRepository serviceFormRepository, CheckListRepository checkListRepository)
         {
-            _repository = repository;
+            _serviceFormRepository = serviceFormRepository;
+            _checkListRepository = checkListRepository;
         }
-        
-        public IActionResult Index(int id)
+
+        public IActionResult Index(int id) // 
         {
-            var serviceFormEntry = _repository.GetRelevantData(id);
-            if (serviceFormEntry == null)
+            var serviceFormEntry = _serviceFormRepository.GetRelevantData(id);
+            var checkListEntry = _checkListRepository.GetRelevantData(id); // Assuming you have a method to get CheckList data
+
+            if (serviceFormEntry == null || checkListEntry == null)
             {
                 return NotFound();
             }
-            return View(serviceFormEntry);
+
+            var compositeViewModel = new CompositeViewModel
+            {
+                ServiceForm = serviceFormEntry,
+                CheckList = checkListEntry,
+            };
+
+            return View(compositeViewModel);
         }
     }
-}

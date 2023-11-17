@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Configuration;
-using bacit_dotnet.MVC.Models.ServiceForm;
+using bacit_dotnet.MVC.Models.Composite;
 using bacit_dotnet.MVC.Repositories;
 using MySqlConnector;
 using System.Data;
@@ -41,8 +41,8 @@ namespace bacit_dotnet.MVC
             });*/
 
             // Register your repository here.
-            builder.Services.AddTransient<ServiceFormRepository>();
-            builder.Services.AddTransient<CheckListRepository>();
+            builder.Services.AddTransient<IServiceFormRepository, ServiceFormRepository>();
+            builder.Services.AddTransient<ICheckListRepository, CheckListRepository>();
             
 
             builder.Services.AddTransient<IUserRepository, InMemoryUserRepository>();

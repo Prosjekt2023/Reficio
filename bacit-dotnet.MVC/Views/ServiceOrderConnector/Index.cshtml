@@ -1,4 +1,4 @@
-@model bacit_dotnet.MVC.Models.ServiceForm.ServiceFormViewModel
+@model bacit_dotnet.MVC.Models.Composite.CompositeViewModel
 
 
 
@@ -47,7 +47,7 @@
     <div>
         <div class="flex-box full-width">
             <a class="btn btn-primary" asp-area="" asp-controller="FilledOutServiceForm" asp-action="Index" asp-route-id="@Model.ServiceFormId">Se Serviceskjema</a>
-            <a class="btn btn-primary" asp-area="" asp-controller="FilledOutCheckList" asp-action="Index" asp-route-id="@Model.">Se Sjekkliste</a>
+            <a class="btn btn-primary" asp-area="" asp-controller="FilledOutCheckList" asp-action="Index" asp-route-id="@Model.ChecklistId">Se Sjekkliste</a>
         </div>
     </div>
 

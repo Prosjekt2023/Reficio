@@ -1,9 +1,11 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using bacit_dotnet.MVC.Models.ServiceForm;
+using bacit_dotnet.MVC.Models.Composite;
 using bacit_dotnet.MVC.Repositories;
 
 namespace bacit_dotnet.MVC.Controllers
 {
+    [Authorize]
     public class ServiceOrderController : Controller
     {
         private readonly ServiceFormRepository _repository;
@@ -18,5 +20,7 @@ namespace bacit_dotnet.MVC.Controllers
             var serviceFormEntry = _repository.GetSomeOrderInfo();
             return View(serviceFormEntry);
         }
+
+        
     }
 }
