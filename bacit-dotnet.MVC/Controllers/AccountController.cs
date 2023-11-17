@@ -125,7 +125,7 @@ namespace bacit_dotnet.MVC.Controllers
         }
 
    
-        public async Task<IActionResult> LogOff()
+        public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
             _logger.LogInformation(4, "User logged out.");
