@@ -8,6 +8,10 @@ html {
   }
 }
 
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
 html {
   position: relative;
   min-height: 100%;
@@ -15,23 +19,39 @@ html {
 
 body {
   margin-bottom: 60px;
-  font-family: "Publico Text", serif;
 }
 
 .logo {
-  width: 125px;
-  height: auto; 
+    width: 125px;
+    height: auto;
 }
 
-.navbar {
-  visibility: visible;
+/* Your existing CSS */
+.navbar-nav .nav-item {
+  position: relative;
 }
 
-.bg-custom {
-  background-color: #000033 !important; /* Mørke blå bakgrunnsfarge */
+.navbar-nav .nav-link {
+  position: relative;
+  padding-bottom: 5px;
+  margin-right: 10px;
 }
 
-.custom-nav-text .nav-link {
-  color: #f2f2f2 !important; /* Hvit tekst farge */
+.navbar-nav .nav-link::after {
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #2b2b2b;
+  transition: width 0.3s ease;
+  box-sizing: border-box;
+}
+
+.navbar-nav .nav-link:hover::after,
+.navbar-nav .nav-link.active::after {
+  width: 100%;
 }
 
