@@ -1,7 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace bacit_dotnet.MVC.Models.Composite
-{
+namespace bacit_dotnet.MVC.Models.Composite;
     public class ServiceFormViewModel
     {
         public int ServiceFormId { get; set; }
@@ -36,5 +35,5 @@ namespace bacit_dotnet.MVC.Models.Composite
         public string ShippingMethod { get; set; }
         public string CustomerSignature { get; set; }
         public string RepairerSignature { get; set; }
+        
     }
-}
