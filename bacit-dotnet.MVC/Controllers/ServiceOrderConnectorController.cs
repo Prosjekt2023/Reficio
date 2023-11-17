@@ -11,7 +11,8 @@ namespace bacit_dotnet.MVC.Controllers
         private readonly ServiceFormRepository _serviceFormRepository;
         private readonly CheckListRepository _checkListRepository; // Assuming you have a CheckListRepository
 
-        public ServiceOrderConnectorController(ServiceFormRepository serviceFormRepository, CheckListRepository checkListRepository)
+        public ServiceOrderConnectorController(ServiceFormRepository serviceFormRepository,
+            CheckListRepository checkListRepository)
         {
             _serviceFormRepository = serviceFormRepository;
             _checkListRepository = checkListRepository;
@@ -20,7 +21,8 @@ namespace bacit_dotnet.MVC.Controllers
         public IActionResult Index(int id) // 
         {
             var serviceFormEntry = _serviceFormRepository.GetRelevantData(id);
-            var checkListEntry = _checkListRepository.GetRelevantData(id); // Assuming you have a method to get CheckList data
+            var checkListEntry =
+                _checkListRepository.GetRelevantData(id); // Assuming you have a method to get CheckList data
 
             if (serviceFormEntry == null || checkListEntry == null)
             {
@@ -36,3 +38,4 @@ namespace bacit_dotnet.MVC.Controllers
             return View(compositeViewModel);
         }
     }
+}
