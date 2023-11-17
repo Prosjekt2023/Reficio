@@ -1,14 +1,17 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using bacit_dotnet.MVC.Models.Composite;
 using bacit_dotnet.MVC.Models.ServiceForm;
 using bacit_dotnet.MVC.Repositories;
 
 namespace bacit_dotnet.MVC.Controllers
 {
+    [Authorize]
     public class ServiceFormController : Controller
     {
-        private readonly ServiceFormRepository _repository;
+        private readonly IServiceFormRepository _repository;
 
-        public ServiceFormController(ServiceFormRepository repository)
+        public ServiceFormController(IServiceFormRepository repository)
         {
             _repository = repository;
         }

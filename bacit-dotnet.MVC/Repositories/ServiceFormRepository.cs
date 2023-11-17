@@ -5,6 +5,7 @@ using MySqlConnector;
 //using System.Collections.Generic;
 using System.Data;
 //using System.Linq;
+using bacit_dotnet.MVC.Models.Composite;
 using bacit_dotnet.MVC.Models.ServiceForm;
 
 namespace bacit_dotnet.MVC.Repositories
