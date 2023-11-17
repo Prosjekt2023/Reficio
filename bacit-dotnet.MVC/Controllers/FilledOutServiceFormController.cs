@@ -5,9 +5,9 @@ namespace bacit_dotnet.MVC.Controllers;
 
 public class FilledOutServiceFormController : Controller
 {
-    private readonly ServiceFormRepository _repository;
+    private readonly IServiceFormRepository _repository;
 
-    public FilledOutServiceFormController(ServiceFormRepository repository)
+    public FilledOutServiceFormController(IServiceFormRepository repository)
     {
         _repository = repository;
     }

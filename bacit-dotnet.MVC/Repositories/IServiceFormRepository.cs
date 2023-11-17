@@ -8,7 +8,10 @@ namespace bacit_dotnet.MVC.Repositories;
         public IEnumerable<ServiceFormViewModel> GetAll();
 
         public IEnumerable<ServiceFormViewModel> GetSomeOrderInfo();
+        public ServiceFormViewModel GetRelevantData(int id);
+
+        public ServiceFormViewModel GetOneRowById(int id);
         
         void Insert(ServiceFormViewModel serviceFormViewModel);
         
-    }
+    } 

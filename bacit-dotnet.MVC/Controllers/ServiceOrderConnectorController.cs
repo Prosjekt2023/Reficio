@@ -8,11 +8,11 @@ namespace bacit_dotnet.MVC.Controllers
     [Authorize]
     public class ServiceOrderConnectorController : Controller
     {
-        private readonly ServiceFormRepository _serviceFormRepository;
-        private readonly CheckListRepository _checkListRepository; // Assuming you have a CheckListRepository
+        private readonly IServiceFormRepository _serviceFormRepository;
+        private readonly ICheckListRepository _checkListRepository; // Assuming you have a CheckListRepository
 
-        public ServiceOrderConnectorController(ServiceFormRepository serviceFormRepository,
-            CheckListRepository checkListRepository)
+        public ServiceOrderConnectorController(IServiceFormRepository serviceFormRepository,
+            ICheckListRepository checkListRepository)
         {
             _serviceFormRepository = serviceFormRepository;
             _checkListRepository = checkListRepository;
