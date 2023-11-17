@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
     
-    namespace Authsystem.Areas.Identity.Data;
+namespace bacit_dotnet.MVC.DataAccess;
 
     public class ApplicationUser : IdentityUser
     {
@@ -15,6 +15,6 @@ using Microsoft.AspNetCore.Identity;
 
         [PersonalData]
         [Column(TypeName = "nvarchar(100)")]
-        public string Lastname { get; set; }
+        public string LastName { get; set; }
     }
     
