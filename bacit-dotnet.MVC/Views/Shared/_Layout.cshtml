@@ -1,89 +1,78 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>@ViewData["Title"] - Nøsted &</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
+
+
 </head>
+
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
-                    <img src="/nlogo.png" alt="Nøsted Logo" class="logo">
-                </a>
+<header>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-custom border-bottom box-shadow mb-3">
+        <div class="container-fluid">
+            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                <img src="/nwhitelogo.png" alt="Nøsted Logo" class="logo">
 
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index" onclick="setActiveLink(this); return false;">Hjem</a>
-                        </li>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                <ul class="navbar-nav flex-grow-1 custom-nav-text">
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index" onclick="setActiveLink(this); return false;">Hjem</a>
+                    </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Index" onclick="setActiveLink(this); return false;">Brukere</a>
-                        </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Index" onclick="setActiveLink(this); return false;">Brukere</a>
+                    </li>
 
-                        <li class="nav-item">
+                    <li class="nav-item">
                         <a class="nav-link text-dark" asp-area="" asp-controller="AppRoles" asp-action="Index" onclick="setActiveLink(this); return false;">Roller</a>
-                        </li>
-                        
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="ServiceForm" asp-action="Index" onclick="setActiveLink(this); return false;">Serviceskjema</a>
-                        </li>
-                        
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="ServiceOrder" asp-action="Index"onclick="setActiveLink(this); return false;">Serviceordre</a> 
-                        </li>
-                        
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="CheckList" asp-action="Index" onclick="setActiveLink(this); return false;">Sjekkliste</a>
-                        </li>
-                        
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="CheckListOrder" asp-action="Index" onclick="setActiveLink(this); return false;">Sjekkliste oversikt</a>
-                        </li>
-                        
-                    </ul>                
-                </div>
-            </div>
-            @* <partial name="_LoginPartial" /> *@
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+                    </li>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2023 - Reficio - <a asp-area="" asp-controller="Privacy" asp-action="Index">Personvern</a>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="ServiceForm" asp-action="Index" onclick="setActiveLink(this); return false;">Serviceskjema</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="ServiceOrder" asp-action="Index"onclick="setActiveLink(this); return false;">Serviceordre</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="CheckList" asp-action="Index" onclick="setActiveLink(this); return false;">Sjekkliste</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="CheckListOrder" asp-action="Index" onclick="setActiveLink(this); return false;">Sjekkliste oversikt</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
-    <script>
-      $(document).ready(function() {
-        var currentPath = window.location.pathname; // Get the current URL path
-    
-        // Loop through each nav link and compare with the current path
-        $('.navbar-nav .nav-link').each(function() {
-          var linkPath = $(this).attr('href');
-          
-          // Check if the link's href matches the current path
-          if (currentPath === linkPath) {
-            $(this).addClass('active'); // Add 'active' class to the matching link
-          }
-        });
-      });
-    </script>
+    </nav>
+</header>
+
+<div class="container">
+    <main role="main" class="pb-3">
+        @RenderBody()
+    </main>
+</div>
+
+<footer class="border-top footer text-muted">
+    <div class="container">
+        &copy; 2023 - Reficio - <a asp-area="" asp-controller="Privacy" asp-action="Index">Personvern</a>
+    </div>
+</footer>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+@await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
