@@ -19,7 +19,11 @@ create table if not EXISTS AspNetRoles
     ConcurrencyStamp  varchar(255),
     CONSTRAINT U_ROLE_ID_PK PRIMARY KEY (Id)
 );
-insert into AspNetRoles(id, Name, NormalizedName) values('Administrator', 'Administrator', 'Administrator');
+INSERT INTO AspNetRoles (Id, Name, NormalizedName) VALUES ('1', 'Admin', 'Admin');
+INSERT INTO AspNetRoles (Id, Name, NormalizedName) VALUES ('2', 'Ansatt', 'Ansatt');
+INSERT INTO AspNetRoles (Id, Name, NormalizedName) VALUES ('3', 'Mekaniker', 'Mekaniker');
+INSERT INTO AspNetRoles (Id, Name, NormalizedName) VALUES ('4', 'Elektriker', 'Elektriker');
+
 create table if not EXISTS AspNetUsers
 (
     Id varchar(255) not null unique,
