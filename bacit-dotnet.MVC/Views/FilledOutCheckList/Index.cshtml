@@ -1,0 +1,501 @@
+@model bacit_dotnet.MVC.Models.CheckList.CheckListViewModel
+
+@{
+    ViewData["Title"] = "Utfylt Sjekkliste";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Utfylt Sjekkliste</title>
+    <link rel="stylesheet" href="/css/Checklist.css">
+</head>
+<body>
+
+
+
+
+<h2>Sjekkliste</h2>
+
+            @Html.ValidationSummary()
+          @Html.AntiForgeryToken()
+ <table>
+      <tr>
+        <th>Kategorier</th>
+        <th>Sjekkpunkter</th>
+        <th>OK</th>
+        <th>Bør skiftes</th>
+        <th>Defekt</th>
+      </tr>
+        <tr>
+<td rowspan="8">Mekanisk</td>
+        <td>Sjekk clutchcheck lameller for slitasje</td>
+        <td>
+           <input type="radio" id="ClutchCheck_OK" name="ClutchCheck" value="OK" 
+                     @(Model.ClutchCheck == "OK" ? "checked='checked'" : "")  />
+              <label for="ClutchCheck_OK"></label>
+          </td>
+          <td>
+              <input type="radio" id="ClutchCheck_Bør_skiftes" name="ClutchCheck" value="Bør_skiftes" 
+                     @(Model.ClutchCheck == "Bør_skiftes" ? "checked='checked'" : "")  />
+              <label for="ClutchCheck_Bør_skiftes"></label>
+          </td>
+          <td>
+              <input type="radio" id="ClutchCheck_Defekt" name="ClutchCheck" value="Defekt" 
+                     @(Model.ClutchCheck == "Defekt" ? "checked='checked'" : "")  />
+              <label for="ClutchCheck_Defekt"></label>
+              <input type="hidden" name="ClutchCheck" value="@Model.ClutchCheck" />
+        </td>
+    </tr>
+    <tr>
+        <td>Sjekk Bremser. Bånd/pal</td>
+        <td>
+           <input type="radio" id="BrakeCheck_OK" name="BrakeCheck" value="OK" 
+                     @(Model.ClutchCheck == "OK" ? "checked='checked'" : "")  />
+              <label for="ClutchCheck_OK"></label>
+          </td>
+          <td>
+              <input type="radio" id="BrakeCheck_Bør_skiftes" name="BrakeCheck" value="Bør_skiftes" 
+                     @(Model.BrakeCheck == "Bør_skiftes" ? "checked='checked'" : "")  />
+              <label for="BrakeCheck_Bør_skiftes"></label>
+          </td>
+          <td>
+              <input type="radio" id="BrakeCheck_Defekt" name="BrakeCheck" value="Defekt" 
+                     @(Model.BrakeCheck == "Defekt" ? "checked='checked'" : "")  />
+              <label for="BrakeCheck_Defekt"></label>
+              <input type="hidden" name="BrakeCheck" value="@Model.BrakeCheck" />
+        </td>
+    </tr>
+    <tr>
+        <td>Sjekk lager for trommel</td>
+        <td>
+<input type="radio" id="DrumBearingCheck_OK" name="DrumBearingCheck" value="OK" 
+                     @(Model.DrumBearingCheck == "OK" ? "checked='checked'" : "")  />
+              <label for="DrumBearingCheck_OK"></label>
+          </td>
+          <td>
+              <input type="radio" id="DrumBearingCheck_Bør_skiftes" name="DrumBearingCheck" value="Bør_skiftes" 
+                     @(Model.DrumBearingCheck == "Bør_skiftes" ? "checked='checked'" : "")  />
+              <label for="DrumBearingCheck_Bør_skiftes"></label>
+          </td>
+          <td>
+              <input type="radio" id="DrumBearingCheck_Defekt" name="DrumBearingCheck" value="Defekt" 
+                     @(Model.DrumBearingCheck == "Defekt" ? "checked='checked'" : "")  />
+              <label for="DrumBearingCheck_Defekt"></label>
+              <input type="hidden" name="DrumBearingCheck" value="@Model.DrumBearingCheck" />
+        </td>
+    </tr>
+    <tr>
+        <td>Sjekk PTO og opplagring</td>
+       <td>
+           <input type="radio" id="PTOCheck_OK" name="PTOCheck" value="OK" 
+                  @(Model.PTOCheck == "OK" ? "checked='checked'" : "") readonly="readonly" />
+           <label for="PTOCheck_OK"></label>
+           <span validation-for="PTOCheck_OK" class="PTOCheck"></span>
+       </td>
+       <td>
+           <input type="radio" id="PTOCheck_Bør_skiftes" name="PTOCheck" value="Bør_skiftes" 
+                  @(Model.PTOCheck == "Bør_skiftes" ? "checked='checked'" : "") readonly="readonly" />
+           <label for="PTOCheck_Bør_skiftes"></label>
+           <span validation-for="PTOCheck_Bør_skiftes" class="PTOCheck"></span>
+       </td>
+       <td>
+           <input type="radio" id="PTOCheck_Defekt" name="PTOCheck" value="Defekt"
+                  @(Model.PTOCheck == "Defekt" ? "checked='checked'" : "") readonly="readonly" />
+           <label for="PTOCheck_Defekt"></label>
+           <span validation-for="PTOCheck_Defekt" class="PTOCheck"></span>
+           <input type="hidden" name="PTOCheck" value="@Model.PTOCheck" />
+       </td>
+    </tr>
+        <tr>
+            <td>Sjekk kjedestrammer</td>
+      <td>
+          <input type="radio" id="ChainTensionCheck_OK" name="ChainTensionCheck" value="OK" 
+                 @(Model.ChainTensionCheck == "OK" ? "checked='checked'" : "") />
+          <label for="ChainTensionCheck_OK"></label>
+      </td>
+      <td>
+          <input type="radio" id="ChainTensionCheck_Bør_skiftes" name="ChainTensionCheck" value="Bør_skiftes" 
+                 @(Model.ChainTensionCheck == "Bør_skiftes" ? "checked='checked'" : "") />
+          <label for="ChainTensionCheck_Bør_skiftes"></label>
+      </td>
+      <td>
+          <input type="radio" id="ChainTensionCheck_Defekt" name="ChainTensionCheck" value="Defekt"
+                 @(Model.ChainTensionCheck == "Defekt" ? "checked='checked'" : "") />
+          <label for="ChainTensionCheck_Defekt"></label>
+          <input type="hidden" name="ChainTensionCheck" value="@Model.ChainTensionCheck" />
+      </td>
+        </tr>
+ <tr>
+     <td>Sjekk wire</td>
+     <td>
+         <input type="radio" id="WireCheck_OK" name="WireCheck" value="OK"
+                @(Model.WireCheck == "OK" ? "checked='checked'" : "")/>
+         <label for="WireCheck_OK"></label>
+     </td>
+     <td>
+         <input type="radio" id="WireCheck_Bør_skiftes" name="WireCheck" value="Bør_skiftes"
+                @(Model.WireCheck == "Bør_skiftes" ? "checked='checked'" : "")/>
+         <label for="WireCheck_Bør_skiftes"></label>
+     </td>
+     <td>
+         <input type="radio" id="WireCheck_Defekt" name="WireCheck" value="Defekt"
+                @(Model.WireCheck == "Defekt" ? "checked='checked'" : "")/>
+         <label for="WireCheck_Defekt"></label>
+         <input type="hidden" name="WireCheck" value="@Model.WireCheck"/>
+     </td>
+ </tr>
+        <tr>
+            <td>Sjekk pinion lager</td>
+    <td>
+        <input type="radio" id="PinionBearingCheck_OK" name="PinionBearingCheck" value="OK" 
+               @(Model.PinionBearingCheck == "OK" ? "checked='checked'" : "") />
+        <label for="PinionBearingCheck_OK"></label>
+    </td>
+    <td>
+        <input type="radio" id="PinionBearingCheck_Bør_skiftes" name="PinionBearingCheck" value="Bør_skiftes" 
+               @(Model.PinionBearingCheck == "Bør_skiftes" ? "checked='checked'" : "") />
+        <label for="PinionBearingCheck_Bør_skiftes"></label>
+    </td>
+    <td>
+        <input type="radio" id="PinionBearingCheck_Defekt" name="PinionBearingCheck" value="Defekt"
+               @(Model.PinionBearingCheck == "Defekt" ? "checked='checked'" : "") />
+        <label for="PinionBearingCheck_Defekt"></label>
+        <input type="hidden" name="PinionBearingCheck" value="@Model.PinionBearingCheck" />
+    </td>
+        </tr>
+        <tr>
+            <td>Sjekk kile på kjedehjul</td>
+<td>
+        <input type="radio" id="ChainWheelKeyCheck_OK" name="ChainWheelKeyCheck" value="OK" 
+               @(Model.ChainWheelKeyCheck == "OK" ? "checked='checked'" : "") />
+        <label for="ChainWheelKeyCheck_OK"></label>
+    </td>
+    <td>
+        <input type="radio" id="ChainWheelKeyCheck_Bør_skiftes" name="ChainWheelKeyCheck" value="Bør_skiftes" 
+               @(Model.ChainWheelKeyCheck == "Bør_skiftes" ? "checked='checked'" : "") />
+        <label for="ChainWheelKeyCheck_Bør_skiftes"></label>
+    </td>
+    <td>
+        <input type="radio" id="ChainWheelKeyCheck_Defekt" name="ChainWheelKeyCheck" value="Defekt"
+               @(Model.ChainWheelKeyCheck == "Defekt" ? "checked='checked'" : "") />
+        <label for="ChainWheelKeyCheck_Defekt"></label>
+        <input type="hidden" name="ChainWheelKeyCheck" value="@Model.ChainWheelKeyCheck" />
+    </td>
+        </tr>
+        
+        <tr>
+            <td rowspan="7">Hydraulisk</td>
+            <td>Sjekk hydraulikk sylinder for lekkasje</td>
+             <td>
+                   <input type="radio" id="HydraulicCylinderCheck_OK" name="HydraulicCylinderCheck" value="OK" 
+                          @(Model.HydraulicCylinderCheck == "OK" ? "checked='checked'" : "") />
+                   <label for="HydraulicCylinderCheck_OK"></label>
+               </td>
+               <td>
+                   <input type="radio" id="HydraulicCylinderCheck_Bør_skiftes" name="HydraulicCylinderCheck" value="Bør_skiftes" 
+                          @(Model.HydraulicCylinderCheck == "Bør_skiftes" ? "checked='checked'" : "") />
+                   <label for="HydraulicCylinderCheck_Bør_skiftes"></label>
+               </td>
+               <td>
+                   <input type="radio" id="HydraulicCylinderCheck_Defekt" name="HydraulicCylinderCheck" value="Defekt"
+                          @(Model.HydraulicCylinderCheck == "Defekt" ? "checked='checked'" : "") />
+                   <label for="HydraulicCylinderCheck_Defekt"></label>
+                   <input type="hidden" name="HydraulicCylinderCheck" value="@Model.HydraulicCylinderCheck" />
+               </td>
+        </tr>
+        <tr>
+            <td>Sjekk slanger for skader og lekkasje</td>
+            <td>
+                    <input type="radio" id="HoseCheck_OK" name="HoseCheck" value="OK" 
+                           @(Model.HoseCheck == "OK" ? "checked='checked'" : "") />
+                    <label for="HoseCheck_OK"></label>
+                </td>
+                <td>
+                    <input type="radio" id="HoseCheck_Bør_skiftes" name="HoseCheck" value="Bør_skiftes" 
+                           @(Model.HoseCheck == "Bør_skiftes" ? "checked='checked'" : "") />
+                    <label for="HoseCheck_Bør_skiftes"></label>
+                </td>
+                <td>
+                    <input type="radio" id="HoseCheck_Defekt" name="HoseCheck" value="Defekt"
+                           @(Model.HoseCheck == "Defekt" ? "checked='checked'" : "") />
+                    <label for="HoseCheck_Defekt"></label>
+                    <input type="hidden" name="HoseCheck" value="@Model.HoseCheck" />
+                </td>
+        </tr>
+        <tr>
+            <td>Test hydraulikkblokk i testbenk</td>
+             <td>
+                    <input type="radio" id="HydraulicBlockTest_OK" name="HydraulicBlockTest" value="OK" 
+                           @(Model.HydraulicBlockTest == "OK" ? "checked='checked'" : "") />
+                    <label for="HydraulicBlockTest_OK"></label>
+                </td>
+                <td>
+                    <input type="radio" id="HydraulicBlockTest_Bør_skiftes" name="HydraulicBlockTest" value="Bør_skiftes" 
+                           @(Model.HydraulicBlockTest == "Bør_skiftes" ? "checked='checked'" : "") />
+                    <label for="HydraulicBlockTest_Bør_skiftes"></label>
+                </td>
+                <td>
+                    <input type="radio" id="HydraulicBlockTest_Defekt" name="HydraulicBlockTest" value="Defekt"
+                           @(Model.HydraulicBlockTest == "Defekt" ? "checked='checked'" : "") />
+                    <label for="HydraulicBlockTest_Defekt"></label>
+                    <input type="hidden" name="HydraulicBlockTest" value="@Model.HydraulicBlockTest" />
+                </td>
+            </tr>
+            
+            <tr>
+                <td>Skift olje i tank</td>
+                <td>
+                    <input type="radio" id="TankOilChange_OK" name="TankOilChange" value="OK" 
+                           @(Model.TankOilChange == "OK" ? "checked='checked'" : "") />
+                    <label for="TankOilChange_OK"></label>
+                </td>
+                <td>
+                    <input type="radio" id="TankOilChange_Bør_skiftes" name="TankOilChange" value="Bør_skiftes" 
+                           @(Model.TankOilChange == "Bør_skiftes" ? "checked='checked'" : "") />
+                    <label for="TankOilChange_Bør_skiftes"></label>
+                </td>
+                <td>
+                    <input type="radio" id="TankOilChange_Defekt" name="TankOilChange" value="Defekt"
+                           @(Model.TankOilChange == "Defekt" ? "checked='checked'" : "") />
+                    <label for="TankOilChange_Defekt"></label>
+                    <input type="hidden" name="TankOilChange" value="@Model.TankOilChange" />
+                </td>
+            </tr>
+            
+            <tr>
+                <td>Skift olje på gir boks</td>
+                <td>
+                    <input type="radio" id="GearboxOilChange_OK" name="GearboxOilChange" value="OK" 
+                           @(Model.GearboxOilChange == "OK" ? "checked='checked'" : "") />
+                    <label for="GearboxOilChange_OK"></label>
+                </td>
+                <td>
+                    <input type="radio" id="GearboxOilChange_Bør_skiftes" name="GearboxOilChange" value="Bør_skiftes" 
+                           @(Model.GearboxOilChange == "Bør_skiftes" ? "checked='checked'" : "") />
+                    <label for="GearboxOilChange_Bør_skiftes"></label>
+                </td>
+                <td>
+                    <input type="radio" id="GearboxOilChange_Defekt" name="GearboxOilChange" value="Defekt"
+                           @(Model.GearboxOilChange == "Defekt" ? "checked='checked'" : "") />
+                    <label for="GearboxOilChange_Defekt"></label>
+                    <input type="hidden" name="GearboxOilChange" value="@Model.GearboxOilChange" />
+                </td>
+        </tr>
+        <tr>
+            <td>Sjekk ringsylinder åpne og skift tetninger</td>
+            <td>
+                    <input type="radio" id="RingCylinderSealsCheck_OK" name="RingCylinderSealsCheck" value="OK" 
+                           @(Model.RingCylinderSealsCheck == "OK" ? "checked='checked'" : "") />
+                    <label for="RingCylinderSealsCheck_OK"></label>
+                </td>
+                <td>
+                    <input type="radio" id="RingCylinderSealsCheck_Bør_skiftes" name="RingCylinderSealsCheck" value="Bør_skiftes" 
+                           @(Model.RingCylinderSealsCheck == "Bør_skiftes" ? "checked='checked'" : "") />
+                    <label for="RingCylinderSealsCheck_Bør_skiftes"></label>
+                </td>
+                <td>
+                    <input type="radio" id="RingCylinderSealsCheck_Defekt" name="RingCylinderSealsCheck" value="Defekt"
+                           @(Model.RingCylinderSealsCheck == "Defekt" ? "checked='checked'" : "") />
+                    <label for="RingCylinderSealsCheck_Defekt"></label>
+                    <input type="hidden" name="RingCylinderSealsCheck" value="@Model.RingCylinderSealsCheck" />
+                </td>
+            </tr>
+            
+            <tr>
+                <td>Sjekk bremse sylinder åpne og skift tetninger</td>
+                <td>
+                    <input type="radio" id="BrakeCylinderSealsCheck_OK" name="BrakeCylinderSealsCheck" value="OK" 
+                           @(Model.BrakeCylinderSealsCheck == "OK" ? "checked='checked'" : "") />
+                    <label for="BrakeCylinderSealsCheck_OK"></label>
+                </td>
+                <td>
+                    <input type="radio" id="BrakeCylinderSealsCheck_Bør_skiftes" name="BrakeCylinderSealsCheck" value="Bør_skiftes" 
+                           @(Model.BrakeCylinderSealsCheck == "Bør_skiftes" ? "checked='checked'" : "") />
+                    <label for="BrakeCylinderSealsCheck_Bør_skiftes"></label>
+                </td>
+                <td>
+                    <input type="radio" id="BrakeCylinderSealsCheck_Defekt" name="BrakeCylinderSealsCheck" value="Defekt"
+                           @(Model.BrakeCylinderSealsCheck == "Defekt" ? "checked='checked'" : "") />
+                    <label for="BrakeCylinderSealsCheck_Defekt"></label>
+                    <input type="hidden" name="BrakeCylinderSealsCheck" value="@Model.BrakeCylinderSealsCheck" />
+                </td>
+            </tr>
+            
+ <tr>
+      <td rowspan="3">Elektro</td>
+     <td>Sjekk ledningsnett på vinsj</td>
+     <td>
+         <input type="radio" id="WinchWiringCheck_OK" name="WinchWiringCheck" value="OK"
+                @(Model.WinchWiringCheck == "OK" ? "checked='checked'" : "")/>
+         <label for="WinchWiringCheck_OK"></label>
+     </td>
+     <td>
+         <input type="radio" id="WinchWiringCheck_Bør_skiftes" name="WinchWiringCheck" value="Bør_skiftes"
+                @(Model.WinchWiringCheck == "Bør_skiftes" ? "checked='checked'" : "")/>
+         <label for="WinchWiringCheck_Bør_skiftes"></label>
+     </td>
+     <td>
+         <input type="radio" id="WinchWiringCheck_Defekt" name="WinchWiringCheck" value="Defekt"
+                @(Model.WinchWiringCheck == "Defekt" ? "checked='checked'" : "")/>
+         <label for="WinchWiringCheck_Defekt"></label>
+         <input type="hidden" name="WinchWiringCheck" value="@Model.WinchWiringCheck"/>
+     </td>
+
+
+ </tr>
+        <tr>
+            <td>Sjekk og test radio</td>
+            <td>
+                   <input type="radio" id="RadioCheck_OK" name="RadioCheck" value="OK" 
+                          @(Model.RadioCheck == "OK" ? "checked='checked'" : "") />
+                   <label for="RadioCheck_OK"></label>
+               </td>
+               <td>
+                   <input type="radio" id="RadioCheck_Bør_skiftes" name="RadioCheck" value="Bør_skiftes" 
+                          @(Model.RadioCheck == "Bør_skiftes" ? "checked='checked'" : "") />
+                   <label for="RadioCheck_Bør_skiftes"></label>
+               </td>
+               <td>
+                   <input type="radio" id="RadioCheck_Defekt" name="RadioCheck" value="Defekt"
+                          @(Model.RadioCheck == "Defekt" ? "checked='checked'" : "") />
+                   <label for="RadioCheck_Defekt"></label>
+                   <input type="hidden" name="RadioCheck" value="@Model.RadioCheck" />
+               </td>
+           </tr>
+           
+           <!-- Sjekk og test knappekasse -->
+           <tr>
+               <td>Sjekk og test knappekasse</td>
+               <td>
+                   <input type="radio" id="ButtonBoxCheck_OK" name="ButtonBoxCheck" value="OK" 
+                          @(Model.ButtonBoxCheck == "OK" ? "checked='checked'" : "") />
+                   <label for="ButtonBoxCheck_OK"></label>
+               </td>
+               <td>
+                   <input type="radio" id="ButtonBoxCheck_Bør_skiftes" name="ButtonBoxCheck" value="Bør_skiftes" 
+                          @(Model.ButtonBoxCheck == "Bør_skiftes" ? "checked='checked'" : "") />
+                   <label for="ButtonBoxCheck_Bør_skiftes"></label>
+               </td>
+               <td>
+                   <input type="radio" id="ButtonBoxCheck_Defekt" name="ButtonBoxCheck" value="Defekt"
+                          @(Model.ButtonBoxCheck == "Defekt" ? "checked='checked'" : "") />
+                   <label for="ButtonBoxCheck_Defekt"></label>
+                   <input type="hidden" name="ButtonBoxCheck" value="@Model.ButtonBoxCheck" />
+               </td>
+           </tr>
+           
+           <!-- Trykk settinger -->
+           <tr>
+               <td>Trykk settinger</td>
+               <td>xx- bar</td> <!-- Spør nøsted om, og endre -->
+               <td>
+                   <input type="radio" id="PressureSettings_OK" name="PressureSettings" value="OK" 
+                          @(Model.PressureSettings == "OK" ? "checked='checked'" : "") />
+                   <label for="PressureSettings_OK"></label>
+               </td>
+               <td>
+                   <input type="radio" id="PressureSettings_Bør_skiftes" name="PressureSettings" value="Bør_skiftes" 
+                          @(Model.PressureSettings == "Bør_skiftes" ? "checked='checked'" : "") />
+                   <label for="PressureSettings_Bør_skiftes"></label>
+               </td>
+               <td>
+                   <input type="radio" id="PressureSettings_Defekt" name="PressureSettings" value="Defekt"
+                          @(Model.PressureSettings == "Defekt" ? "checked='checked'" : "") />
+                   <label for="PressureSettings_Defekt"></label>
+                   <input type="hidden" name="PressureSettings" value="@Model.PressureSettings" />
+               </td>
+        </tr>
+        <tr>
+            <td rowspan="3">Funksjonstest</td>
+            <td>Test vinsj og kjør alle funksjoner</td>
+           <td>
+                   <input type="radio" id="FunctionTest_OK" name="FunctionTest" value="OK" 
+                          @(Model.FunctionTest == "OK" ? "checked='checked'" : "") />
+                   <label for="FunctionTest_OK"></label>
+               </td>
+               <td>
+                   <input type="radio" id="FunctionTest_Bør_skiftes" name="FunctionTest" value="Bør_skiftes" 
+                          @(Model.FunctionTest == "Bør_skiftes" ? "checked='checked'" : "") />
+                   <label for="FunctionTest_Bør_skiftes"></label>
+               </td>
+               <td>
+                   <input type="radio" id="FunctionTest_Defekt" name="FunctionTest" value="Defekt"
+                          @(Model.FunctionTest == "Defekt" ? "checked='checked'" : "") />
+                   <label for="FunctionTest_Defekt"></label>
+                   <input type="hidden" name="FunctionTest" value="@Model.FunctionTest" />
+               </td>
+           </tr>
+           
+           <!-- TractionForceKN -->
+           <tr>
+               <td>Trekkraft KN</td>
+               <td>
+                   <input type="radio" id="TractionForceKN_OK" name="TractionForceKN" value="OK" 
+                          @(Model.TractionForceKN == "OK" ? "checked='checked'" : "") />
+                   <label for="TractionForceKN_OK"></label>
+               </td>
+               <td>
+                   <input type="radio" id="TractionForceKN_Bør_skiftes" name="TractionForceKN" value="Bør_skiftes" 
+                          @(Model.TractionForceKN == "Bør_skiftes" ? "checked='checked'" : "") />
+                   <label for="TractionForceKN_Bør_skiftes"></label>
+               </td>
+               <td>
+                   <input type="radio" id="TractionForceKN_Defekt" name="TractionForceKN" value="Defekt"
+                          @(Model.TractionForceKN == "Defekt" ? "checked='checked'" : "") />
+                   <label for="TractionForceKN_Defekt"></label>
+                   <input type="hidden" name="TractionForceKN" value="@Model.TractionForceKN" />
+               </td>
+           </tr>
+           
+           <!-- BrakeForceKN -->
+           <tr>
+               <td>Bremsekraft KN</td>
+               <td>
+                   <input type="radio" id="BrakeForceKN_OK" name="BrakeForceKN" value="OK" 
+                          @(Model.BrakeForceKN == "OK" ? "checked='checked'" : "") />
+                   <label for="BrakeForceKN_OK"></label>
+               </td>
+               <td>
+                   <input type="radio" id="BrakeForceKN_Bør_skiftes" name="BrakeForceKN" value="Bør_skiftes" 
+                          @(Model.BrakeForceKN == "Bør_skiftes" ? "checked='checked'" : "") />
+                   <label for="BrakeForceKN_Bør_skiftes"></label>
+               </td>
+               <td>
+                   <input type="radio" id="BrakeForceKN_Defekt" name="BrakeForceKN" value="Defekt"
+                          @(Model.BrakeForceKN == "Defekt" ? "checked='checked'" : "") />
+                   <label for="BrakeForceKN_Defekt"></label>
+                   <input type="hidden" name="BrakeForceKN" value="@Model.BrakeForceKN" />
+               </td>
+        </tr>
+    </table>
+
+
+
+
+
+<br>
+<label for="freeform">Kommentar:</label>
+<input for="Address" class="form-control" type="text" value="@Model.Freeform" readonly="readonly"/>
+<span validation-for="Address" class="text-danger"></span>
+<br>
+<textarea id="freeform" name="freeform" rows="6" cols="115"></textarea>
+<br>
+<br>
+<label for="Sign">Signatur:</label>
+<input for="Sign" class="form-control" type="text" value="@Model.Sign" readonly="readonly"/>
+<span validation-for="Sign" class="text-danger"></span>
+<br>
+<input type="text" id="Sign" name="Sign">
+<br>
+<label for="CompletionDate">Date:</label>
+<input for="CompletionDate" class="form-control" type="text" value="@Html.DisplayFor(model => Model.CompletionDate)" readonly="readonly"/>
+<span validation-for="CompletionDate" class="text-danger"></span>
+<br><br/>
+<button type="submit" class="btn btn-primary">Send inn</button>
+
+</body>
+</html>

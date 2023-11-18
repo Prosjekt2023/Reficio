@@ -1,4 +1,5 @@
 using bacit_dotnet.MVC.Models.CheckList;
+using bacit_dotnet.MVC.Models.Composite;
 using Microsoft.AspNetCore.Mvc;
 using bacit_dotnet.MVC.Repositories;
 
@@ -6,9 +7,9 @@ namespace bacit_dotnet.MVC.Controllers
 {
     public class CheckListController : Controller
     {
-        private readonly CheckListRepository _repository;
+        private readonly ICheckListRepository _repository;
 
-        public CheckListController (CheckListRepository repository)
+        public CheckListController (ICheckListRepository repository)
         {
             _repository = repository;
         }

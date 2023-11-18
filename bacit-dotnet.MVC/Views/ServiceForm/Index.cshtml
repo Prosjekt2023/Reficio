@@ -8,183 +8,183 @@
 <html lang="en">
 
 <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Serviceskjema</title>
-        <link rel="stylesheet" href="/css/ServiceForm.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serviceskjema</title>
+    <link rel="stylesheet" href="/css/ServiceForm.css">
 </head>
 
 <body>
 
-<div class="form-container">
-    <h2>Serviceskjema</h2>
-    <hr class="divider">    
+    <div class="form-container">
+        <h2>Serviceskjema</h2>
+        <hr class="divider">
 
-    <form asp-controller="ServiceForm" asp-action="Index" method="post">
-         @Html.AntiForgeryToken()
-        <div class="form-row">
-            <div class="form-col">
-                <div class="form-group">
-                    <label asp-for="Customer" class="control-label">Kunde:</label>
-                    <input asp-for="Customer" class="form-control"/>
-                    <span asp-validation-for="Customer" class="text-danger"></span>
-                </div>
-            </div>
-
-            <div class="form-col">
-                <div class="form-group">
-                    <label asp-for="DateReceived" class="control-label">Mottatt dato:</label>
-                    <input asp-for="DateReceived" class="form-control" type="date"/>
-                    <span asp-validation-for="DateReceived" class="text-danger"></span>
-                </div>
-            </div>
-        </div>
-
-        <div class="form-group">
+        <form asp-controller="ServiceForm" asp-action="Index" method="post">
+            @Html.AntiForgeryToken()
             <div class="form-row">
                 <div class="form-col">
-                    <label asp-for="Address" class="control-label">Adresse:</label>
-                    <input asp-for="Address" class="form-control"/>
-                    <span asp-validation-for="Address" class="text-danger"></span>
+                    <div class="form-group">
+                        <label asp-for="Customer" class="control-label">Kunde:</label>
+                        <input asp-for="Customer" class="form-control" />
+                        <span asp-validation-for="Customer" class="text-danger"></span>
+                    </div>
                 </div>
+
                 <div class="form-col">
-                    <label asp-for="Email" class="control-label">E-Mail:</label>
-                    <input asp-for="Email" class="form-control"/>
-                    <span asp-validation-for="Email" class="text-danger"></span>
+                    <div class="form-group">
+                        <label asp-for="DateReceived" class="control-label">Mottatt dato:</label>
+                        <input asp-for="DateReceived" class="form-control" type="date" />
+                        <span asp-validation-for="DateReceived" class="text-danger"></span>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            <div class="form-row">
-                <div class="form-col">
-                    <label asp-for="OrderNumber" class="control-label">Ordrenummer:</label>
-                    <input asp-for="OrderNumber" class="form-control" type="text" maxlength="12"/>
-                    <span asp-validation-for="OrderNumber" class="text-danger"></span>
-                </div>
-                <div class="form-col">
-                    <label asp-for="Phone" class="control-label">Telefon:</label>
-                    <input asp-for="Phone" class="form-control" type="text" maxlength="8"/>
-                    <span asp-validation-for="Phone" class="text-danger"></span>
-                </div>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="form-row">
-                <div class="form-col">
-                    <label asp-for="ProductType" class="control-label">Produkttype:</label>
-                    <input asp-for="ProductType" class="form-control"/>
-                    <span asp-validation-for="ProductType" class="text-danger"></span>
-                </div>
-                <div class="form-col">
-                    <label asp-for="Year" class="control-label">Årsmodell:</label>
-                    <input asp-for="Year" class="form-control" type="text" maxlength="4"/>
-                    <span asp-validation-for="Year" class="text-danger"></span>
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="form-col">
+                        <label asp-for="Address" class="control-label">Adresse:</label>
+                        <input asp-for="Address" class="form-control" />
+                        <span asp-validation-for="Address" class="text-danger"></span>
+                    </div>
+                    <div class="form-col">
+                        <label asp-for="Email" class="control-label">E-post:</label>
+                        <input asp-for="Email" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            <div class="form-row">
-                <div class="form-col">
-                    <label asp-for="Service" class="control-label">Service/rep:</label>
-                    <input asp-for="Service" class="form-control"/>
-                    <span asp-validation-for="Service" class="text-danger"></span>
-                </div>
-                <div class="form-col">
-                    <label asp-for="Warranty" class="control-label">Garanti:</label>
-                    <input asp-for="Warranty" class="form-control"/>
-                    <span asp-validation-for="Warranty" class="text-danger"></span>
-                </div>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="form-row center-row">
-                <div class="form-col">
-                    <label asp-for="SerialNumber" class="control-label">Serienummer:</label>
-                    <input asp-for="SerialNumber" class="form-control" type="text" maxlength="12"/>
-                    <span asp-validation-for="SerialNumber" class="text-danger"></span>
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="form-col">
+                        <label asp-for="OrderNumber" class="control-label">Ordrenummer:</label>
+                        <input asp-for="OrderNumber" class="form-control" type="text" maxlength="12" />
+                        <span asp-validation-for="OrderNumber" class="text-danger"></span>
+                    </div>
+                    <div class="form-col">
+                        <label asp-for="Phone" class="control-label">Telefon:</label>
+                        <input asp-for="Phone" class="form-control" type="text" maxlength="8" />
+                        <span asp-validation-for="Phone" class="text-danger"></span>
+                    </div>
                 </div>
             </div>
-        </div>
 
-
-
-        <div class="form-group">
-            <div class="form-col">
-                <label asp-for="Agreement" class="control-label">Hva er avtalt med kunden?</label>
-                <textarea asp-for="Agreement" class="form-control" rows="4"></textarea>
-                <span asp-validation-for="Agreement" class="text-danger"></span>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label asp-for="RepairDescription" class="control-label">Reparasjonsbeskrivelse:</label>
-            <textarea asp-for="RepairDescription" class="form-control" rows="4"></textarea>
-            <span asp-validation-for="RepairDescription" class="text-danger"></span>
-        </div>
-
-        <div class="form-group">
-            <label asp-for="UsedParts" class="control-label">Medgåtte deler:</label>
-            <textarea asp-for="UsedParts" class="form-control" rows="4"></textarea>
-            <span asp-validation-for="UsedParts" class="text-danger"></span >
-        </div>
-
-        <div class="form-group">
-            <div class="form-row">
-                <div class="form-col">
-                    <label asp-for="WorkHours" class="control-label">Arbeidstimer:</label>
-                    <input asp-for="WorkHours" class="form-control" type="text" maxlength="2"/>
-                    <span asp-validation-for="WorkHours" class="text-danger"></span>
-                </div>
-                <div class="form-col">
-                    <label asp-for="CompletionDate" class="control-label">Ferdigstilt dato:</label>
-                    <input asp-for="CompletionDate" class="form-control" type="date"/>
-                    <span asp-validation-for="CompletionDate" class="text-danger"></span>
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="form-col">
+                        <label asp-for="ProductType" class="control-label">Produkttype:</label>
+                        <input asp-for="ProductType" class="form-control" />
+                        <span asp-validation-for="ProductType" class="text-danger"></span>
+                    </div>
+                    <div class="form-col">
+                        <label asp-for="Year" class="control-label">Årsmodell:</label>
+                        <input asp-for="Year" class="form-control" type="text" maxlength="4" />
+                        <span asp-validation-for="Year" class="text-danger"></span>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            <div class="form-row">
-                <div class="form-col">
-                    <label asp-for="ReplacedPartsReturned" class="control-label">Utskiftet deler returnert:</label>
-                    <input asp-for="ReplacedPartsReturned" class="form-control"/>
-                    <span asp-validation-for="ReplacedPartsReturned" class="text-danger"></span>
-                </div>
-                <div class="form-col">
-                    <label asp-for="ShippingMethod" class="control-label">Forsendelsesmåte:</label>
-                    <input asp-for="ShippingMethod" class="form-control"/>
-                    <span asp-validation-for="ShippingMethod" class="text-danger"></span>
-                </div>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="form-row">
-                <div class="form-col">
-                    <label asp-for="CustomerSignature" class="control-label">Sign. kunde:</label>
-                    <input asp-for="CustomerSignature" class="form-control"/>
-                    <span asp-validation-for="CustomerSignature" class="text-danger"></span>
-                </div>
-                <div class="form-col">
-                    <label asp-for="RepairerSignature" class="control-label">Sign. reparatør:</label>
-                    <input asp-for="RepairerSignature" class="form-control"/>
-                    <span asp-validation-for="RepairerSignature" class="text-danger"></span>
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="form-col">
+                        <label asp-for="Service" class="control-label">Service/rep:</label>
+                        <input asp-for="Service" class="form-control" />
+                        <span asp-validation-for="Service" class="text-danger"></span>
+                    </div>
+                    <div class="form-col">
+                        <label asp-for="Warranty" class="control-label">Garanti:</label>
+                        <input asp-for="Warranty" class="form-control" />
+                        <span asp-validation-for="Warranty" class="text-danger"></span>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            <div class="form-row center-row">
-                <input type="submit" value="Send in skjema" class="btn btn-primary custom-button"/>
+            <div class="form-group">
+                <div class="form-row center-row">
+                    <div class="form-col">
+                        <label asp-for="SerialNumber" class="control-label">Serienummer:</label>
+                        <input asp-for="SerialNumber" class="form-control" type="text" maxlength="12" />
+                        <span asp-validation-for="SerialNumber" class="text-danger"></span>
+                    </div>
+                </div>
             </div>
-        </div>
 
-    </form>
-</div>
+
+
+            <div class="form-group">
+                <div class="form-col">
+                    <label asp-for="Agreement" class="control-label">Hva er avtalt med kunden?</label>
+                    <textarea asp-for="Agreement" class="form-control" rows="4"></textarea>
+                    <span asp-validation-for="Agreement" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="RepairDescription" class="control-label">Reparasjonsbeskrivelse:</label>
+                <textarea asp-for="RepairDescription" class="form-control" rows="4"></textarea>
+                <span asp-validation-for="RepairDescription" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="UsedParts" class="control-label">Medgåtte deler:</label>
+                <textarea asp-for="UsedParts" class="form-control" rows="4"></textarea>
+                <span asp-validation-for="UsedParts" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="form-col">
+                        <label asp-for="WorkHours" class="control-label">Arbeidstimer:</label>
+                        <input asp-for="WorkHours" class="form-control" type="text" maxlength="2" />
+                        <span asp-validation-for="WorkHours" class="text-danger"></span>
+                    </div>
+                    <div class="form-col">
+                        <label asp-for="CompletionDate" class="control-label">Ferdigstilt dato:</label>
+                        <input asp-for="CompletionDate" class="form-control" type="date" />
+                        <span asp-validation-for="CompletionDate" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="form-col">
+                        <label asp-for="ReplacedPartsReturned" class="control-label">Utskiftet deler returnert:</label>
+                        <input asp-for="ReplacedPartsReturned" class="form-control" />
+                        <span asp-validation-for="ReplacedPartsReturned" class="text-danger"></span>
+                    </div>
+                    <div class="form-col">
+                        <label asp-for="ShippingMethod" class="control-label">Forsendelsesmåte:</label>
+                        <input asp-for="ShippingMethod" class="form-control" />
+                        <span asp-validation-for="ShippingMethod" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="form-col">
+                        <label asp-for="CustomerSignature" class="control-label">Sign. kunde:</label>
+                        <input asp-for="CustomerSignature" class="form-control" />
+                        <span asp-validation-for="CustomerSignature" class="text-danger"></span>
+                    </div>
+                    <div class="form-col">
+                        <label asp-for="RepairerSignature" class="control-label">Sign. reparatør:</label>
+                        <input asp-for="RepairerSignature" class="form-control" />
+                        <span asp-validation-for="RepairerSignature" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="form-row center-row">
+                    <input type="submit" value="Send inn skjema" class="btn btn-primary custom-button" />
+                </div>
+            </div>
+
+        </form>
+    </div>
 
 </body>
 </html>

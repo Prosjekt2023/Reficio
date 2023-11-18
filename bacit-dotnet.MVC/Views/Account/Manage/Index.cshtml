@@ -1,0 +1,29 @@
+@model bacit_dotnet.MVC.Models.Account.Manage.UserProfileViewModel
+
+@{
+    ViewData["Title"] = "Profil";
+}
+
+<h3>@ViewData["Title"]</h3>
+
+<div class="row">
+    <div class="col-md-6">
+        <form id="profile-form" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+            <div class="form-floating mb-3">
+                <input asp-for="Username" class="form-control" placeholder="Vennligst velg ditt brukernavn." disabled />
+                <label asp-for="Username" class="form-label">Brukernavn</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="PhoneNumber" class="form-control" placeholder="Vennligst skriv inn telefonnummeret ditt." />
+                <label asp-for="PhoneNumber" class="form-label">Telefonnummer</label>
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
+            <button id="update-profile-button" type="submit" class="w-100 btn btn-lg btn-primary">Lagre</button>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

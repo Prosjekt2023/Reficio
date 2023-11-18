@@ -1,10 +1,7 @@
-@using bacit_dotnet.MVC.Models.ServiceForm
-@model IEnumerable<bacit_dotnet.MVC.Models.ServiceForm.ServiceFormViewModel>
-
+@model bacit_dotnet.MVC.Models.ServiceForm.ServiceFormViewModel
 
 @{
     ViewData["Title"] = "Utfylt ServiceSkjema";
-    var Limit = 1;
 }
 
 <!DOCTYPE html>
@@ -12,52 +9,178 @@
 <html>
 <head>
     <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Utfylt ServiceSkjema</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Utfylt Serviceskjema</title>
+    <link rel="stylesheet" href="/css/ServiceForm.css">
 </head>
+
 <body>
-<form asp-controller="FilledOutServiceForm" asp-action="Index">
-    <div class="form-container">
-        <h2>Utfylt Serviceskjema</h2>
-        <hr class="divider">
+
+<div class="form-container">
+    <h2>Serviceskjema for: @Model.Customer</h2>
+    <hr class="divider">
     
-        @foreach (var serviceFormEntry in Model.Take(Limit))
-        {
-            <div class="form-row">
-                <div class="form-col">
-                    <div class="form-group">
-                        <label for="Customer" class="control-label">Kunde:</label>
-                        <input for="Customer" class="form-control" type="text" value="@serviceFormEntry.Customer" readonly/>
-                        <span validation-for="Customer" class="text-danger"></span>
-                    </div>
-                </div>
-                
-                <div class="form-col">
-                    <div class="form-group">
-                        <label for="DateReceived" class="control-label">Mottatt dato:</label>
-                        <input for="DateReceived" class="form-control" type="date" value="@Html.DisplayFor(model => serviceFormEntry.DateReceived)" readonly/>
-                        <span validation-for="DateReceived" class="text-danger"></span>
-                        <p>@Html.DisplayFor(model => serviceFormEntry.DateReceived)</p>
-                    </div>
-                </div>
-            </div>
-            
+    <div class="form-row">
+        <div class="form-col">
             <div class="form-group">
+                <label for="Customer" class="control-label">Kunde:</label>
+                <input for="Customer" class="form-control" type="text" value="@Model.Customer" readonly="readonly"/>
+                <span validation-for="Customer" class="text-danger"></span>
+            </div>
+        </div>
+        
+        <div class="form-col">
+            <div class="form-group">
+                <label for="DateReceived" class="control-label">Mottatt dato:</label>
+                <input for="DateReceived" class="form-control" type="text" value="@Html.DisplayFor(model => Model.DateReceived)" readonly="readonly"/>
+                <span validation-for="DateReceived" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="form-group">
                 <div class="form-row">
                     <div class="form-col">
                         <label for="Address" class="control-label">Adresse:</label>
-                        <input for="Address" class="form-control" type="text" value="@serviceFormEntry.Address" readonly/>
+                        <input for="Address" class="form-control" type="text" value="@Model.Address" readonly="readonly"/>
                         <span validation-for="Address" class="text-danger"></span>
                     </div>
                     <div class="form-col">
-                        <label for="Email" class="control-label">E-Mail:</label>
-                        <input for="Email" class="form-control" type="text" value="@serviceFormEntry.Email" readonly/>
+                        <label for="Email" class="control-label">E-post:</label>
+                        <input for="Email" class="form-control" type="text" value="@Model.Email" readonly="readonly"/>
                         <span validation-for="Email" class="text-danger"></span>
                     </div>
                 </div>
             </div>
-        }    
+    
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="form-col">
+                        <label for="OrderNumber" class="control-label">Ordrenummer:</label>
+                        <input for="OrderNumber" class="form-control" type="text" maxlength="12" value="@Model.OrderNumber" readonly="readonly"/>
+                        <span validation-for="OrderNumber" class="text-danger"></span>
+                    </div>
+                    <div class="form-col">
+                        <label for="Phone" class="control-label">Telefon:</label>
+                        <input for="Phone" class="form-control" type="text" maxlength="8" value="@Model.Phone" readonly="readonly"/>
+                        <span validation-for="Phone" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="form-col">
+                        <label for="ProductType" class="control-label">Produkttype:</label>
+                        <input for="ProductType" class="form-control" type="text" value="@Model.ProductType" readonly="readonly"/>
+                        <span validation-for="ProductType" class="text-danger"></span>
+                    </div>
+                    <div class="form-col">
+                        <label for="Year" class="control-label">Årsmodell:</label>
+                        <input for="Year" class="form-control" type="text" maxlength="4" value="@Model.Year" readonly="readonly"/>
+                        <span validation-for="Year" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="form-col">
+                        <label for="Service" class="control-label">Service/rep:</label>
+                        <input for="Service" class="form-control" type="text" value="@Model.Service" readonly="readonly"/>
+                        <span validation-for="Service" class="text-danger"></span>
+                    </div>
+                    <div class="form-col">
+                        <label for="Warranty" class="control-label">Garanti:</label>
+                        <input for="Warranty" class="form-control" type="text" value="@Model.Warranty" readonly="readonly"/>
+                        <span validation-for="Warranty" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="form-group">
+                <div class="form-row center-row">
+                    <div class="form-col">
+                        <label for="SerialNumber" class="control-label">Serienummer:</label>
+                        <input for="SerialNumber" class="form-control" type="text" maxlength="12" value="@Model.SerialNumber" readonly="readonly"/>
+                        <span validation-for="SerialNumber" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="form-group">
+                <div class="form-col">
+                    <label for="Agreement" class="control-label">Hva er avtalt med kunden?</label>
+                     <textarea id="Agreement" class="form-control" rows="4" readonly>@Model.Agreement</textarea> 
+                    <span validation-for="Agreement" class="text-danger"></span>
+                </div>
+            </div>
+    
+            <div class="form-group">
+                <label for="RepairDescription" class="control-label">Reparasjonsbeskrivelse:</label>
+            <textarea id="RepairDescription" class="form-control" rows="4" readonly>@Model.RepairDescription</textarea>
+                <span validation-for="RepairDescription" class="text-danger"></span>
+            </div>
+    
+            <div class="form-group">
+                <label for="UsedParts" class="control-label">Medgåtte deler:</label>
+                <textarea for="UsedParts" class="form-control" rows="4" readonly>@Model.UsedParts</textarea>
+                <span validation-for="UsedParts" class="text-danger"></span >
+            </div>
+    
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="form-col">
+                        <label for="WorkHours" class="control-label">Arbeidstimer:</label>
+                        <input for="WorkHours" class="form-control" type="text" maxlength="2" value="@Model.WorkHours" readonly="readonly"/>
+                        <span validation-for="WorkHours" class="text-danger"></span>
+                    </div>
+                    <div class="form-col">
+                        <label for="CompletionDate" class="control-label">Ferdigstilt dato:</label>
+                        <input for="CompletionDate" class="form-control" type="text" value="@Html.DisplayFor(model => Model.CompletionDate)" readonly="readonly"/>
+                        <span validation-for="CompletionDate" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="form-col">
+                        <label for="ReplacedPartsReturned" class="control-label">Utskiftet deler returnert:</label>
+                        <input for="ReplacedPartsReturned" class="form-control" type="text" value="@Model.ReplacedPartsReturned" readonly="readonly"/>
+                        <span validation-for="ReplacedPartsReturned" class="text-danger"></span>
+                    </div>
+                    <div class="form-col">
+                        <label for="ShippingMethod" class="control-label">Forsendelsesmåte:</label>
+                        <input for="ShippingMethod" class="form-control" type="text" value="@Model.ShippingMethod" readonly="readonly"/>
+                        <span validation-for="ShippingMethod" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+    
+    <div class="form-group">
+        <div class="form-row">
+            <div class="form-col">
+                <label for="CustomerSignature" class="control-label">Sign. kunde:</label>
+                <input for="CustomerSignature" class="form-control" type="text" value="@Model.CustomerSignature" readonly="readonly"/>
+                <span validation-for="CustomerSignature" class="text-danger"></span>
+            </div>
+            <div class="form-col">
+                <label for="RepairerSignature" class="control-label">Sign. reparatør:</label>
+                <input for="RepairerSignature" class="form-control" type="text" value="@Model.RepairerSignature" readonly="readonly"/>
+                <span validation-for="RepairerSignature" class="text-danger"></span>
+            </div>
+        </div>
     </div>
-</form>
+    
+    <!-- If there are actions to be taken on this page, add buttons here -->
+    <div class="row mt-4">
+        <div class="col-md-12">
+            <a asp-controller="ServiceOrder" asp-action="Index" class="btn btn-secondary">Tilbake til oversikt</a>
+        </div>
+    </div>
+    
+</div>
+
 </body>
 </html>

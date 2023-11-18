@@ -1,4 +1,5 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=ac2840c3_002D53f9_002D403e_002Daf3c_002Dba1dc3145c7d/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="ServiceFormControllerTests" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;
     &lt;TestId&gt;xUnit::AFCF92D1-0C0A-4EE1-9322-B82D76DC2F02::net7.0::YourNamespace.Tests.ServiceFormControllerTests&lt;/TestId&gt;&#xD;
@@ -23,3 +24,6 @@
     &lt;TestId&gt;xUnit::AFCF92D1-0C0A-4EE1-9322-B82D76DC2F02::net7.0::ServiceFormControllerTests&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
+
+	<s:String x:Key="/Default/CodeInspection/ExcludedFiles/FilesAndFoldersToSkip2/=9891EF47_002D54A5_002D480A_002D8738_002DC3CE02DD2249_002Fd_003AControllers_002Ff_003AServiceOrderConnectorController_002Ecs/@EntryIndexedValue">ForceIncluded</s:String></wpf:ResourceDictionary>
+
