@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace bacit_dotnet.MVC.Models.CheckList
+namespace bacit_dotnet.MVC.Models.Composite
 {
     public class CheckListViewModel
     {
