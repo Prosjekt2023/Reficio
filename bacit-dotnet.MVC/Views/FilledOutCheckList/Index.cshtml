@@ -479,17 +479,16 @@
 
 <br>
 <label for="freeform">Kommentar:</label>
-<input for="Address" class="form-control" type="text" value="@Model.Freeform" readonly="readonly"/>
+<input for="Address" class="form-control" type="text" value="@Model.Freeform"/>
 <span validation-for="Address" class="text-danger"></span>
 <br>
 <textarea id="freeform" name="freeform" rows="6" cols="115"></textarea>
 <br>
 <br>
 <label for="Sign">Signatur:</label>
-<input for="Sign" class="form-control" type="text" value="@Model.Sign" readonly="readonly"/>
+<input for="Sign" class="form-control" type="text" value="@Model.Sign"/>
 <span validation-for="Sign" class="text-danger"></span>
 <br>
-<input type="text" id="Sign" name="Sign">
 <br>
 <label for="CompletionDate">Date:</label>
 <input for="CompletionDate" class="form-control" type="text" value="@Html.DisplayFor(model => Model.CompletionDate)" readonly="readonly"/>
