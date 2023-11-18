@@ -6,14 +6,15 @@
 <link rel="stylesheet" href="css/servicebutton.css">
 
 @model bacit_dotnet.MVC.Models.RazorViewModel
-<h1>Velkommen!</h1>
+<div class="text-center">
+<h1>Velkommen til hjemmesiden!</h1>
 @{
     
     <h1>@Model.Content</h1>
+    <br>
     <h2>@Model.AdditionalData</h2>
-}
 
-<!--
-<button onclick="window.location.href='side2.html'">Serviceordre</button>
--->
-<a class="btn btn-primary" asp-area="" asp-controller="ServiceForm" asp-action="Index">Ny serviceorder</a>
+}
+<br>
+<a class="btn btn-primary" asp-area="" asp-controller="ServiceForm" asp-action="Index">Begynn arbeid</a>
+</div>
