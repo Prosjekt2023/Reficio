@@ -36,30 +36,43 @@ namespace bacit_dotnet.MVC
                 options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
             });
 
-            // Configure the database connection.
+            // Retrieve the connection string from configuration
             var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+
+    // Register IDbConnection as a Scoped service with MySqlConnection using a factory method
             builder.Services.AddScoped<IDbConnection>(_ => new MySqlConnection(connectionString));
-            
+
+    // Alternatively, registering IDbConnection again as a Scoped service with MySqlConnection
+    // This duplicate registration might not be necessary and could potentially be removed
             builder.Services.AddScoped<IDbConnection>(_ =>
             {
                 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
                 return new MySqlConnection(connectionString);
             });
 
-            // Register your repository here.
+
+            // Registering repositories/interfaces and their implementations
+    // ServiceFormRepository and CheckListRepository as Transient services
             builder.Services.AddTransient<IServiceFormRepository, ServiceFormRepository>();
             builder.Services.AddTransient<ICheckListRepository, CheckListRepository>();
-            
 
+    // Registering multiple implementations for IUserRepository
+    // Each implementation will be resolved based on the request
             builder.Services.AddTransient<IUserRepository, InMemoryUserRepository>();
             builder.Services.AddTransient<IUserRepository, SqlUserRepository>();
             builder.Services.AddTransient<IUserRepository, DapperUserRepository>();
+
+    // Registering EFUserRepository as a Scoped service for IUserRepository
+    // Scoped services are created once per request within the scope
             builder.Services.AddScoped<IUserRepository, EFUserRepository>();
-                
+
+    // Setting up data connections and authentication
             SetupDataConnections(builder);
             SetupAuthentication(builder);
 
+    // Building the application
             var app = builder.Build();
+
 
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
@@ -69,20 +82,31 @@ namespace bacit_dotnet.MVC
                 app.UseHsts();
             }
 
-            //app.UseHttpsRedirection();
+            // Redirect HTTP requests to HTTPS
+    // app.UseHttpsRedirection();
+
+    // Serve static files (html, css, js, images, etc.)
             app.UseStaticFiles();
 
+    // Enable routing
             app.UseRouting();
 
+    // Apply authentication and authorization
             UseAuthentication(app);
 
+    // Define default controller route and action
             app.MapControllerRoute(name: "default", pattern: "{controller=Account}/{action=Login}/{id?}");
+
+    // Map controllers for handling incoming requests
             app.MapControllers();
 
+    // Final request handling (end of the middleware pipeline)
             app.Run();
 
+    // Add Antiforgery protection by setting the header name to "X-CSRF-TOKEN"
             builder.Services.AddAntiforgery(options => { options.HeaderName = "X-CSRF-TOKEN"; });
 
+    // Build the default web host (secondary host setup, might be redundant or for a different purpose)
             WebHost.CreateDefaultBuilder(args)
                 .ConfigureKestrel(c => c.AddServerHeader = false)
                 .UseStartup<Startup>()
