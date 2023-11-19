@@ -4,17 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Configuration;
 
-
-using bacit_dotnet.MVC.Repositories;
-using MySqlConnector;
-using System.Data;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore;
-
-using bacit_dotnet.MVC.DataAccess;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI.Services;
-using Microsoft.EntityFrameworkCore;
+// Other necessary namespaces...
 
 namespace bacit_dotnet.MVC
 {
@@ -25,32 +15,26 @@ namespace bacit_dotnet.MVC
             var builder = WebApplication.CreateBuilder(args);
             builder.WebHost.ConfigureKestrel(x => x.AddServerHeader = false);
 
+            // Configuration for Identity (commented out for reference)
             /*builder.Services.AddDefaultIdentity<IdentityUser>(
                     options => options.SignIn.RequireConfirmedAccount = true)
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<DataContext>();*/
             
-            // Add services to the container.
+            // Adding services to the container
             builder.Services.AddControllersWithViews(options =>
             {
                 options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
             });
 
-            // Configure the database connection.
+            // Configuring the database connection
             var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
             builder.Services.AddScoped<IDbConnection>(_ => new MySqlConnection(connectionString));
             
-            builder.Services.AddScoped<IDbConnection>(_ =>
-            {
-                var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-                return new MySqlConnection(connectionString);
-            });
-
-            // Register your repository here.
+            // Registering repositories
+            // (Transient lifetime services)
             builder.Services.AddTransient<IServiceFormRepository, ServiceFormRepository>();
             builder.Services.AddTransient<ICheckListRepository, CheckListRepository>();
-            
-
             builder.Services.AddTransient<IUserRepository, InMemoryUserRepository>();
             builder.Services.AddTransient<IUserRepository, SqlUserRepository>();
             builder.Services.AddTransient<IUserRepository, DapperUserRepository>();
@@ -61,34 +45,32 @@ namespace bacit_dotnet.MVC
 
             var app = builder.Build();
 
-            // Configure the HTTP request pipeline.
+            // Configuring the HTTP request pipeline
             if (!app.Environment.IsDevelopment())
             {
                 app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
 
-            //app.UseHttpsRedirection();
             app.UseStaticFiles();
-
             app.UseRouting();
-
             UseAuthentication(app);
 
             app.MapControllerRoute(name: "default", pattern: "{controller=Account}/{action=Login}/{id?}");
             app.MapControllers();
-
             app.Run();
 
+            // Adding Antiforgery service
             builder.Services.AddAntiforgery(options => { options.HeaderName = "X-CSRF-TOKEN"; });
 
+            // Creating and building the web host
             WebHost.CreateDefaultBuilder(args)
                 .ConfigureKestrel(c => c.AddServerHeader = false)
                 .UseStartup<Startup>()
                 .Build();
         }
 
+        // Method to set up data connections
         private static void SetupDataConnections(WebApplicationBuilder builder)
         {
             builder.Services.AddTransient<ISqlConnector, SqlConnector>();
@@ -98,18 +80,12 @@ namespace bacit_dotnet.MVC
                 options.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"),
                     ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("DefaultConnection")));
             });
-
         }
 
-        private static void UseAuthentication(WebApplication app)
-        {
-            app.UseAuthentication();
-            app.UseAuthorization();
-        }
-
+        // Method to configure authentication
         private static void SetupAuthentication(WebApplicationBuilder builder)
         {
-            //Setup for Authentication
+            // Configuring IdentityOptions
             builder.Services.Configure<IdentityOptions>(options =>
             {
                 // Default Lockout settings.
@@ -133,12 +109,12 @@ namespace bacit_dotnet.MVC
             {
                 o.DefaultScheme = IdentityConstants.ApplicationScheme;
                 o.DefaultSignInScheme = IdentityConstants.ExternalScheme;
-
             }).AddIdentityCookies(o => { });
 
             builder.Services.AddTransient<IEmailSender, AuthMessageSender>();
         }
 
+        // Class to send emails asynchronously
         public class AuthMessageSender : IEmailSender
         {
             public Task SendEmailAsync(string email, string subject, string htmlMessage)
@@ -149,7 +125,8 @@ namespace bacit_dotnet.MVC
                 return Task.CompletedTask;
             }
         }
-        
+
+        // Method to set roles (async)
         private static async Task SetRoles(RoleManager<IdentityRole> roleManager)
         {
             string[] roleNames = { "Admin", "ServiceSenterAnsatt", "Mekaniker" };
