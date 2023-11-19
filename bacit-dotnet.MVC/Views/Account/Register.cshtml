@@ -1,10 +1,11 @@
 ﻿@using bacit_dotnet.MVC.Models.Account
 @model RegisterViewModel
 @{
-    ViewData["Title"] = "Register";
+    ViewData["Title"] = "Registrer deg";
 }
 
-<h1>@ViewData["Title"].</h1>
+<h1 class="text-center">@ViewData["Title"]</h1>
+<link rel="stylesheet" type="text/css" href="~/css/Register.css">
 
 <form asp-controller="Account" asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal" role="form">
     <h4>Create a new account.</h4>
@@ -47,8 +48,8 @@
             <button type="submit" class="btn btn-default">Register</button>
         </div>
     </div>
-</form>
+</div>
 
 @section Scripts {
-    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+    <partial name="_ValidationScriptsPartial" />
 }
