@@ -23,16 +23,29 @@
         </ul>
     </form>
 
-<table>
+<table class="table">
     <tr>
-        <td>Name</td>
-        <td>Email</td>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Administrator</th>
+        <td></td>
+        <td></td>
     </tr>
     @foreach (var user in Model.Users)
     {
         <tr>
             <td>@user.Name</td>
             <td>@user.Email</td>
+            <td>
+                @if (user.IsAdmin)
+                {
+                    <span>Administrator</span>
+                }
+                else
+                {
+                    <span>Ansatt</span>
+                }
+            </td>
             <td>
                 <form asp-action="delete" asp-controller="users" method="post">
                     <input type="hidden" name="Email" value="@user.Email" />
