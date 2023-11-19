@@ -89,24 +89,33 @@ namespace bacit_dotnet.MVC
                 .Build();
         }
 
+        // Method to set up data connections
         private static void SetupDataConnections(WebApplicationBuilder builder)
         {
+            // Registering ISqlConnector as a transient service
             builder.Services.AddTransient<ISqlConnector, SqlConnector>();
 
+            // Configuring DbContext (Entity Framework Core) for data access
             builder.Services.AddDbContext<DataContext>(options =>
             {
-                options.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"),
-                    ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("DefaultConnection")));
+                // Configuring the DbContext to use MySQL with connection string and server version
+                options.UseMySql(
+                    builder.Configuration.GetConnectionString("DefaultConnection"), // Getting the connection string
+                    ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("DefaultConnection")) // Auto-detecting server version
+                );
             });
-
         }
 
+        // Method to configure middleware for authentication and authorization
         private static void UseAuthentication(WebApplication app)
         {
+            // Configuring the middleware pipeline to use authentication
             app.UseAuthentication();
+
+            // Configuring the middleware pipeline to use authorization
             app.UseAuthorization();
         }
-
+        
         // Method to configure authentication settings
         private static void SetupAuthentication(WebApplicationBuilder builder)
         {
