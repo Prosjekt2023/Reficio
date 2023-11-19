@@ -8,6 +8,10 @@ namespace bacit_dotnet.MVC.Models.Account;
 public class RegisterViewModel
 {
     [Required]
+    [Display(Name = "Name")]
+    public string Name { get; set; }
+    
+    [Required]
     [EmailAddress]
     [Display(Name = "Email")]
     public string Email { get; set; }
@@ -22,4 +26,6 @@ public class RegisterViewModel
     [Display(Name = "Confirm password")]
     [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
     public string ConfirmPassword { get; set; }
+    
+    public bool IsAdmin { get; set; }
 }

@@ -2,11 +2,12 @@ drop database if exists ReficioDB;
 create database if not exists ReficioDB;
 use ReficioDB;
 
-create table if not EXISTS users
+create table if not EXISTS Users
 (
     Id int not null unique auto_increment,
     Name varchar(255),
     Email varchar(255) UNIQUE,
+    IsAdmin TINYINT(1),
 
     CONSTRAINT U_User_ID_PK PRIMARY KEY (Id)
 );
@@ -20,7 +21,7 @@ create table if not EXISTS AspNetRoles
     CONSTRAINT U_ROLE_ID_PK PRIMARY KEY (Id)
 );
 INSERT INTO AspNetRoles (Id, Name, NormalizedName) VALUES ('1', 'Admin', 'Admin');
-INSERT INTO AspNetRoles (Id, Name, NormalizedName) VALUES ('2', 'Ansatt', 'Ansatt');
+INSERT INTO AspNetRoles (Id, Name, NormalizedName) VALUES ('2', 'ServiceSenterAnsatt', 'ServiceSenterAnsatt');
 INSERT INTO AspNetRoles (Id, Name, NormalizedName) VALUES ('3', 'Mekaniker', 'Mekaniker');
 INSERT INTO AspNetRoles (Id, Name, NormalizedName) VALUES ('4', 'Elektriker', 'Elektriker');
 
