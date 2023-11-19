@@ -97,7 +97,7 @@ create table if not EXISTS AspNetUserRoles
 );
 
 
--- Create table ServiceFormEntry, if it doesn't exists
+-- Create table ServiceFormEntry, if it doesn't exist
 create table if not EXISTS ServiceFormEntry
 (
     ServiceFormId INT not null unique auto_increment PRIMARY KEY,
