@@ -15,31 +15,22 @@ namespace bacit_dotnet.MVC.Controllers
     {
         private readonly IServiceFormRepository _repository;
 
-
-        // Add the parameter to the constructor
-        public ServiceFormController(ServiceFormRepository repository)
-
         public ServiceFormController(IServiceFormRepository repository)
-
         {
             _repository = repository;
         }
 
-        // GET: ServiceForm/Index
         public IActionResult Index()
         {
-            return View(); // Returns the default view for the Index action
+            return View();
         }
 
-        // POST: ServiceForm/Index
-        [HttpPost] // Handles HTTP POST requests
-        [ValidateAntiForgeryToken] // Helps prevent cross-site request forgery (CSRF) attacks
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Index(ServiceFormViewModel serviceFormViewModel)
         {
-            if (ModelState.IsValid) // Checks if the model passed validation
+            if (ModelState.IsValid)
             {
-
-                // Use the injected repository
                 _repository.Insert(serviceFormViewModel);
                 return RedirectToAction("Index", "ServiceOrder");
             }
@@ -48,12 +39,6 @@ namespace bacit_dotnet.MVC.Controllers
         }
 
         // Other controller actions
-=
-                _repository.Insert(serviceFormViewModel); // Inserts valid data into the repository
-                return RedirectToAction("Index", "ServiceOrder"); // Redirects to ServiceOrder/Index action
-            }
-            
-            return View(serviceFormViewModel); // If model state is invalid, returns the view with validation errors
-        }
     }
-}
+
+    }
