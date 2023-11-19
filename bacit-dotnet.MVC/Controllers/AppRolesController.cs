@@ -7,6 +7,7 @@ using bacit_dotnet.MVC.Models;
 
 namespace bacit_dotnet.MVC.Controllers
 {
+	[Authorize(Roles = "Admin")]
 	public class AppRolesController : Controller
 	{
 		private readonly RoleManager<IdentityRole> _roleManager;
@@ -15,6 +16,7 @@ namespace bacit_dotnet.MVC.Controllers
 		{
 			_roleManager = roleManager;
 		}
+		
 		//List All the Roles created by the Users
 		public IActionResult Index()
 		{

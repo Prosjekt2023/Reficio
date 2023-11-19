@@ -26,9 +26,9 @@ namespace bacit_dotnet.MVC.Controllers
                 if (currentUser != null)
                 {
 
-                    model.Email = currentUser.Email;
                     model.Name = currentUser.Name;
-                    model.IsAdmin = userRepository.IsAdmin(currentUser.Email);
+                    model.Email = currentUser.Email;
+                    model.IsAdmin = currentUser.IsAdmin; //userRepository.IsAdmin(currentUser.Email);
                 }
             }
             return View(model);
@@ -42,10 +42,11 @@ namespace bacit_dotnet.MVC.Controllers
             {
                 Name = model.Name,
                 Email = model.Email,
+                IsAdmin = model.IsAdmin
             };
             var roles = new List<string>();
             if (model.IsAdmin)
-                roles.Add("Administrator");
+                roles.Add("Admin");
 
             if (userRepository.GetUsers().FirstOrDefault(x => x.Email.Equals(newUser.Email, StringComparison.InvariantCultureIgnoreCase)) != null)
                 userRepository.Update(newUser, roles);
