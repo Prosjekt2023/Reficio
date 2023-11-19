@@ -7,7 +7,7 @@ using bacit_dotnet.MVC.Models;
 
 namespace bacit_dotnet.MVC.Controllers
 {
-	[Authorize("Admin")]
+	[Authorize(Roles = "Admin")]
 	public class AppRolesController : Controller
 	{
 		private readonly RoleManager<IdentityRole> _roleManager;
