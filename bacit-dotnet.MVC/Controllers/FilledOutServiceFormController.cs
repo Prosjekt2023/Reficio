@@ -14,11 +14,11 @@ public class FilledOutServiceFormController : Controller
     
     public IActionResult Index(int id)
     {
-        var serviceFormEntry = _repository.GetOneRowById(id);
-        if (serviceFormEntry == null)
+        var ServiceFormEntry = _repository.GetOneRowById(id);
+        if (ServiceFormEntry == null)
         {
             return NotFound();
         }
-        return View(serviceFormEntry);
+        return View(ServiceFormEntry);
     }
 }
