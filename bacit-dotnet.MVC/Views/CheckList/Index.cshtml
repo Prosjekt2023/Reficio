@@ -448,7 +448,7 @@
     <br>
     <label for="Freeform">Kommentar:</label>
     <br> 
-    <textarea id="Freeform" name="Freeform" rows="6" cols="115"></textarea>
+    <textarea id="Freeform" name="Freeform" rows="4" cols="127"></textarea>
     <br>
     <br>
     <label for="Sign">Signatur:</label>
@@ -456,10 +456,13 @@
     <input type="text" id="Sign" name="Sign">
     <br>
     <br>
-   <label asp-for="CompletionDate" class="control-label">Ferdigstilt dato:</label>
- <input asp-for="CompletionDate" class="form-control" type="date"/>
- <span asp-validation-for="CompletionDate" class="text-danger"></span>
-
+   <div class="form-group">
+       <label asp-for="CompletionDate" class="control-label" style="width: 200px;">Ferdigstilt dato:</label>
+       <div class="col-md-2">
+           <input asp-for="CompletionDate" class="form-control" type="date" style="width: 200px;">
+           <span asp-validation-for="CompletionDate" class="text-danger"></span>
+       </div>
+   </div>
     <br><br/>
     <button type="submit" class="btn btn-primary">Send inn</button>
 </form>
