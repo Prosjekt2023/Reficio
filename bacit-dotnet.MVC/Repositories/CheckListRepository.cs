@@ -65,8 +65,8 @@ namespace bacit_dotnet.MVC.Repositories
                 return dbConnection.QuerySingleOrDefault<CheckListViewModel>(query, new { Id = id });
             }
         }
-
-        public void Insert(CheckListViewModel checkListViewModel)
+/* Modifisert Insert metoden fra void til int så øyeblikkelige opprettet instanser kan ses */
+        public int Insert(CheckListViewModel checkListViewModel)
         {
             using (IDbConnection dbConnection = Connection)
             {
@@ -86,9 +86,8 @@ namespace bacit_dotnet.MVC.Repositories
                           "@FunctionTest, @TractionForceKN, @BrakeForceKN, @Sign, @Freeform, @CompletionDate); " +
                           "SELECT LAST_INSERT_ID()";
 
-                var checklistId = dbConnection.ExecuteScalar<int>(sql, checkListViewModel);
-
-                checkListViewModel.ChecklistId = checklistId;
+                int insertedId = dbConnection.ExecuteScalar<int>(sql, checkListViewModel);
+                return insertedId;
             }
         }
     }

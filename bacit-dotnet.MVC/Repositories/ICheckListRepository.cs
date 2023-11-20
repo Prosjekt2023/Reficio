@@ -11,5 +11,5 @@ namespace bacit_dotnet.MVC.Repositories;
         public CheckListViewModel GetOneRowById(int id);
 
         public CheckListViewModel GetRelevantData(int id);
-        void Insert(CheckListViewModel checkListViewModel);
+        int Insert(CheckListViewModel checkListViewModel);
     }
