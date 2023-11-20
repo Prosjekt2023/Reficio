@@ -13,6 +13,10 @@ namespace bacit_dotnet.MVC.Repositories
     public class ServiceFormRepository : IServiceFormRepository
     {
         private readonly IConfiguration _config;
+        public ServiceFormRepository()
+        {
+            // Legg til eventuell initialisering her
+        }
 
         public ServiceFormRepository(IConfiguration config)
         {
@@ -66,13 +70,25 @@ namespace bacit_dotnet.MVC.Repositories
             }
         }
 
-        public void Insert(ServiceFormViewModel serviceFormViewModel)
+        public void ExistingInsertMethod(ServiceFormViewModel serviceFormViewModel)
         {
             using (IDbConnection dbConnection = Connection)
             {
                 dbConnection.Open();
+
+                dbConnection.Execute("INSERT INTO ServiceFormEntry (Customer, DateReceived, Address, Email, OrderNumber, Phone, ProductType, Year, Service, Warranty, SerialNumber, Agreement, RepairDescription, UsedParts, WorkHours, CompletionDate, ReplacedPartsReturned, ShippingMethod, CustomerSignature, RepairerSignature) VALUES (@Customer, @DateReceived, @Address, @Email, @OrderNumber, @Phone, @ProductType, @Year, @Service, @Warranty, @SerialNumber, @Agreement, @RepairDescription, @UsedParts, @WorkHours, @CompletionDate, @ReplacedPartsReturned, @ShippingMethod, @CustomerSignature, @RepairerSignature)", serviceFormViewModel);
+
                 dbConnection.Execute("INSERT INTO ServiceFormEntry (ServiceFormId, Customer, DateReceived, Address, Email, OrderNumber, Phone, ProductType, Year, Service, Warranty, SerialNumber, Agreement, RepairDescription, UsedParts, WorkHours, CompletionDate,ReplacedPartsReturned, ShippingMethod, CustomerSignature, RepairerSignature) VALUES (@ServiceFormId, @Customer, @DateReceived, @Address, @Email, @OrderNumber, @Phone, @ProductType, @Year, @Service, @Warranty, @SerialNumber, @Agreement, @RepairDescription, @UsedParts, @WorkHours, @CompletionDate, @ReplacedPartsReturned, @ShippingMethod, @CustomerSignature, @RepairerSignature)", serviceFormViewModel);
+
             }
         }
+        public int NumberOfTimesInsertCalled { get; private set; }
+
+        public virtual void Insert(ServiceFormViewModel serviceFormViewModel)
+        {
+            // Implementasjon av Insert-metoden
+            NumberOfTimesInsertCalled++;
+        }
+
     }
 }

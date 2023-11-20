@@ -1,5 +1,4 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-	<s:Boolean x:Key="/Default/AddReferences/RecentPaths/=C_003A_005CUsers_005Cjeppe_005Cgithub_005CReficio_005Cbacit_002Ddotnet_002EMVC_005CControllers_005CServiceFormController_002Ecs/@EntryIndexedValue">True</s:Boolean>
 
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=ac2840c3_002D53f9_002D403e_002Daf3c_002Dba1dc3145c7d/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="ServiceFormControllerTests" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;
@@ -13,17 +12,18 @@
     &lt;TestId&gt;xUnit::AFCF92D1-0C0A-4EE1-9322-B82D76DC2F02::net7.0::bacit_dotnet.MVC.Tests.Controllers.RESTControllerUnitTests&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=f0510338_002Dce7d_002D4eb5_002Da600_002D7468ab0f1af3/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="MVCControllerUnitTests" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=f0510338_002Dce7d_002D4eb5_002Da600_002D7468ab0f1af3/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="MVCControllerUnitTests" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;
     &lt;TestId&gt;xUnit::AFCF92D1-0C0A-4EE1-9322-B82D76DC2F02::net7.0::bacit_dotnet.MVC.Tests.Controllers.MVCControllerUnitTests&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;xUnit::AFCF92D1-0C0A-4EE1-9322-B82D76DC2F02::net7.0::YourNamespace.Tests.ServiceFormControllerTests&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;xUnit::AFCF92D1-0C0A-4EE1-9322-B82D76DC2F02::net7.0::ServiceFormControllerTests&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;xUnit::AFCF92D1-0C0A-4EE1-9322-B82D76DC2F02::net7.0::bacit_dotnet.MVC.Tests.Controllers.CheckListOrderControllerTests&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;xUnit::AFCF92D1-0C0A-4EE1-9322-B82D76DC2F02::net7.0::bacit_dotnet.MVC.Tests.Controllers.CheckListControllerTests&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=f618fd2d_002Da262_002D4f7b_002D8616_002Db3b30737e7d4/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="ServiceFormControllerTests #3" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
-  &lt;Project Location="C:\Users\jeppe\Documents\Github\Reficio\bacit-dotnet.MVC.Tests" Presentation="&amp;lt;bacit-dotnet.MVC.Tests&amp;gt;" /&gt;&#xD;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=f618fd2d_002Da262_002D4f7b_002D8616_002Db3b30737e7d4/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="ServiceFormControllerTests #3" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;xUnit::AFCF92D1-0C0A-4EE1-9322-B82D76DC2F02::net7.0::ServiceFormControllerTests&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
 
-	
+	<s:String x:Key="/Default/CodeInspection/ExcludedFiles/FilesAndFoldersToSkip2/=9891EF47_002D54A5_002D480A_002D8738_002DC3CE02DD2249_002Fd_003AControllers_002Ff_003AServiceOrderConnectorController_002Ecs/@EntryIndexedValue">ForceIncluded</s:String></wpf:ResourceDictionary>
+
