@@ -9,10 +9,10 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-dark border-bottom box-shadow mb-3">
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
-                    <img src="/nlogo.png" alt="Nøsted Logo" class="logo">
+                    <img src="/nwhitelogo.png" alt="Nøsted Logo" class="logo">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -23,31 +23,31 @@
                         @if (User.Identity.IsAuthenticated)
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index" onclick="setActiveLink(this); return false;">Hjem</a>
+                                <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Index" onclick="setActiveLink(this); return false;">Hjem</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="Index" onclick="setActiveLink(this); return false;">Brukere</a>
+                                <a class="nav-link text-white" asp-area="" asp-controller="Users" asp-action="Index" onclick="setActiveLink(this); return false;">Brukere</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="AppRoles" asp-action="Index" onclick="setActiveLink(this); return false;">Roller</a>
+                                <a class="nav-link text-white" asp-area="" asp-controller="AppRoles" asp-action="Index" onclick="setActiveLink(this); return false;">Roller</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="ServiceForm" asp-action="Index" onclick="setActiveLink(this); return false;">Serviceskjema</a>
+                                <a class="nav-link text-white" asp-area="" asp-controller="ServiceForm" asp-action="Index" onclick="setActiveLink(this); return false;">Serviceskjema</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="ServiceOrder" asp-action="Index" onclick="setActiveLink(this); return false;">Serviceordre</a>
+                                <a class="nav-link text-white" asp-area="" asp-controller="ServiceOrder" asp-action="Index" onclick="setActiveLink(this); return false;">Serviceordre</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="CheckList" asp-action="Index" onclick="setActiveLink(this); return false;">Sjekkliste</a>
+                                <a class="nav-link text-white" asp-area="" asp-controller="CheckList" asp-action="Index" onclick="setActiveLink(this); return false;">Sjekkliste</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="CheckListOrder" asp-action="Index" onclick="setActiveLink(this); return false;">Sjekkliste oversikt</a>
+                                <a class="nav-link text-white" asp-area="" asp-controller="CheckListOrder" asp-action="Index" onclick="setActiveLink(this); return false;">Sjekkliste oversikt</a>
                             </li>
                         }
 

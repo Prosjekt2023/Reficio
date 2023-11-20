@@ -39,7 +39,7 @@ body {
   left: 0;
   width: 0;
   height: 2px;
-  background-color: #2b2b2b;
+  background-color: #ffffff;
   transition: width 0.3s ease;
   box-sizing: border-box;
 }
