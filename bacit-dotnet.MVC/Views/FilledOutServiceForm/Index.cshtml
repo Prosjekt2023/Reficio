@@ -25,7 +25,7 @@
         <div class="form-col">
             <div class="form-group">
                 <label for="Customer" class="control-label">Kunde:</label>
-                <input for="Customer" class="form-control" type="text" value="@Model.Customer" readonly="readonly"/>
+                <input for="Customer" class="form-control" type="text" value="@Model.Customer"/>
                 <span validation-for="Customer" class="text-danger"></span>
             </div>
         </div>
@@ -33,7 +33,7 @@
         <div class="form-col">
             <div class="form-group">
                 <label for="DateReceived" class="control-label">Mottatt dato:</label>
-                <input for="DateReceived" class="form-control" type="text" value="@Html.DisplayFor(model => Model.DateReceived)" readonly="readonly"/>
+                <input for="DateReceived" class="form-control" type="text" value="@Html.DisplayFor(model => Model.DateReceived)"/>
                 <span validation-for="DateReceived" class="text-danger"></span>
             </div>
         </div>
@@ -43,12 +43,12 @@
                 <div class="form-row">
                     <div class="form-col">
                         <label for="Address" class="control-label">Adresse:</label>
-                        <input for="Address" class="form-control" type="text" value="@Model.Address" readonly="readonly"/>
+                        <input for="Address" class="form-control" type="text" value="@Model.Address"/>
                         <span validation-for="Address" class="text-danger"></span>
                     </div>
                     <div class="form-col">
                         <label for="Email" class="control-label">E-post:</label>
-                        <input for="Email" class="form-control" type="text" value="@Model.Email" readonly="readonly"/>
+                        <input for="Email" class="form-control" type="text" value="@Model.Email"/>
                         <span validation-for="Email" class="text-danger"></span>
                     </div>
                 </div>
@@ -58,12 +58,12 @@
                 <div class="form-row">
                     <div class="form-col">
                         <label for="OrderNumber" class="control-label">Ordrenummer:</label>
-                        <input for="OrderNumber" class="form-control" type="text" maxlength="12" value="@Model.OrderNumber" readonly="readonly"/>
+                        <input for="OrderNumber" class="form-control" type="text" maxlength="12" value="@Model.OrderNumber"/>
                         <span validation-for="OrderNumber" class="text-danger"></span>
                     </div>
                     <div class="form-col">
                         <label for="Phone" class="control-label">Telefon:</label>
-                        <input for="Phone" class="form-control" type="text" maxlength="8" value="@Model.Phone" readonly="readonly"/>
+                        <input for="Phone" class="form-control" type="text" maxlength="8" value="@Model.Phone"/>
                         <span validation-for="Phone" class="text-danger"></span>
                     </div>
                 </div>
@@ -73,12 +73,12 @@
                 <div class="form-row">
                     <div class="form-col">
                         <label for="ProductType" class="control-label">Produkttype:</label>
-                        <input for="ProductType" class="form-control" type="text" value="@Model.ProductType" readonly="readonly"/>
+                        <input for="ProductType" class="form-control" type="text" value="@Model.ProductType"/>
                         <span validation-for="ProductType" class="text-danger"></span>
                     </div>
                     <div class="form-col">
                         <label for="Year" class="control-label">Årsmodell:</label>
-                        <input for="Year" class="form-control" type="text" maxlength="4" value="@Model.Year" readonly="readonly"/>
+                        <input for="Year" class="form-control" type="text" maxlength="4" value="@Model.Year"/>
                         <span validation-for="Year" class="text-danger"></span>
                     </div>
                 </div>
@@ -103,7 +103,7 @@
                 <div class="form-row center-row">
                     <div class="form-col">
                         <label for="SerialNumber" class="control-label">Serienummer:</label>
-                        <input for="SerialNumber" class="form-control" type="text" maxlength="12" value="@Model.SerialNumber" readonly="readonly"/>
+                        <input for="SerialNumber" class="form-control" type="text" maxlength="12" value="@Model.SerialNumber"/>
                         <span validation-for="SerialNumber" class="text-danger"></span>
                     </div>
                 </div>
@@ -180,7 +180,7 @@
         </div>
         
         <div class="col-md-6 d-flex justify-content-end">
-            <input type="submit" value="Oppdater skjema" class="btn btn-primary custom-button" />
+            <input type="submit" value="Oppdater skjema" class="btn btn-success"/>
         </div>
     </div>
 </form>
