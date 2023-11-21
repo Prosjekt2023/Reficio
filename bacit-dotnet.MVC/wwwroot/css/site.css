@@ -18,6 +18,10 @@ html {
   min-height: 100%;
 }
 
+h1, h2{
+  font-weight: 700;
+}
+
 body {
   margin-bottom: 60px;
   font-family: 'Plus Jakarta Sans', sans-serif;
