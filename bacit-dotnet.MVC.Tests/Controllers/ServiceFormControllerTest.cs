@@ -21,7 +21,7 @@ namespace bacit_dotnet.MVC.Tests.Controllers
 
             // Assert
             var viewResult = Assert.IsType<ViewResult>(result);
-            Assert.Null(viewResult.ViewName); // Verifies that the view result is based on the default view for the action
+            Assert.Null(viewResult.ViewName);
         }
 
         [Fact]
@@ -48,14 +48,45 @@ namespace bacit_dotnet.MVC.Tests.Controllers
             var repositoryMock = new Mock<IServiceFormRepository>();
             var controller = new ServiceFormController(repositoryMock.Object);
             var invalidModel = new ServiceFormViewModel { /* Set invalid properties for triggering model state errors */ };
-            controller.ModelState.AddModelError("PropertyName", "Error message"); // Simulate model state error
+            controller.ModelState.AddModelError("PropertyName", "Error message");
 
             // Act
             var result = controller.Index(invalidModel);
 
             // Assert
             var viewResult = Assert.IsType<ViewResult>(result);
-            Assert.Equal(invalidModel, viewResult.Model); // Verifies that the controller returns the input model with errors
+            Assert.Equal(invalidModel, viewResult.Model);
+        }
+
+        [Fact]
+        public void Index_POST_WithValidModel_CallsRepositoryInsert()
+        {
+            // Arrange
+            var repositoryMock = new Mock<IServiceFormRepository>();
+            var controller = new ServiceFormController(repositoryMock.Object);
+            var validModel = new ServiceFormViewModel { /* Set valid properties */ };
+
+            // Act
+            var result = controller.Index(validModel);
+
+            // Assert
+            repositoryMock.Verify(repo => repo.Insert(validModel), Times.Once);
+        }
+
+        [Fact]
+        public void Index_POST_WithInvalidModel_DoesNotCallRepositoryInsert()
+        {
+            // Arrange
+            var repositoryMock = new Mock<IServiceFormRepository>();
+            var controller = new ServiceFormController(repositoryMock.Object);
+            var invalidModel = new ServiceFormViewModel { /* Set invalid properties for triggering model state errors */ };
+            controller.ModelState.AddModelError("PropertyName", "Error message");
+
+            // Act
+            var result = controller.Index(invalidModel);
+
+            // Assert
+            repositoryMock.Verify(repo => repo.Insert(It.IsAny<ServiceFormViewModel>()), Times.Never);
         }
     }
 }

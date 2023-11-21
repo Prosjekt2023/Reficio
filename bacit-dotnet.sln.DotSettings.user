@@ -12,6 +12,12 @@
     &lt;TestId&gt;xUnit::AFCF92D1-0C0A-4EE1-9322-B82D76DC2F02::net7.0::bacit_dotnet.MVC.Tests.Controllers.PrivacyControllerTests&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;xUnit::AFCF92D1-0C0A-4EE1-9322-B82D76DC2F02::net7.0::bacit_dotnet.MVC.Tests.Controllers.FilledOutServiceFormControllerTests&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;xUnit::AFCF92D1-0C0A-4EE1-9322-B82D76DC2F02::net7.0::bacit_dotnet.MVC.Tests.Controllers.FilledOutCheckListControllerTests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::AFCF92D1-0C0A-4EE1-9322-B82D76DC2F02::net7.0::ManageControllerTests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::AFCF92D1-0C0A-4EE1-9322-B82D76DC2F02::net7.0::CheckListOrderControllerTests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::AFCF92D1-0C0A-4EE1-9322-B82D76DC2F02::net7.0::CheckListControllerTests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::AFCF92D1-0C0A-4EE1-9322-B82D76DC2F02::net7.0::CheckListOrderControllerTest&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::AFCF92D1-0C0A-4EE1-9322-B82D76DC2F02::net7.0::AppRolesControllerTests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::AFCF92D1-0C0A-4EE1-9322-B82D76DC2F02::net7.0::bacit_dotnet.MVC.Tests.Controllers.CheckListOrderControllerTests&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=40a9498b_002D50ef_002D4787_002Da8bc_002Dd4083c1929de/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="ManageControllerTests" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;

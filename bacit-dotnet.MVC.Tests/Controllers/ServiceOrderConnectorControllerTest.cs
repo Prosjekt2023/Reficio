@@ -38,5 +38,28 @@ namespace bacit_dotnet.MVC.Tests.Controllers
             Assert.Equal(serviceFormEntry, model.ServiceForm);
             Assert.Equal(checkListEntry, model.CheckList);
         }
+
+        [Fact]
+        public void Index_GET_WithBothNull_ReturnsNotFoundResult()
+        {
+            // Arrange
+            var serviceFormRepositoryMock = new Mock<IServiceFormRepository>();
+            var checkListRepositoryMock = new Mock<ICheckListRepository>();
+            var controller = new ServiceOrderConnectorController(serviceFormRepositoryMock.Object, checkListRepositoryMock.Object);
+
+            var id = 1;
+
+            // Setup mock behavior for IServiceFormRepository
+            serviceFormRepositoryMock.Setup(repo => repo.GetRelevantData(id)).Returns((ServiceFormViewModel)null);
+
+            // Setup mock behavior for ICheckListRepository
+            checkListRepositoryMock.Setup(repo => repo.GetRelevantData(id)).Returns((CheckListViewModel)null);
+
+            // Act
+            var result = controller.Index(id);
+
+            // Assert
+            Assert.IsType<ViewResult>(result); // Corrected assertion
+        }
     }
 }
