@@ -2,12 +2,11 @@
 using bacit_dotnet.MVC.Models;
 using bacit_dotnet.MVC.Repositories;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc; // <-- Legg til denne
 using System.Diagnostics;
 
 namespace bacit_dotnet.MVC.Controllers
 {
-
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
