@@ -17,6 +17,10 @@ label {
     font-weight: bold;
 }
 
+input {
+    height: 35px;
+}
+
 input[type="text"],
 input[type="date"],
 input[type="number"],
@@ -26,7 +30,7 @@ textarea {
     padding: 10px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
-    border-radius: 0;
+    border-radius: .25rem;
 }
 
 .form-row {
