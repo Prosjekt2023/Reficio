@@ -48,6 +48,9 @@
        @if (Model.ServiceForm?.ServiceFormId != null)
        {
            <a class="btn btn-primary" asp-area="" asp-controller="FilledOutServiceForm" asp-action="Index" asp-route-id="@Model.ServiceForm.ServiceFormId">Se serviceskjema</a>
+       }else
+       {
+           <a class="btn btn-primary" asp-area="" asp-controller="ServiceForm" asp-action="Index" >fyll ut Serviceskjems</a>
        }
    
        @if (Model.CheckList?.ChecklistId != null)
