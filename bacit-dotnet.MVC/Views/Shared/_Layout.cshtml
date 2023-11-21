@@ -20,12 +20,11 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Index" onclick="setActiveLink(this); return false;">Hjem</a>
+                        </li>
                         @if (User.Identity.IsAuthenticated)
                         {
-                            <li class="nav-item">
-                                <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Index" onclick="setActiveLink(this); return false;">Hjem</a>
-                            </li>
-
                             <li class="nav-item">
                                 <a class="nav-link text-white" asp-area="" asp-controller="Users" asp-action="Index" onclick="setActiveLink(this); return false;">Brukere</a>
                             </li>
@@ -41,14 +40,7 @@
                             <li class="nav-item">
                                 <a class="nav-link text-white" asp-area="" asp-controller="ServiceOrder" asp-action="Index" onclick="setActiveLink(this); return false;">Serviceordre</a>
                             </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link text-white" asp-area="" asp-controller="CheckList" asp-action="Index" onclick="setActiveLink(this); return false;">Sjekkliste</a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link text-white" asp-area="" asp-controller="CheckListOrder" asp-action="Index" onclick="setActiveLink(this); return false;">Sjekkliste oversikt</a>
-                            </li>
+                            
                         }
 
                     </ul>
