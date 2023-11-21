@@ -19,7 +19,8 @@
 <div class="form-container">
     <h2>Serviceskjema for: @Model.Customer</h2>
     <hr class="divider">
-    
+    <form asp-controller="ServiceForm" asp-action="Index" method="post">
+
     <div class="form-row">
         <div class="form-col">
             <div class="form-group">
@@ -173,12 +174,16 @@
         </div>
     </div>
     
-    <!-- If there are actions to be taken on this page, add buttons here -->
     <div class="row mt-4">
-        <div class="col-md-12">
-            <a asp-controller="ServiceOrderConnector" asp-action="Index" class="btn btn-secondary">Tilbake til oversikt</a>
+        <div class="col-md-6">
+            <a asp-controller="ServiceOrder" asp-action="Index" class="btn btn-secondary">Tilbake til oversikt</a>
+        </div>
+        
+        <div class="col-md-6 d-flex justify-content-end">
+            <input type="submit" value="Oppdater skjema" class="btn btn-primary custom-button" />
         </div>
     </div>
+</form>
     
 </div>
 
