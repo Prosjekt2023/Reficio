@@ -2,9 +2,7 @@
 using bacit_dotnet.MVC.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-/*
- * HomeController Test
- */
+
 namespace bacit_dotnet.MVC.Tests.Controllers
 {
 #pragma warning disable CS8602 //Disable null reference warnings, if something is null the test should fail. 
@@ -34,10 +32,8 @@ namespace bacit_dotnet.MVC.Tests.Controllers
             var unitUnderTest = SetupUnitUnderTest();
             var result = unitUnderTest.Index() as ViewResult;
             var model = result.Model as RazorViewModel;
-
-            Assert.Equal("Ansatte i Nøsted &", model.Content);
+            Assert.Same("En time til ørsta rådhus", model.Content);
         }
-
 
         private static HomeController SetupUnitUnderTest()
         {

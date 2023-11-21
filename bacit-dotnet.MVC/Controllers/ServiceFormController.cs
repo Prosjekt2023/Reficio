@@ -1,10 +1,6 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-
-using bacit_dotnet.MVC.Models.ServiceForm;  
-
 using bacit_dotnet.MVC.Models.Composite;
-using bacit_dotnet.MVC.Models.ServiceForm;
 using bacit_dotnet.MVC.Repositories;
 
 namespace bacit_dotnet.MVC.Controllers
@@ -19,25 +15,24 @@ namespace bacit_dotnet.MVC.Controllers
             _repository = repository;
         }
 
+        // GET: ServiceForm/Index
         public IActionResult Index()
         {
-            return View();
+            return View(); // Returns the default view for the Index action
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        // POST: ServiceForm/Index
+        [HttpPost] // Handles HTTP POST requests
+        [ValidateAntiForgeryToken] // Helps prevent cross-site request forgery (CSRF) attacks
         public IActionResult Index(ServiceFormViewModel serviceFormViewModel)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid) // Checks if the model passed validation
             {
-                _repository.Insert(serviceFormViewModel);
-                return RedirectToAction("Index", "ServiceOrder");
+                _repository.Insert(serviceFormViewModel); // Inserts valid data into the repository
+                return RedirectToAction("Index", "ServiceOrder"); // Redirects to ServiceOrder/Index action
             }
-
-            return View(serviceFormViewModel);
+            
+            return View(serviceFormViewModel); // If model state is invalid, returns the view with validation errors
         }
-
-        // Other controller actions
     }
-
-    }
+}
