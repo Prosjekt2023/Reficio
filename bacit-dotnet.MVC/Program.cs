@@ -3,13 +3,14 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Configuration;
-using bacit_dotnet.MVC.Models.ServiceForm;
+
+
 using bacit_dotnet.MVC.Repositories;
 using MySqlConnector;
 using System.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore;
-using bacit_dotnet.MVC;
+
 using bacit_dotnet.MVC.DataAccess;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
@@ -24,6 +25,11 @@ namespace bacit_dotnet.MVC
             var builder = WebApplication.CreateBuilder(args);
             builder.WebHost.ConfigureKestrel(x => x.AddServerHeader = false);
 
+            /*builder.Services.AddDefaultIdentity<IdentityUser>(
+                    options => options.SignIn.RequireConfirmedAccount = true)
+                .AddRoles<IdentityRole>()
+                .AddEntityFrameworkStores<DataContext>();*/
+            
             // Add services to the container.
             builder.Services.AddControllersWithViews(options =>
             {
@@ -31,6 +37,9 @@ namespace bacit_dotnet.MVC
             });
 
             // Configure the database connection.
+            var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+            builder.Services.AddScoped<IDbConnection>(_ => new MySqlConnection(connectionString));
+            
             builder.Services.AddScoped<IDbConnection>(_ =>
             {
                 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
@@ -38,16 +47,16 @@ namespace bacit_dotnet.MVC
             });
 
             // Register your repository here.
-            builder.Services.AddTransient<ServiceFormRepository>();
-
-            builder.Services.AddTransient<CheckListRepository>();
-
-            SetupDataConnections(builder);
+            builder.Services.AddTransient<IServiceFormRepository, ServiceFormRepository>();
+            builder.Services.AddTransient<ICheckListRepository, CheckListRepository>();
+            
 
             builder.Services.AddTransient<IUserRepository, InMemoryUserRepository>();
             builder.Services.AddTransient<IUserRepository, SqlUserRepository>();
             builder.Services.AddTransient<IUserRepository, DapperUserRepository>();
-
+            builder.Services.AddScoped<IUserRepository, EFUserRepository>();
+                
+            SetupDataConnections(builder);
             SetupAuthentication(builder);
 
             var app = builder.Build();
@@ -60,13 +69,14 @@ namespace bacit_dotnet.MVC
                 app.UseHsts();
             }
 
+            //app.UseHttpsRedirection();
             app.UseStaticFiles();
 
             app.UseRouting();
 
             UseAuthentication(app);
 
-            app.MapControllerRoute(name: "default", pattern: "{controller=Home}/{action=Index}/{id?}");
+            app.MapControllerRoute(name: "default", pattern: "{controller=Account}/{action=Login}/{id?}");
             app.MapControllers();
 
             app.Run();
@@ -137,6 +147,19 @@ namespace bacit_dotnet.MVC
                 Console.WriteLine(subject);
                 Console.WriteLine(htmlMessage);
                 return Task.CompletedTask;
+            }
+        }
+        
+        private static async Task SetRoles(RoleManager<IdentityRole> roleManager)
+        {
+            string[] roleNames = { "Admin", "ServiceSenterAnsatt", "Mekaniker" };
+            foreach (var roleName in roleNames)
+            {
+                var roleExist = await roleManager.RoleExistsAsync(roleName);
+                if (!roleExist)
+                {
+                    await roleManager.CreateAsync(new IdentityRole(roleName));
+                }
             }
         }
     }

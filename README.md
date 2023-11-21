@@ -32,7 +32,9 @@ docker ps
 
   ```
   docker exec -it Reficio bash
-  mariadb -u root –p 
+  ```
+```
+  mariadb -u root -p 
   ```
 
 4. Skriv inn PASSORD som ble satt ved opprettelse av konteiner. I dette tilfellet: Reficio

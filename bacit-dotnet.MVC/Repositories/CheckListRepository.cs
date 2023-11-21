@@ -1,12 +1,10 @@
 using Dapper;
-//using Microsoft.Extensions.Configuration;
-//using MySql.Data.MySqlClient;
+using Microsoft.Extensions.Configuration;
 using MySqlConnector;
-//using System.Collections.Generic;
+using System;
+using System.Collections.Generic;
 using System.Data;
-//using System.Linq;
-using bacit_dotnet.MVC.Models.CheckList;
-
+using bacit_dotnet.MVC.Models.Composite;
 
 namespace bacit_dotnet.MVC.Repositories
 {
@@ -32,25 +30,64 @@ namespace bacit_dotnet.MVC.Repositories
             using (IDbConnection dbConnection = Connection)
             {
                 dbConnection.Open();
-                return dbConnection.Query<CheckListViewModel>("SELECT * FROM CheckpointsEntry");
+                var query = "SELECT * FROM Checklist";
+                var results = dbConnection.Query<CheckListViewModel>(query);
+
+                return results;
             }
         }
         
-        /*public IEnumerable<CheckListViewModel> GetSomeOrderInfo()
+        public CheckListViewModel GetOneRowById(int id)
         {
             using (IDbConnection dbConnection = Connection)
             {
                 dbConnection.Open();
-                return dbConnection.Query<CheckListViewModel>("SELECT Customer, DateReceived, OrderNumber FROM ServiceFormEntry");
+                var query = "SELECT * FROM Checklist WHERE ChecklistId = @Id";
+                return dbConnection.QuerySingleOrDefault<CheckListViewModel>(query, new { Id = id });
             }
-        }*/
-
-        public void Insert(CheckListViewModel CheckListViewModel)
+        }
+        
+        public IEnumerable<CheckListViewModel> GetSomeOrderInfo()
         {
             using (IDbConnection dbConnection = Connection)
             {
                 dbConnection.Open();
-                dbConnection.Execute("INSERT INTO CheckpointsEntry ( ClutchCheck, BrakeCheck, DrumBearingCheck, PTOCheck, ChainTensionCheck,  WireCheck, PinionBearingCheck, ChainWheelKeyCheck, HydraulicCylinderCheck, HoseCheck, HydraulicBlockTest, TankOilChange, GearboxOilChange, RingCylinderSealsCheck, BrakeCylinderSealsCheck, WinchWiringCheck, RadioCheck, ButtonBoxCheck, PressureSettings, FunctionTest, TractionForceKN, BrakeForceKN, freeform, Sign, CompletionDate) VALUES ( @ClutchCheck, @BrakeCheck, @DrumBearingCheck, @PTOCheck, @ChainTensionCheck, @WireCheck, @PinionBearingCheck, @ChainWheelKeyCheck, @HydraulicCylinderCheck, @HoseCheck, @HydraulicBlockTest, @TankOilChange, @GearboxOilChange, @RingCylinderSealsCheck, @BrakeCylinderSealsCheck, @WinchWiringCheck, @RadioCheck, @ButtonBoxCheck, @PressureSettings, @FunctionTest, @TractionForceKN, @BrakeForceKN, @freeform, @Sign, @CompletionDate)", CheckListViewModel);
+                return dbConnection.Query<CheckListViewModel>("SELECT ChecklistId, Sign, Freeform, CompletionDate FROM Checklist");
+            }
+        }
+        
+        public CheckListViewModel GetRelevantData(int id)
+        {
+            using (IDbConnection dbConnection = Connection)
+            {
+                dbConnection.Open();
+                var query = "SELECT ChecklistId FROM Checklist WHERE ChecklistId = @Id";
+                return dbConnection.QuerySingleOrDefault<CheckListViewModel>(query, new { Id = id });
+            }
+        }
+/* Modifisert Insert metoden fra void til int så øyeblikkelige opprettet instanser kan ses */
+        public int Insert(CheckListViewModel checkListViewModel)
+        {
+            using (IDbConnection dbConnection = Connection)
+            {
+                dbConnection.Open();
+
+                var sql = "INSERT INTO Checklist (ClutchCheck, BrakeCheck, DrumBearingCheck, PTOCheck, " +
+                          "ChainTensionCheck, WireCheck, PinionBearingCheck, ChainWheelKeyCheck, " +
+                          "HydraulicCylinderCheck, HoseCheck, HydraulicBlockTest, TankOilChange, " +
+                          "GearboxOilChange, RingCylinderSealsCheck, BrakeCylinderSealsCheck, " +
+                          "WinchWiringCheck, RadioCheck, ButtonBoxCheck, PressureSettings, " +
+                          "FunctionTest, TractionForceKN, BrakeForceKN, Sign, Freeform, CompletionDate) " +
+                          "VALUES (@ClutchCheck, @BrakeCheck, @DrumBearingCheck, @PTOCheck, " +
+                          "@ChainTensionCheck, @WireCheck, @PinionBearingCheck, @ChainWheelKeyCheck, " +
+                          "@HydraulicCylinderCheck, @HoseCheck, @HydraulicBlockTest, @TankOilChange, " +
+                          "@GearboxOilChange, @RingCylinderSealsCheck, @BrakeCylinderSealsCheck, " +
+                          "@WinchWiringCheck, @RadioCheck, @ButtonBoxCheck, @PressureSettings, " +
+                          "@FunctionTest, @TractionForceKN, @BrakeForceKN, @Sign, @Freeform, @CompletionDate); " +
+                          "SELECT LAST_INSERT_ID()";
+
+                int insertedId = dbConnection.ExecuteScalar<int>(sql, checkListViewModel);
+                return insertedId;
             }
         }
     }

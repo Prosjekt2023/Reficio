@@ -1,3 +1,7 @@
-.navbar{
-    visibility: hidden;
+﻿/* Register.css */
+
+.form-floating .form-select {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
 }
+

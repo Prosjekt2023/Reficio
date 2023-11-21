@@ -1,0 +1,66 @@
+@model bacit_dotnet.MVC.Models.Composite.CompositeViewModel
+
+@{
+    ViewData["Title"] = "ServiceOrderConnector";
+}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ServiceOrderConnector</title>
+    <link rel="stylesheet" href="css/ServiceOrderConnector.css">
+</head>
+
+<body>
+<div class="container mt-4">
+    <h2>Servicerodre detaljer for: @Model.ServiceForm.Customer</h2>
+    <hr class="divider">
+            
+    <div class="row">
+        <div class="col-md-6">
+            <dl class="row">
+                <dt class="col-sm-4">Ordrenummer:</dt>
+                <dd class="col-sm-8">@Model.ServiceForm.OrderNumber</dd>
+                        
+                <dt class="col-sm-4">Kunde:</dt>
+                <dd class="col-sm-8">@Model.ServiceForm.Customer</dd>
+                        
+                <dt class="col-sm-4">E-post:</dt>
+                <dd class="col-sm-8">@Model.ServiceForm.Email</dd>
+                        
+                <dt class="col-sm-4">Telefonnummer:</dt>
+                <dd class="col-sm-8">@Model.ServiceForm.Phone</dd>
+                
+                <dt class="col-sm-4">Adresse:</dt>
+                <dd class="col-sm-8">@Model.ServiceForm.Address</dd>
+                        
+                <dt class="col-sm-4">Mottatt dato:</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.ServiceForm.DateReceived)</dd>
+                    
+            </dl>
+        </div>
+        <!-- Here you can add details from the CheckListViewModel if needed -->
+    </div>
+</div>
+
+<div>
+   <div class="flex-box full-width">
+       @if (Model.ServiceForm?.ServiceFormId != null)
+       {
+           <a class="btn btn-primary" asp-area="" asp-controller="FilledOutServiceForm" asp-action="Index" asp-route-id="@Model.ServiceForm.ServiceFormId">Se serviceskjema</a>
+       }else
+       {
+           <a class="btn btn-primary" asp-area="" asp-controller="ServiceForm" asp-action="Index" >fyll ut Serviceskjems</a>
+       }
+   
+       @if (Model.CheckList?.ChecklistId != null)
+       {
+           <a class="btn btn-primary" asp-area="" asp-controller="FilledOutCheckList" asp-action="Index" asp-route-id="@Model.CheckList.ChecklistId">Se sjekkliste</a>
+       } else
+       {
+            <a class="btn btn-primary" asp-area="" asp-controller="CheckList" asp-action="Index">Se sjekkliste</a>
+       }
+   </div>
+</div>
+
+</body>

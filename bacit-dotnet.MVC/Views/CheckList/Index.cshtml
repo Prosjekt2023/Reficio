@@ -1,4 +1,4 @@
-﻿@model bacit_dotnet.MVC.Models.CheckList.CheckListViewModel
+﻿@model bacit_dotnet.MVC.Models.Composite.CheckListViewModel
 
 <!DOCTYPE html>
 
@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sjekkliste</title>
-    <link rel="stylesheet" href="css/checkList.css"/>
+    <link rel="stylesheet" href="/css/CheckList.css"/>
     
 </head>
 <body>
@@ -22,12 +22,12 @@
         <th>Kategorier</th>
         <th>Sjekkpunkter</th>
         <th>OK</th>
-        <th>Bør Skiftes</th>
+        <th>Bør skiftes</th>
         <th>Defekt</th>
       </tr>
         <tr>
             <td rowspan="8">Mekanisk</td> <!--Mekanisk-->
-            <td>Sjekk Clutchcheck lameller for slitasje</td>
+            <td>Sjekk clutchcheck lameller for slitasje</td>
             <td>
                 <input type="radio" id="OK" name="Clutchcheck" value="OK" />
                 <label for="OK"></label>
@@ -43,7 +43,7 @@
             </td>
         </tr>
         <tr>
-            <td>Sjekk Bremser. Bånd/ Pal</td>
+            <td>Sjekk bremser. Bånd/pal</td>
             <td>
                 <input type="radio" id="OK" name="BrakeCheck" value="OK" />
                 <label for="OK"></label>
@@ -271,7 +271,7 @@
             
         </tr>
         <tr>
-            <td>Sjekk Ringsylinder åpne og skift tetninger</td>
+            <td>Sjekk ringsylinder åpne og skift tetninger</td>
             <td>
                 <input type="radio" id="OK" name="RingCylinderSealsCheck" value="OK" />
                 <label for="OK"></label>
@@ -368,7 +368,7 @@
         </tr>
         <tr>
             <td rowspan="1">Trykk settinger</td>
-            <td>xx- Bar</td> <!-- Spør nøsted om, og endre -->
+            <td>xx- bar</td> <!-- Spør nøsted om, og endre -->
             <td>
                 <input type="radio" id="OK" name="PressureSettings" value="OK" /> 
                 <label for="OK"></label>
@@ -446,22 +446,25 @@
     </table>
 
     <br>
-    <label for="freeform">Kommentar:</label>
+    <label for="Freeform">Kommentar:</label>
     <br> 
-    <textarea id="freeform" name="freeform" rows="6" cols="115"></textarea>
+    <textarea id="Freeform" name="Freeform" rows="4" cols="127"></textarea>
     <br>
     <br>
     <label for="Sign">Signatur:</label>
     <br>
     <input type="text" id="Sign" name="Sign">
     <br>
-    <label for="CompletionDate">date:</label>
-    <input type="date" id="CompletionDate" name="trip-CompletionDate" min="2000-01-01" max="2099-12-31" />
-
+    <br>
+   <div class="form-group">
+       <label asp-for="CompletionDate" class="control-label" style="width: 200px;">Ferdigstilt dato:</label>
+       <div class="col-md-2">
+           <input asp-for="CompletionDate" class="form-control" type="date" style="width: 200px;">
+           <span asp-validation-for="CompletionDate" class="text-danger"></span>
+       </div>
+   </div>
     <br><br/>
     <button type="submit" class="btn btn-primary">Send inn</button>
 </form>
 </body>
 </html>
-
-
