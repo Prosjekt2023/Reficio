@@ -98,10 +98,9 @@ create table if not EXISTS AspNetUserRoles
 );
 
 
--- Create table ServiceFormEntry, if it doesn't exist
-create table if not EXISTS ServiceFormEntry
+CREATE TABLE IF NOT EXISTS ServiceFormEntry
 (
-    ServiceFormId INT not null unique auto_increment PRIMARY KEY,
+    ServiceFormId INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     Customer NVARCHAR(255) NOT NULL,
     DateReceived DATE NOT NULL,
     Address NVARCHAR(255),
@@ -121,10 +120,11 @@ create table if not EXISTS ServiceFormEntry
     ReplacedPartsReturned NVARCHAR(255),
     ShippingMethod NVARCHAR(255),
     CustomerSignature NVARCHAR(255),
-    RepairerSignature NVARCHAR(255)
+    RepairerSignature NVARCHAR(255),
+    ChecklistId INT -- Foreign key reference to Checklist
 );
 
--- Table for the Checklist
+-- Create Checklist table
 CREATE TABLE IF NOT EXISTS Checklist
 (
     ChecklistId INT AUTO_INCREMENT PRIMARY KEY,
@@ -150,10 +150,11 @@ CREATE TABLE IF NOT EXISTS Checklist
     FunctionTest VARCHAR(50),
     TractionForceKN VARCHAR(50),
     BrakeForceKN VARCHAR(50),
-    Sign VARCHAR(255), -- Signature
-    Freeform TEXT, -- Any additional freeform text or comments
-    CompletionDate DATE NOT NULL -- The date the checklist was completed
+    Sign VARCHAR(255),
+    Freeform TEXT,
+    CompletionDate DATE NOT NULL
 );
+
 
 -- Tabel-for-userAccount 
 /*CREATE TABLE IF NOT EXISTS userAccount (
