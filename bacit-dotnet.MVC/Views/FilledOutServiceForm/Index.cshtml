@@ -87,12 +87,12 @@
                 <div class="form-row">
                     <div class="form-col">
                         <label for="Service" class="control-label">Service/rep:</label>
-                        <input for="Service" class="form-control" type="text" value="@Model.Service" readonly="readonly"/>
+                        <input for="Service" class="form-control" type="text" value="@Model.Service"/>
                         <span validation-for="Service" class="text-danger"></span>
                     </div>
                     <div class="form-col">
                         <label for="Warranty" class="control-label">Garanti:</label>
-                        <input for="Warranty" class="form-control" type="text" value="@Model.Warranty" readonly="readonly"/>
+                        <input for="Warranty" class="form-control" type="text" value="@Model.Warranty"/>
                         <span validation-for="Warranty" class="text-danger"></span>
                     </div>
                 </div>
@@ -111,20 +111,20 @@
             <div class="form-group">
                 <div class="form-col">
                     <label for="Agreement" class="control-label">Hva er avtalt med kunden?</label>
-                     <textarea id="Agreement" class="form-control" rows="4" readonly>@Model.Agreement</textarea> 
+                     <textarea id="Agreement" class="form-control" rows="4">@Model.Agreement</textarea> 
                     <span validation-for="Agreement" class="text-danger"></span>
                 </div>
             </div>
     
             <div class="form-group">
                 <label for="RepairDescription" class="control-label">Reparasjonsbeskrivelse:</label>
-            <textarea id="RepairDescription" class="form-control" rows="4" readonly>@Model.RepairDescription</textarea>
+            <textarea id="RepairDescription" class="form-control" rows="4">@Model.RepairDescription</textarea>
                 <span validation-for="RepairDescription" class="text-danger"></span>
             </div>
     
             <div class="form-group">
                 <label for="UsedParts" class="control-label">Medgåtte deler:</label>
-                <textarea for="UsedParts" class="form-control" rows="4" readonly>@Model.UsedParts</textarea>
+                <textarea for="UsedParts" class="form-control" rows="4">@Model.UsedParts</textarea>
                 <span validation-for="UsedParts" class="text-danger"></span >
             </div>
     
@@ -132,12 +132,12 @@
                 <div class="form-row">
                     <div class="form-col">
                         <label for="WorkHours" class="control-label">Arbeidstimer:</label>
-                        <input for="WorkHours" class="form-control" type="text" maxlength="2" value="@Model.WorkHours" readonly="readonly"/>
+                        <input for="WorkHours" class="form-control" type="text" maxlength="2" value="@Model.WorkHours"/>
                         <span validation-for="WorkHours" class="text-danger"></span>
                     </div>
                     <div class="form-col">
                         <label for="CompletionDate" class="control-label">Ferdigstilt dato:</label>
-                        <input for="CompletionDate" class="form-control" type="text" value="@Html.DisplayFor(model => Model.CompletionDate)" readonly="readonly"/>
+                        <input for="CompletionDate" class="form-control" type="text" value="@Html.DisplayFor(model => Model.CompletionDate)"/>
                         <span validation-for="CompletionDate" class="text-danger"></span>
                     </div>
                 </div>
@@ -147,12 +147,12 @@
                 <div class="form-row">
                     <div class="form-col">
                         <label for="ReplacedPartsReturned" class="control-label">Utskiftet deler returnert:</label>
-                        <input for="ReplacedPartsReturned" class="form-control" type="text" value="@Model.ReplacedPartsReturned" readonly="readonly"/>
+                        <input for="ReplacedPartsReturned" class="form-control" type="text" value="@Model.ReplacedPartsReturned"/>
                         <span validation-for="ReplacedPartsReturned" class="text-danger"></span>
                     </div>
                     <div class="form-col">
                         <label for="ShippingMethod" class="control-label">Forsendelsesmåte:</label>
-                        <input for="ShippingMethod" class="form-control" type="text" value="@Model.ShippingMethod" readonly="readonly"/>
+                        <input for="ShippingMethod" class="form-control" type="text" value="@Model.ShippingMethod"/>
                         <span validation-for="ShippingMethod" class="text-danger"></span>
                     </div>
                 </div>
@@ -162,12 +162,12 @@
         <div class="form-row">
             <div class="form-col">
                 <label for="CustomerSignature" class="control-label">Sign. kunde:</label>
-                <input for="CustomerSignature" class="form-control" type="text" value="@Model.CustomerSignature" readonly="readonly"/>
+                <input for="CustomerSignature" class="form-control" type="text" value="@Model.CustomerSignature"/>
                 <span validation-for="CustomerSignature" class="text-danger"></span>
             </div>
             <div class="form-col">
                 <label for="RepairerSignature" class="control-label">Sign. reparatør:</label>
-                <input for="RepairerSignature" class="form-control" type="text" value="@Model.RepairerSignature" readonly="readonly"/>
+                <input for="RepairerSignature" class="form-control" type="text" value="@Model.RepairerSignature"/>
                 <span validation-for="RepairerSignature" class="text-danger"></span>
             </div>
         </div>

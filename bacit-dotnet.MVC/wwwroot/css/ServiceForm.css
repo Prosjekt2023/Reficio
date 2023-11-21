@@ -50,3 +50,20 @@ textarea {
     justify-content: center;
     align-items: center;
 }
+
+/* CSS for dropdown with arrow */
+.dropdown-with-arrow {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-arrow {
+    position: absolute;
+    top: calc(50% - 2.5px); /* Adjust to vertically center the arrow */
+    right: 8px; /* Adjust distance from the select box */
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid #000; /* Change color if desired */
+}
