@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using bacit_dotnet.MVC.Repositories;
 using Microsoft.EntityFrameworkCore;
 using bacit_dotnet.MVC.DataAccess;
 using bacit_dotnet.MVC.Models;
