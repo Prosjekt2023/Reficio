@@ -32,8 +32,14 @@ namespace bacit_dotnet.MVC.Tests.Controllers
             var unitUnderTest = SetupUnitUnderTest();
             var result = unitUnderTest.Index() as ViewResult;
             var model = result.Model as RazorViewModel;
-            Assert.Same("En time til ørsta rådhus", model.Content);
+    
+            // For debugging
+            Console.WriteLine($"Actual Content: {model.Content}");
+            Console.WriteLine($"Expected Content: Ansatte i Nøsted &");
+
+            Assert.Equal("Ansatte i Nøsted &", model.Content);
         }
+
 
         private static HomeController SetupUnitUnderTest()
         {

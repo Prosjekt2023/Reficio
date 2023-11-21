@@ -16,7 +16,7 @@ namespace bacit_dotnet.MVC.Controllers
             this.userRepository = userRepository;
         }
         [HttpGet]
-        public IActionResult Index(string? email)
+        public IActionResult Index(string? email)   
         {
             var model = new UserViewModel();
             model.Users = userRepository.GetUsers();
