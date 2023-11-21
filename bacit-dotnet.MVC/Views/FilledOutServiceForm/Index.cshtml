@@ -10,14 +10,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Utfylt Serviceskjema</title>
+    <title>Utfylt serviceskjema</title>
     <link rel="stylesheet" href="/css/ServiceForm.css">
 </head>
 
 <body>
 
 <div class="form-container">
-    <h2>Serviceskjema for: @Model.Customer</h2>
+    <h2>Utfylt serviceskjema for: @Model.Customer</h2>
     <hr class="divider">
     <form asp-controller="ServiceForm" asp-action="Index" method="post">
 
@@ -176,11 +176,11 @@
     
     <div class="row mt-4">
         <div class="col-md-6">
-            <a asp-controller="ServiceOrder" asp-action="Index" class="btn btn-secondary">Tilbake til oversikt</a>
+            <a asp-controller="ServiceOrder" asp-action="Index" class="btn btn-dark">Tilbake til oversikt</a>
         </div>
         
         <div class="col-md-6 d-flex justify-content-end">
-            <input type="submit" value="Oppdater skjema" class="btn btn-success"/>
+            <input type="submit" value="Oppdater skjema" class="btn btn-dark"/>
         </div>
     </div>
 </form>
