@@ -10,12 +10,12 @@
     <hr />
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
     <div class="form-group">
-        <label asp-for="Name" class="col-md-2 control-label"></label>
-        <div class="col-md-10">
-            <input asp-for="Name" class="form-control" />
-            <span asp-validation-for="Name" class="text-danger"></span>
+            <label asp-for="Name" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
         </div>
-    </div>
     <div class="form-group">
         <label asp-for="Email" class="col-md-2 control-label"></label>
         <div class="col-md-10">
@@ -38,9 +38,9 @@
         </div>
     </div>
     <div class="form-check">
-        <label asp-for="IsAdmin" class="form-check-label">Administrator</label>
-        <input type="checkbox" id="IsAdmin" asp-for="IsAdmin" class="form-check-input"/>
-    </div>
+            <label for="Role" class="form-check-label">Administrator</label>
+            <input type="checkbox" asp-for="@Model.IsAdmin" class="form-check-input"/>
+        </div>
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
             <button type="submit" class="btn btn-primary">Register</button>

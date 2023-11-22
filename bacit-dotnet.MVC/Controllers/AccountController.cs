@@ -10,6 +10,7 @@ using bacit_dotnet.MVC.Repositories;
 
 namespace bacit_dotnet.MVC.Controllers
 {
+    [Authorize]
     public class AccountController : Controller
     {
         private readonly UserManager<IdentityUser> _userManager;
@@ -88,7 +89,7 @@ namespace bacit_dotnet.MVC.Controllers
         //
         // POST: /Account/Register
         [HttpPost]
-        [AllowAnonymous]
+        [AllowAnonymous] //legg til [Authorize(roles:"Admin")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(RegisterViewModel model, string returnUrl = null)
         {
@@ -99,11 +100,15 @@ namespace bacit_dotnet.MVC.Controllers
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    if (model.IsAdmin)
+                    {
+                        await _userManager.AddToRoleAsync(user, role: "Admin");
+                    }
+                    
                     userRepository.Add(new UserEntity
                     {
                         Name = model.Name,
-                        Email = model.Email,
-                        IsAdmin = model.IsAdmin
+                        Email = model.Email
                     });
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=532713
                     // Send an email with this link

@@ -150,7 +150,7 @@ namespace bacit_dotnet.MVC
             }
         }
         
-        private static async Task SetRoles(RoleManager<IdentityRole> roleManager)
+        /*private static async Task SetRoles(RoleManager<IdentityRole> roleManager)
         {
             string[] roleNames = { "Admin", "ServiceSenterAnsatt", "Mekaniker" };
             foreach (var roleName in roleNames)
@@ -161,6 +161,6 @@ namespace bacit_dotnet.MVC
                     await roleManager.CreateAsync(new IdentityRole(roleName));
                 }
             }
-        }
+        }*/
     }
 }
