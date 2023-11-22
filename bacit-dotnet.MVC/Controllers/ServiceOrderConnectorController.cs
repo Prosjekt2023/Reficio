@@ -20,12 +20,7 @@ namespace bacit_dotnet.MVC.Controllers
         {
             var serviceFormEntry = _serviceFormRepository.GetRelevantData(id);
             var checkListEntry = _checkListRepository.GetRelevantData(id);
-/*
-           if (serviceFormEntry == null || checkListEntry == null)
-            {
-                return NotFound(); // Return NotFound only if both are null
-            }
-*/
+
             var compositeViewModel = new CompositeViewModel
             {
                 ServiceForm = serviceFormEntry,
