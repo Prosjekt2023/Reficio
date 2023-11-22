@@ -492,8 +492,9 @@
 <label for="CompletionDate">Date:</label>
 <input for="CompletionDate" class="form-control" type="text" value="@Html.DisplayFor(model => Model.CompletionDate)" readonly="readonly"/>
 <span validation-for="CompletionDate" class="text-danger"></span>
-<br><br/>
-<a class="btn btn-primary" asp-area="" asp-controller="ServiceOrderConnector" asp-action="Index">Tilbake til Oversikt</a>
+<br>
+<br>
+<a asp-controller="ServiceOrder" asp-action="Index" class="btn btn-dark">Tilbake til oversikt</a>
 
 </body>
 </html>
