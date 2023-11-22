@@ -7,7 +7,6 @@ create table if not EXISTS Users
     Id int not null unique auto_increment,
     Name varchar(255),
     Email varchar(255) UNIQUE,
-    IsAdmin TINYINT(1),
 
     CONSTRAINT U_User_ID_PK PRIMARY KEY (Id)
 );
@@ -20,10 +19,7 @@ create table if not EXISTS AspNetRoles
     ConcurrencyStamp  varchar(255),
     CONSTRAINT U_ROLE_ID_PK PRIMARY KEY (Id)
 );
-INSERT INTO AspNetRoles (Id, Name, NormalizedName) VALUES ('1', 'Admin', 'Admin');
-INSERT INTO AspNetRoles (Id, Name, NormalizedName) VALUES ('2', 'ServiceSenterAnsatt', 'ServiceSenterAnsatt');
-INSERT INTO AspNetRoles (Id, Name, NormalizedName) VALUES ('3', 'Mekaniker', 'Mekaniker');
-INSERT INTO AspNetRoles (Id, Name, NormalizedName) VALUES ('4', 'Elektriker', 'Elektriker');
+INSERT INTO AspNetRoles (Id, Name, NormalizedName) VALUES ('Admin', 'Admin', 'Admin');
 
 create table if not EXISTS AspNetUsers
 (
@@ -154,15 +150,3 @@ CREATE TABLE IF NOT EXISTS Checklist
     Freeform TEXT, -- Any additional freeform text or comments
     CompletionDate DATE NOT NULL -- The date the checklist was completed
 );
-
--- Tabel-for-userAccount 
-/*CREATE TABLE IF NOT EXISTS userAccount (
-    userID INT PRIMARY KEY auto_increment,
-    password VARCHAR(50) not null,
-    loginStatus bool not null, -- Gjorde om til bool type
-    fullName VARCHAR(100) not null,
-    address VARCHAR(100) not null,
-    email VARCHAR(50) not null
-);*/
-
-
