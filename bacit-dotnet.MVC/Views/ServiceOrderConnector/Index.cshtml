@@ -55,7 +55,7 @@
    
        @if (Model.CheckList?.ChecklistId != null)
        {
-           <a class="btn btn-primary" asp-area="" asp-controller="FilledOutCheckList" asp-action="Index" asp-route-id="@Model.CheckList.ChecklistId">Se sjekkliste</a>
+           <a class="btn btn-primary" asp-area="" asp-controller="FilledOutCheckList" asp-action="Index" asp-route-id="@Model.ServiceForm.ChecklistId">Se sjekkliste</a>
        } else
        {
             <a class="btn btn-primary" asp-area="" asp-controller="CheckList" asp-action="Index">Se sjekkliste</a>

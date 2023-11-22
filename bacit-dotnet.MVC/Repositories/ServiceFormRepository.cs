@@ -61,7 +61,7 @@ namespace bacit_dotnet.MVC.Repositories
             using (IDbConnection dbConnection = Connection)
             {
                 dbConnection.Open();
-                var query = "SELECT ServiceFormId, OrderNumber, Customer, Email, Phone, Address, DateReceived FROM ServiceFormEntry WHERE ServiceFormId = @Id";
+                var query = "SELECT ServiceFormId, ChecklistId, OrderNumber, Customer, Email, Phone, Address, DateReceived FROM ServiceFormEntry WHERE ServiceFormId = @Id";
                 return dbConnection.QuerySingleOrDefault<ServiceFormViewModel>(query, new { Id = id });
             }
         }
@@ -71,7 +71,7 @@ namespace bacit_dotnet.MVC.Repositories
             using (IDbConnection dbConnection = Connection)
             {
                 dbConnection.Open();
-                dbConnection.Execute("INSERT INTO ServiceFormEntry (ServiceFormId, Customer, DateReceived, Address, Email, OrderNumber, Phone, ProductType, Year, Service, Warranty, SerialNumber, Agreement, RepairDescription, UsedParts, WorkHours, CompletionDate,ReplacedPartsReturned, ShippingMethod, CustomerSignature, RepairerSignature, ChecklistId ) VALUES (@ServiceFormId, @Customer, @DateReceived, @Address, @Email, @OrderNumber, @Phone, @ProductType, @Year, @Service, @Warranty, @SerialNumber, @Agreement, @RepairDescription, @UsedParts, @WorkHours, @CompletionDate, @ReplacedPartsReturned, @ShippingMethod, @CustomerSignature, @RepairerSignature)", serviceFormViewModel);
+                dbConnection.Execute("INSERT INTO ServiceFormEntry (ServiceFormId, ChecklistId, Customer, DateReceived, Address, Email, OrderNumber, Phone, ProductType, Year, Service, Warranty, SerialNumber, Agreement, RepairDescription, UsedParts, WorkHours, CompletionDate,ReplacedPartsReturned, ShippingMethod, CustomerSignature, RepairerSignature ) VALUES (@ServiceFormId, @ChecklistId, @Customer, @DateReceived, @Address, @Email, @OrderNumber, @Phone, @ProductType, @Year, @Service, @Warranty, @SerialNumber, @Agreement, @RepairDescription, @UsedParts, @WorkHours, @CompletionDate, @ReplacedPartsReturned, @ShippingMethod, @CustomerSignature, @RepairerSignature)", serviceFormViewModel);
             }
         }
     }
