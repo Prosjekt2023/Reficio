@@ -1,4 +1,14 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿//This JS function is for the active hover effect over navigation elements
+$(document).ready(function () {
+    var currentPath = window.location.pathname; // Get the current URL path
 
-// Write your JavaScript code.
+    // Loop through each nav link and compare with the current path
+    $('.navbar-nav .nav-link').each(function () {
+        var linkPath = $(this).attr('href');
+
+        // Check if the link's href matches the current path
+        if (currentPath === linkPath) {
+            $(this).addClass('active'); // Add 'active' class to the matching link
+        }
+    });
+});
