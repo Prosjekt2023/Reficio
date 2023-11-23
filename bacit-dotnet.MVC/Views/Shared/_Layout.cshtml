@@ -31,10 +31,6 @@
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link text-white" asp-area="" asp-controller="AppRoles" asp-action="Index" onclick="setActiveLink(this); return false;">Roller</a>
-                            </li>
-
-                            <li class="nav-item">
                                 <a class="nav-link text-white" asp-area="" asp-controller="ServiceForm" asp-action="Index" onclick="setActiveLink(this); return false;">Serviceskjema</a>
                             </li>
 
@@ -65,20 +61,6 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
-    <script>
-        $(document).ready(function () {
-            var currentPath = window.location.pathname; // Get the current URL path
-
-            // Loop through each nav link and compare with the current path
-            $('.navbar-nav .nav-link').each(function () {
-                var linkPath = $(this).attr('href');
-
-                // Check if the link's href matches the current path
-                if (currentPath === linkPath) {
-                    $(this).addClass('active'); // Add 'active' class to the matching link
-                }
-            });
-        });
-    </script>
+    
 </body>
 </html>

@@ -25,7 +25,7 @@ namespace bacit_dotnet.MVC.Controllers
             var model = new RazorViewModel
             {
                 Content = "Ansatte i Nøsted &",
-                AdditionalData = "Hilsen produktutviklerne av ReficioSolution"
+                AdditionalData = "Hilsen produktutviklerne av Systemet"
             };
             return View("Index", model);
         }

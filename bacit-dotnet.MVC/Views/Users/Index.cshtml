@@ -1,8 +1,9 @@
 ﻿@using bacit_dotnet.MVC.Models.Users
 @model UserViewModel
+
 <h3>Rediger registrerte brukere</h3>
 
-    <form asp-action="save" asp-controller="users" method="post">
+    <form asp-action="save" asp-controller="Users" method="post">
         <ul>
             <li>
                 <label for="Name">Navn</label>
@@ -10,7 +11,7 @@
             </li>
          
             <li>
-                <label for="Email">Email</label>
+                <label for="Email">E-post</label>
                 <input type="email" name="Email" value="@Model.Email" />
             </li>
         <li>
@@ -25,9 +26,8 @@
 
 <table class="table">
     <tr>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Administrator</th>
+        <th>Navn</th>
+        <th>E-post</th>
         <td></td>
         <td></td>
     </tr>
@@ -36,16 +36,6 @@
         <tr>
             <td>@user.Name</td>
             <td>@user.Email</td>
-            <td>
-                @if (user.IsAdmin)
-                {
-                    <span>Administrator</span>
-                }
-                else
-                {
-                    <span>Ansatt</span>
-                }
-            </td>
             <td>
                 <form asp-action="delete" asp-controller="users" method="post">
                     <input type="hidden" name="Email" value="@user.Email" />

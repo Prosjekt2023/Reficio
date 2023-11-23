@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace bacit_dotnet.MVC.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Admin")]
     public class UsersController : Controller
     {
         private readonly IUserRepository userRepository;
@@ -15,6 +15,7 @@ namespace bacit_dotnet.MVC.Controllers
         {
             this.userRepository = userRepository;
         }
+        
         [HttpGet]
         public IActionResult Index(string? email)
         {
@@ -28,7 +29,7 @@ namespace bacit_dotnet.MVC.Controllers
 
                     model.Name = currentUser.Name;
                     model.Email = currentUser.Email;
-                    model.IsAdmin = currentUser.IsAdmin; //userRepository.IsAdmin(currentUser.Email);
+                    model.IsAdmin = userRepository.IsAdmin(currentUser.Email);
                 }
             }
             return View(model);
@@ -42,7 +43,6 @@ namespace bacit_dotnet.MVC.Controllers
             {
                 Name = model.Name,
                 Email = model.Email,
-                IsAdmin = model.IsAdmin
             };
             var roles = new List<string>();
             if (model.IsAdmin)

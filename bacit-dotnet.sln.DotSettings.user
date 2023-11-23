@@ -1,2 +1,8 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-	<s:String x:Key="/Default/CodeInspection/ExcludedFiles/FilesAndFoldersToSkip2/=9891EF47_002D54A5_002D480A_002D8738_002DC3CE02DD2249_002Fd_003AControllers_002Ff_003AServiceOrderConnectorController_002Ecs/@EntryIndexedValue">ForceIncluded</s:String></wpf:ResourceDictionary>
+	<s:String x:Key="/Default/CodeInspection/ExcludedFiles/FilesAndFoldersToSkip2/=9891EF47_002D54A5_002D480A_002D8738_002DC3CE02DD2249_002Fd_003AControllers_002Ff_003AServiceOrderConnectorController_002Ecs/@EntryIndexedValue">ForceIncluded</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=f259fa77_002D652e_002D4d90_002D8744_002De7ae72a565db/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="SignOutControllerTests" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;xUnit::AFCF92D1-0C0A-4EE1-9322-B82D76DC2F02::net7.0::bacit_dotnet.MVC.Tests.Controllers.SignOutControllerTests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::AFCF92D1-0C0A-4EE1-9322-B82D76DC2F02::net7.0::CheckListControllerTest&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
