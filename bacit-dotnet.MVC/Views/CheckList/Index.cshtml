@@ -1,4 +1,8 @@
-﻿@model bacit_dotnet.MVC.Models.Composite.CheckListViewModel
+﻿<!--
+*Version 1.6
+*Input razor page for CheckList
+-->
+@model bacit_dotnet.MVC.Models.Composite.CheckListViewModel
 
 <!DOCTYPE html>
 
@@ -14,7 +18,12 @@
 
 <h2>Sjekkliste</h2>
 
- <form asp-controller="CheckList" asp-action="Index" method="post">
+
+<!-- *Using Form element to collect data from the form when the submit button is initialized
+*Post data specified for sending data to the Server
+*CheckListController is specified with the asp-controller attribute
+*Hidden fields input type="hidden" asp-for= are used to bind these inputs to the corresponding properties in the CheckListViewModel -->
+<form asp-controller="CheckList" asp-action="Index" method="post">
             @Html.ValidationSummary()
           @Html.AntiForgeryToken()
  <table>
