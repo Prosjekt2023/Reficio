@@ -47,32 +47,11 @@ docker ps
 ```
   USE DATABASE ReficioDB;
 ```
-6. Lag en samsvarende tabell for din webapplikasjon f.eks
+6. Opprett alle samsvarende tabeller for web-applikasjon:
 ```
-  CREATE TABLE ServiceFormEntry (
-    Id INT(11) NOT NULL AUTO_INCREMENT,
-    Customer NVARCHAR(255) NOT NULL,
-    DateReceived DATE NOT NULL,
-    Address NVARCHAR(255),
-    Email NVARCHAR(255),
-    OrderNumber INT(11),
-    Phone INT(11),
-    ProductType NVARCHAR(255),
-    Year INT(11),
-    Service NVARCHAR(255),
-    Warranty NVARCHAR(255),
-    SerialNumber INT(11),
-    Agreement NVARCHAR(255),
-    RepairDescription NVARCHAR(255),
-    UsedParts NVARCHAR(255),
-    WorkHours NVARCHAR(255),
-    CompletionDate DATE NOT NULL,
-    ReplacedPartsReturned NVARCHAR(255),
-    ShippingMethod NVARCHAR(255),
-    CustomerSignature NVARCHAR(255),
-    RepairerSignature NVARCHAR(255),
-    PRIMARY KEY (Id)
-);
+  Kopier og lim inn koded fra Create.sql filen.
 ```
-Ferdig! Kjør programmet.
-Husk å legge til connectionstring og connect to database.
+7. Ferdig! Du kan nå kjøre programmet.
+```
+ dotnet run
+```
