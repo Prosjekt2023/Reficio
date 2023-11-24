@@ -1,8 +1,5 @@
 using Dapper;
-using Microsoft.Extensions.Configuration;
 using MySqlConnector;
-using System;
-using System.Collections.Generic;
 using System.Data;
 using bacit_dotnet.MVC.Models.Composite;
 
@@ -25,18 +22,7 @@ namespace bacit_dotnet.MVC.Repositories
             }
         }
 
-        public IEnumerable<CheckListViewModel> GetAll()
-        {
-            using (IDbConnection dbConnection = Connection)
-            {
-                dbConnection.Open();
-                var query = "SELECT * FROM Checklist";
-                var results = dbConnection.Query<CheckListViewModel>(query);
-
-                return results;
-            }
-        }
-        
+      
         public CheckListViewModel GetOneRowById(int id)
         {
             using (IDbConnection dbConnection = Connection)
@@ -46,15 +32,7 @@ namespace bacit_dotnet.MVC.Repositories
                 return dbConnection.QuerySingleOrDefault<CheckListViewModel>(query, new { Id = id });
             }
         }
-        
-        public IEnumerable<CheckListViewModel> GetSomeOrderInfo()
-        {
-            using (IDbConnection dbConnection = Connection)
-            {
-                dbConnection.Open();
-                return dbConnection.Query<CheckListViewModel>("SELECT ChecklistId, Sign, Freeform, CompletionDate FROM Checklist");
-            }
-        }
+
         
         public CheckListViewModel GetRelevantData(int id)
         {
@@ -65,7 +43,7 @@ namespace bacit_dotnet.MVC.Repositories
                 return dbConnection.QuerySingleOrDefault<CheckListViewModel>(query, new { Id = id });
             }
         }
-/* Modifisert Insert metoden fra void til int så øyeblikkelige opprettet instanser kan ses */
+/* Insert method that returns the inserted int Id to  */
         public int Insert(CheckListViewModel checkListViewModel)
         {
             using (IDbConnection dbConnection = Connection)
