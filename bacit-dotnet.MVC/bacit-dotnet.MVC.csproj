@@ -35,6 +35,8 @@
 	  <_ContentIncludedByDefault Remove="Views\ServiceOverview\Create.cshtml" />
 	  <_ContentIncludedByDefault Remove="Views\ServiceOverview\Index.cshtml" />
 	  <_ContentIncludedByDefault Remove="Views\Suggestions\index.cshtml" />
+	  <_ContentIncludedByDefault Remove="Views\AppRoles\Create.cshtml" />
+	  <_ContentIncludedByDefault Remove="Views\AppRoles\Index.cshtml" />
 	</ItemGroup>
 
 </Project>
