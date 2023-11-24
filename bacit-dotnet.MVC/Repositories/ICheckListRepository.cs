@@ -4,9 +4,7 @@ namespace bacit_dotnet.MVC.Repositories;
 
     public interface ICheckListRepository
     {
-        public IEnumerable<CheckListViewModel> GetAll();
-        
-        public IEnumerable<CheckListViewModel> GetSomeOrderInfo();
+
 
         public CheckListViewModel GetOneRowById(int id);
 

@@ -24,11 +24,6 @@ namespace bacit_dotnet.MVC
         {
             var builder = WebApplication.CreateBuilder(args);
             builder.WebHost.ConfigureKestrel(x => x.AddServerHeader = false);
-
-            /*builder.Services.AddDefaultIdentity<IdentityUser>(
-                    options => options.SignIn.RequireConfirmedAccount = true)
-                .AddRoles<IdentityRole>()
-                .AddEntityFrameworkStores<DataContext>();*/
             
             // Add services to the container.
             builder.Services.AddControllersWithViews(options =>
@@ -50,7 +45,6 @@ namespace bacit_dotnet.MVC
             builder.Services.AddTransient<IServiceFormRepository, ServiceFormRepository>();
             builder.Services.AddTransient<ICheckListRepository, CheckListRepository>();
             
-
             builder.Services.AddTransient<IUserRepository, InMemoryUserRepository>();
             builder.Services.AddTransient<IUserRepository, SqlUserRepository>();
             builder.Services.AddTransient<IUserRepository, DapperUserRepository>();
@@ -58,6 +52,11 @@ namespace bacit_dotnet.MVC
                 
             SetupDataConnections(builder);
             SetupAuthentication(builder);
+            
+            // Configure Antiforgery
+            builder.Services.AddAntiforgery(options => {
+                options.HeaderName = "X-CSRF-TOKEN";
+            });
 
             var app = builder.Build();
 
@@ -68,7 +67,26 @@ namespace bacit_dotnet.MVC
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+            
+            app.Use(async (context, next) =>
+            {
 
+                context.Response.Headers.Add("X-Xss-Protection", "1");
+                context.Response.Headers.Add("X-Frame-Options", "DENY");
+                context.Response.Headers.Add("Referrer-Policy", "no-referrer");
+                context.Response.Headers.Add("X-Content-Type-Options", "nosniff");
+                context.Response.Headers.Add(
+                    "Content-Security-Policy",
+                    "default-src 'self'; " +
+                    "img-src 'self'; " +
+                    "font-src 'self'; " +
+                    "style-src 'self'; " +
+                    "script-src 'self'" +
+                    "frame-src 'self';" +
+                    "connect-src 'self';");
+                await next();
+            });
+            
             //app.UseHttpsRedirection();
             app.UseStaticFiles();
 
@@ -78,15 +96,8 @@ namespace bacit_dotnet.MVC
 
             app.MapControllerRoute(name: "default", pattern: "{controller=Account}/{action=Login}/{id?}");
             app.MapControllers();
-
+            
             app.Run();
-
-            builder.Services.AddAntiforgery(options => { options.HeaderName = "X-CSRF-TOKEN"; });
-
-            WebHost.CreateDefaultBuilder(args)
-                .ConfigureKestrel(c => c.AddServerHeader = false)
-                .UseStartup<Startup>()
-                .Build();
         }
 
         private static void SetupDataConnections(WebApplicationBuilder builder)
@@ -149,18 +160,5 @@ namespace bacit_dotnet.MVC
                 return Task.CompletedTask;
             }
         }
-        
-        /*private static async Task SetRoles(RoleManager<IdentityRole> roleManager)
-        {
-            string[] roleNames = { "Admin", "ServiceSenterAnsatt", "Mekaniker" };
-            foreach (var roleName in roleNames)
-            {
-                var roleExist = await roleManager.RoleExistsAsync(roleName);
-                if (!roleExist)
-                {
-                    await roleManager.CreateAsync(new IdentityRole(roleName));
-                }
-            }
-        }*/
     }
 }
