@@ -6,5 +6,12 @@
     &lt;TestId&gt;xUnit::AFCF92D1-0C0A-4EE1-9322-B82D76DC2F02::net7.0::CheckListControllerTest&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;xUnit::AFCF92D1-0C0A-4EE1-9322-B82D76DC2F02::net7.0::bacit_dotnet.MVC.Tests.Controllers.UsersControllerTests&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;xUnit::AFCF92D1-0C0A-4EE1-9322-B82D76DC2F02::net7.0::YourNamespace.Tests.Controllers.UsersControllerTests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::AFCF92D1-0C0A-4EE1-9322-B82D76DC2F02::net7.0::bacit_dotnet.MVC.Tests.Controllers.FilledOutCheckListControllerTests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::AFCF92D1-0C0A-4EE1-9322-B82D76DC2F02::net7.0::bacit_dotnet.MVC.Tests.Controllers.FilledOutServiceFormControllerTests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::AFCF92D1-0C0A-4EE1-9322-B82D76DC2F02::net7.0::bacit_dotnet.MVC.Tests.Controllers.ServiceFormControllerTests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::AFCF92D1-0C0A-4EE1-9322-B82D76DC2F02::net7.0::PrivacyControllerTests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::AFCF92D1-0C0A-4EE1-9322-B82D76DC2F02::net7.0::bacit_dotnet.MVC.Tests.Controllers.MVCControllerUnitTests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::AFCF92D1-0C0A-4EE1-9322-B82D76DC2F02::net7.0::bacit_dotnet.MVC.Tests.Controllers.ServiceOrderConnectorControllerTests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::AFCF92D1-0C0A-4EE1-9322-B82D76DC2F02::net7.0::bacit_dotnet.MVC.Tests.Controllers.ServiceOrderControllerTests&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
