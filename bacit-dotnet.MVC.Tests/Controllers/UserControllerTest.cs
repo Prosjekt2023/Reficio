@@ -13,6 +13,7 @@ namespace bacit_dotnet.MVC.Tests.Controllers
 {
     public class UsersControllerTests
     {
+        // Test for å sjekke om Index-metoden returnerer en visning med riktig modell.
         [Fact]
         public void Index_ReturnsViewWithModel()
         {
@@ -29,6 +30,7 @@ namespace bacit_dotnet.MVC.Tests.Controllers
             Assert.IsType<UserViewModel>(result.Model);
         }
 
+        // Test for å sjekke om Save-metoden legger til en ny bruker når brukeren ikke eksisterer.
         [Fact]
         public void Save_AddsNewUser_WhenUserDoesNotExist()
         {
@@ -39,8 +41,8 @@ namespace bacit_dotnet.MVC.Tests.Controllers
 
             var newUserViewModel = new UserViewModel
             {
-                Name = "John Doe",
-                Email = "john@example.com",
+                Name = "Kevin Johansen",
+                Email = "KevinJ@example.com",
                 IsAdmin = true
             };
 
@@ -55,6 +57,7 @@ namespace bacit_dotnet.MVC.Tests.Controllers
             userRepositoryMock.Verify(repo => repo.Update(It.IsAny<UserEntity>(), It.IsAny<List<string>>()), Times.Never);
         }
 
+        // Test for å sjekke om Save-metoden oppdaterer en eksisterende bruker når brukeren allerede eksisterer.
         [Fact]
         public void Save_UpdatesUser_WhenUserExists()
         {
@@ -83,6 +86,7 @@ namespace bacit_dotnet.MVC.Tests.Controllers
             userRepositoryMock.Verify(repo => repo.Update(It.IsAny<UserEntity>(), It.IsAny<List<string>>()), Times.Once);
         }
 
+        // Test for å sjekke om Delete-metoden fjerner en bruker.
         [Fact]
         public void Delete_RemovesUser()
         {

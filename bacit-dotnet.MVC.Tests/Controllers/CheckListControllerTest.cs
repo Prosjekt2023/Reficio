@@ -8,6 +8,7 @@ using Xunit;
 
 public class CheckListControllerTest
 {
+    // Test to check if the Index method for HTTP GET returns a view.
     [Fact]
     public void Index_Get_ReturnsView()
     {
@@ -22,6 +23,7 @@ public class CheckListControllerTest
         Assert.IsType<ViewResult>(result);
     }
 
+    // Test to check if the Index method for HTTP POST with valid model state redirects to FilledOutCheckList.
     [Fact]
     public void Index_Post_ValidModelState_RedirectsToFilledOutCheckList()
     {
@@ -43,6 +45,7 @@ public class CheckListControllerTest
         Assert.Equal(1, result.RouteValues["id"]);
     }
 
+    // Test to check if the Index method for HTTP POST with invalid model state returns view with model.
     [Fact]
     public void Index_Post_InvalidModelState_ReturnsViewWithModel()
     {
