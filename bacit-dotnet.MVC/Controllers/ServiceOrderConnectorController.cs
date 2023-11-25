@@ -1,3 +1,8 @@
+/*
+ * We import the composite folder soo the controller can utilize both Checklist
+ * and ServiceFormviewmodel through the compositeviewmodel.
+ * Import the Repository folder for necessary repositories
+ */
 using Microsoft.AspNetCore.Mvc;
 using bacit_dotnet.MVC.Models.Composite;
 using bacit_dotnet.MVC.Repositories;
@@ -8,7 +13,10 @@ namespace bacit_dotnet.MVC.Controllers
     {
         private readonly IServiceFormRepository _serviceFormRepository;
         private readonly ICheckListRepository _checkListRepository; // Assuming you have a CheckListRepository
-
+/*
+ * Since the connector manages both Checklist and Serviceform we have to have
+ * two dependencies
+ */
         public ServiceOrderConnectorController(IServiceFormRepository serviceFormRepository,
             ICheckListRepository checkListRepository)
         {
@@ -20,12 +28,6 @@ namespace bacit_dotnet.MVC.Controllers
         {
             var serviceFormEntry = _serviceFormRepository.GetRelevantData(id);
             var checkListEntry = _checkListRepository.GetRelevantData(id);
-/*
-           if (serviceFormEntry == null || checkListEntry == null)
-            {
-                return NotFound(); // Return NotFound only if both are null
-            }
-*/
             var compositeViewModel = new CompositeViewModel
             {
                 ServiceForm = serviceFormEntry,
