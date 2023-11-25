@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using bacit_dotnet.MVC.Controllers;
 using bacit_dotnet.MVC.Entities;
 using bacit_dotnet.MVC.Models.Users;
@@ -13,7 +14,7 @@ namespace bacit_dotnet.MVC.Tests.Controllers
 {
     public class UsersControllerTests
     {
-        // Test for å sjekke om Index-metoden returnerer en visning med riktig modell.
+        // Test to check if the Index method returns a view with the correct model.
         [Fact]
         public void Index_ReturnsViewWithModel()
         {
@@ -30,7 +31,7 @@ namespace bacit_dotnet.MVC.Tests.Controllers
             Assert.IsType<UserViewModel>(result.Model);
         }
 
-        // Test for å sjekke om Save-metoden legger til en ny bruker når brukeren ikke eksisterer.
+        // Test to check if the Save method adds a new user when the user does not exist.
         [Fact]
         public void Save_AddsNewUser_WhenUserDoesNotExist()
         {
@@ -41,8 +42,8 @@ namespace bacit_dotnet.MVC.Tests.Controllers
 
             var newUserViewModel = new UserViewModel
             {
-                Name = "Kevin Johansen",
-                Email = "KevinJ@example.com",
+                Name = "New User",
+                Email = "newuser@example.com",
                 IsAdmin = true
             };
 
@@ -57,12 +58,12 @@ namespace bacit_dotnet.MVC.Tests.Controllers
             userRepositoryMock.Verify(repo => repo.Update(It.IsAny<UserEntity>(), It.IsAny<List<string>>()), Times.Never);
         }
 
-        // Test for å sjekke om Save-metoden oppdaterer en eksisterende bruker når brukeren allerede eksisterer.
+        // Test to check if the Save method updates an existing user when the user already exists.
         [Fact]
         public void Save_UpdatesUser_WhenUserExists()
         {
             // Arrange
-            var existingUser = new UserEntity { Name = "Jane Doe", Email = "jane@example.com" };
+            var existingUser = new UserEntity { Name = "Existing User", Email = "existinguser@example.com" };
 
             var userRepositoryMock = new Mock<IUserRepository>();
             userRepositoryMock.Setup(repo => repo.GetUsers()).Returns(new List<UserEntity> { existingUser });
@@ -70,8 +71,8 @@ namespace bacit_dotnet.MVC.Tests.Controllers
 
             var updatedUserViewModel = new UserViewModel
             {
-                Name = "Jane Smith",
-                Email = "jane@example.com",
+                Name = "Updated User",
+                Email = "existinguser@example.com",
                 IsAdmin = false
             };
 
@@ -86,7 +87,7 @@ namespace bacit_dotnet.MVC.Tests.Controllers
             userRepositoryMock.Verify(repo => repo.Update(It.IsAny<UserEntity>(), It.IsAny<List<string>>()), Times.Once);
         }
 
-        // Test for å sjekke om Delete-metoden fjerner en bruker.
+        // Test to check if the Delete method removes a user.
         [Fact]
         public void Delete_RemovesUser()
         {
@@ -94,7 +95,7 @@ namespace bacit_dotnet.MVC.Tests.Controllers
             var userRepositoryMock = new Mock<IUserRepository>();
             var controller = new UsersController(userRepositoryMock.Object);
 
-            var userEmailToDelete = "john@example.com";
+            var userEmailToDelete = "user@example.com";
 
             // Act
             var result = controller.Delete(userEmailToDelete) as RedirectToActionResult;
