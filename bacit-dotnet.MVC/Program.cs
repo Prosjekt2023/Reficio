@@ -84,18 +84,10 @@ namespace bacit_dotnet.MVC
             // Custom middleware to add various security headers to every HTTP response.
             app.Use(async (context, next) =>
             {
-                // Adds the X-XSS-Protection header with a value of 1 to enable the Cross-Site Scripting (XSS) filter in the browser.
                 context.Response.Headers.Add("X-Xss-Protection", "1");
-                // Adds the X-Frame-Options header set to DENY to prevent the page from being displayed in a frame or iframe, 
-                // which can protect against clickjacking attacks.
                 context.Response.Headers.Add("X-Frame-Options", "DENY");
-                // Adds the Referrer-Policy header set to no-referrer, which will not send the HTTP referrer header with outgoing requests.
                 context.Response.Headers.Add("Referrer-Policy", "no-referrer");
-                // Adds the X-Content-Type-Options header set to nosniff, which instructs the browser to not guess (sniff) the MIME type,
-                // and strictly follow the declared content-type.
                 context.Response.Headers.Add("X-Content-Type-Options", "nosniff");
-                // Adds a strict Content-Security-Policy (CSP) header, which defines approved sources of content that the browser may load.
-                // It's configured here to only allow content from the same origin ('self').
                 context.Response.Headers.Add(
                     "Content-Security-Policy",
                     "default-src 'self'; " +
@@ -110,16 +102,14 @@ namespace bacit_dotnet.MVC
                 await next();
             });
             
-            // The HTTPS redirection middleware is commented out. When active, it redirects all HTTP requests to HTTPS.
-            //app.UseHttpsRedirection();
-            
             // Enables serving static files (like images, CSS, JavaScript files) from the wwwroot folder.
             app.UseStaticFiles();
             // Adds middleware for routing. This is necessary to map incoming HTTP requests to appropriate route handlers.
             app.UseStaticFiles();
             // "Måt finne ut av
             app.UseRouting();
-
+            
+            // Apply authentication
             UseAuthentication(app);
 
             // Map controller routes
