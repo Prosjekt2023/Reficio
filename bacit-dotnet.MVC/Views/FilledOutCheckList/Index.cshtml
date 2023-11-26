@@ -17,7 +17,7 @@
 
 
 
-
+<!-- body of the checklist -->
 <h2>Sjekkliste</h2>
 
             @Html.ValidationSummary()
@@ -493,6 +493,7 @@
 <input for="CompletionDate" class="form-control" type="text" value="@Html.DisplayFor(model => Model.CompletionDate)" readonly="readonly"/>
 <span validation-for="CompletionDate" class="text-danger"></span>
 <br>
+<!-- Return button -->
 <br>
 <a asp-controller="ServiceOrder" asp-action="Index" class="btn btn-dark">Tilbake til oversikt</a>
 
