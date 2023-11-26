@@ -41,7 +41,7 @@ namespace bacit_dotnet.MVC.Controllers
             if (ModelState.IsValid)
             {
                 // Insert the repository in the controller
-                // Reddirects to FilledOutCheckListController
+                // Redirects to FilledOutCheckListController
                 var id = _repository.Insert(checkListViewModel);
                 return RedirectToAction("Index", "FilledOutCheckList", new { id = id }); 
             }
