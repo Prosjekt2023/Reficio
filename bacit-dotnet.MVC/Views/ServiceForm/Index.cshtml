@@ -96,23 +96,10 @@
 
                 <!-- Column for Year select -->
                 <div class="form-col">
-                    <label for="Year" class="control-label">Årsmodell:</label>
-                    <select id="Year" name="Year" class="form-control">
-                        <option value="">Velg år</option>
-                        <!-- Adding options for years starting from 1950 using JavaScript -->
-                        <script>
-                                const currentYear = new Date().getFullYear();
-                                for (let year = 1950; year <= currentYear; year++) {
-                                    const option = document.createElement("option");
-                                    option.value = year;
-                                    option.textContent = year;
-                                    document.getElementById("Year").appendChild(option);
-                                }
-                            </script>
-                    </select>
-                    <span class="text-danger" id="yearValidation"></span>
+                    <label asp-for="Year" class="control-label">Årsmodell:</label>
+                    <input asp-for="Year" class="form-control" type="text" maxlength="4"/>
+                    <span asp-validation-for="Year" class="text-danger"></span>
                 </div>
-
             </div>
         </div>
 
