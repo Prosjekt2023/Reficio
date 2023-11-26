@@ -77,15 +77,15 @@ namespace bacit_dotnet.MVC
                 context.Response.Headers.Add("X-Frame-Options", "DENY");
                 context.Response.Headers.Add("Referrer-Policy", "no-referrer");
                 context.Response.Headers.Add("X-Content-Type-Options", "nosniff");
-                context.Response.Headers.Add(
-                    "Content-Security-Policy",
+                context.Response.Headers.Add("Content-Security-Policy",
                     "default-src 'self'; " +
                     "img-src 'self'; " +
-                    "font-src 'self'; " +
-                    "style-src 'self'; " +
-                    "script-src 'self'" +
-                    "frame-src 'self';" +
+                    "font-src 'self' https://fonts.gstatic.com; " +
+                    "style-src 'self' https://fonts.googleapis.com; " + // Allowing styles from Google Fonts
+                    "script-src 'self'; " +
+                    "frame-src 'self'; " +
                     "connect-src 'self';");
+
                 
                 await next();
             });
