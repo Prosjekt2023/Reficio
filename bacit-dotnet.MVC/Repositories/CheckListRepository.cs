@@ -21,8 +21,10 @@ namespace bacit_dotnet.MVC.Repositories
                 return new MySqlConnection(_config.GetConnectionString("DefaultConnection"));
             }
         }
-
-      
+/*
+ * We made an GetOneRowById to get a specific row
+ * entry in the database, this is soo we can retrieve a specific filledoutChecklist
+ */  
         public CheckListViewModel GetOneRowById(int id)
         {
             using (IDbConnection dbConnection = Connection)
@@ -32,7 +34,10 @@ namespace bacit_dotnet.MVC.Repositories
                 return dbConnection.QuerySingleOrDefault<CheckListViewModel>(query, new { Id = id });
             }
         }
-
+/*
+ * We made an GetRelevantData to get a specific parameters as
+ * - and int, this is soo we can query the database for a specific ChecklistId that is type int
+ */
         
         public CheckListViewModel GetRelevantData(int id)
         {
@@ -43,7 +48,9 @@ namespace bacit_dotnet.MVC.Repositories
                 return dbConnection.QuerySingleOrDefault<CheckListViewModel>(query, new { Id = id });
             }
         }
-/* Insert method that returns the inserted int Id to  */
+/* Insert method that returns the inserted int Id to the viewmodel
+*The function makes the checklist visible after its filled out 
+*/
         public int Insert(CheckListViewModel checkListViewModel)
         {
             using (IDbConnection dbConnection = Connection)

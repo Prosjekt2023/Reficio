@@ -29,7 +29,7 @@ namespace bacit_dotnet.MVC.Controllers
         public IActionResult Index()
         {
             return View();
-        }
+        }     
         /*
          * [HttpPost]from the Index method deals with POST requests
          * -from CheckList viewpage that uses the POST Method to submit the form data

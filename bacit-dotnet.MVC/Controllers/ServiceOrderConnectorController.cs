@@ -23,7 +23,15 @@ namespace bacit_dotnet.MVC.Controllers
             _serviceFormRepository = serviceFormRepository;
             _checkListRepository = checkListRepository;
         }
-
+/*
+ * Use an action method to get and IActionResult that
+ * -return a parameter, The parameter is int since our
+ * -entries are stored with Id's as ints in out database
+ *
+ *  We use the method GetRelevantData to get specific data using int Id
+ * -choosen tasbles of our Repository instance "IRepositories"
+ * Creating new instance of CompositeViewModel
+ */
         public IActionResult Index(int id) 
         {
             var serviceFormEntry = _serviceFormRepository.GetRelevantData(id);
