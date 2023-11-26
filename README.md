@@ -1,6 +1,6 @@
 ![Nøsted logo](https://raw.githubusercontent.com/Prosjekt2023/Reficio/main/bacit-dotnet.MVC/wwwroot/nlogo.png)
 
-## Før du starter
+## Før du starter, her er ett par ting du må ha klart
 ## Docker-Desktop-installasjon:
 * Besøk den offisielle Docker-nettsiden.
 * For mer instruksjoner besøk: https://www.docker.com/products/docker-desktop/
