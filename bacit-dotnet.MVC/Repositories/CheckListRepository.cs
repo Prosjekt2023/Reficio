@@ -1,8 +1,5 @@
 using Dapper;
-using Microsoft.Extensions.Configuration;
 using MySqlConnector;
-using System;
-using System.Collections.Generic;
 using System.Data;
 using bacit_dotnet.MVC.Models.Composite;
 
@@ -24,19 +21,10 @@ namespace bacit_dotnet.MVC.Repositories
                 return new MySqlConnection(_config.GetConnectionString("DefaultConnection"));
             }
         }
-
-        public IEnumerable<CheckListViewModel> GetAll()
-        {
-            using (IDbConnection dbConnection = Connection)
-            {
-                dbConnection.Open();
-                var query = "SELECT * FROM Checklist";
-                var results = dbConnection.Query<CheckListViewModel>(query);
-
-                return results;
-            }
-        }
-        
+/*
+ * We made an GetOneRowById to get a specific row
+ * entry in the database, this is soo we can retrieve a specific filledoutChecklist
+ */  
         public CheckListViewModel GetOneRowById(int id)
         {
             using (IDbConnection dbConnection = Connection)
@@ -46,15 +34,10 @@ namespace bacit_dotnet.MVC.Repositories
                 return dbConnection.QuerySingleOrDefault<CheckListViewModel>(query, new { Id = id });
             }
         }
-        
-        public IEnumerable<CheckListViewModel> GetSomeOrderInfo()
-        {
-            using (IDbConnection dbConnection = Connection)
-            {
-                dbConnection.Open();
-                return dbConnection.Query<CheckListViewModel>("SELECT ChecklistId, Sign, Freeform, CompletionDate FROM Checklist");
-            }
-        }
+/*
+ * We made an GetRelevantData to get a specific parameters as
+ * - and int, this is soo we can query the database for a specific ChecklistId that is type int
+ */
         
         public CheckListViewModel GetRelevantData(int id)
         {
@@ -65,7 +48,9 @@ namespace bacit_dotnet.MVC.Repositories
                 return dbConnection.QuerySingleOrDefault<CheckListViewModel>(query, new { Id = id });
             }
         }
-/* Modifisert Insert metoden fra void til int så øyeblikkelige opprettet instanser kan ses */
+/* Insert method that returns the inserted int Id to the viewmodel
+*The function makes the checklist visible after its filled out 
+*/
         public int Insert(CheckListViewModel checkListViewModel)
         {
             using (IDbConnection dbConnection = Connection)

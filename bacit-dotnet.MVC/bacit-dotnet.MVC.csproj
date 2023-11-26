@@ -20,6 +20,7 @@
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 		<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.5" />
+		<PackageReference Include="Moq" Version="4.20.69" />
 		<PackageReference Include="MySqlConnector" Version="2.2.7" />
 		<PackageReference Include="MySql.Data" Version="8.1.0" />
 		<PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="7.0.0" />
@@ -35,6 +36,8 @@
 	  <_ContentIncludedByDefault Remove="Views\ServiceOverview\Create.cshtml" />
 	  <_ContentIncludedByDefault Remove="Views\ServiceOverview\Index.cshtml" />
 	  <_ContentIncludedByDefault Remove="Views\Suggestions\index.cshtml" />
+	  <_ContentIncludedByDefault Remove="Views\AppRoles\Create.cshtml" />
+	  <_ContentIncludedByDefault Remove="Views\AppRoles\Index.cshtml" />
 	</ItemGroup>
 
 </Project>
