@@ -81,8 +81,8 @@ namespace bacit_dotnet.MVC.Repositories
                           "@WinchWiringCheck, @RadioCheck, @ButtonBoxCheck, @PressureSettings, " +
                           "@FunctionTest, @TractionForceKN, @BrakeForceKN, @Sign, @Freeform, @CompletionDate); " +
                           "SELECT LAST_INSERT_ID()";
-// Use ExecuteScalar to return the newly inserted int.
-// The checklistviewmodel provides the necessary parameter
+// We use ExecuteScalar command to return the newly inserted int.
+// The checklistviewmodel provides the necessary parameter for Id
                 int insertedId = dbConnection.ExecuteScalar<int>(sql, checkListViewModel);
                 return insertedId;
             }
