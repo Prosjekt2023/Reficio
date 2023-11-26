@@ -58,7 +58,8 @@ namespace bacit_dotnet.MVC.Repositories
             }
         }
 /*
- * The sql commandss returns the Id after insertion by SELECT LAST_INSERT
+ *The sql commands returns the Id after insertion by SELECT LAST_INSERT
+ * We use the parameters from our model, checklist and database
  *The function makes the checklist visible after its filled out
 */
         public int Insert(CheckListViewModel checkListViewModel)
@@ -81,7 +82,7 @@ namespace bacit_dotnet.MVC.Repositories
                           "@FunctionTest, @TractionForceKN, @BrakeForceKN, @Sign, @Freeform, @CompletionDate); " +
                           "SELECT LAST_INSERT_ID()";
 // Use ExecuteScalar to return the newly inserted int.
-// The checklist to provide the necessary parameter
+// The checklistviewmodel provides the necessary parameter
                 int insertedId = dbConnection.ExecuteScalar<int>(sql, checkListViewModel);
                 return insertedId;
             }
