@@ -12,7 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sjekkliste</title>
     <link rel="stylesheet" href="/css/CheckList.css"/>
-    
+
 </head>
 <body>
 
@@ -24,456 +24,461 @@
 *CheckListController is specified with the asp-controller attribute
 *Hidden fields input type="hidden" asp-for= are used to bind these inputs to the corresponding properties in the CheckListViewModel -->
 <form asp-controller="CheckList" asp-action="Index" method="post">
-            @Html.ValidationSummary()
-          @Html.AntiForgeryToken()
- <table>
-      <tr>
-        <th>Kategorier</th>
-        <th>Sjekkpunkter</th>
-        <th>OK</th>
-        <th>Bør skiftes</th>
-        <th>Defekt</th>
-      </tr>
-        <tr>
-            <td rowspan="8">Mekanisk</td> <!--Mekanisk-->
-            <td>Sjekk clutchcheck lameller for slitasje</td>
-            <td>
-                <input type="radio" id="OK" name="Clutchcheck" value="OK" />
-                <label for="OK"></label>
-            </td>
-            <td>
-                <input type="radio" id="Bør_skiftes" name="Clutchcheck" value="bør_skiftes" />
-                <label for="bør_skiftes"></label>
-            </td>
-            <td>
-                <input type="radio" id="Defekt" name="Clutchcheck" value="Defekt"/>
-                <label for="Defekt"></label>
-                <input type="hidden" asp-for="ClutchCheck" />
-            </td>
-        </tr>
-        <tr>
-            <td>Sjekk bremser. Bånd/pal</td>
-            <td>
-                <input type="radio" id="OK" name="BrakeCheck" value="OK" />
-                <label for="OK"></label>
-            </td>
-            <td>
-                <input type="radio" id="Bør_skiftes" name="BrakeCheck" value="bør_skiftes" />
-                <label for="bør_skiftes"></label>
-            </td>
-            <td>
-                <input type="radio" id="Defekt" name="BrakeCheck" value="Defekt"/>
-                <label for="Defekt"></label>  
-                <input type="hidden" asp-for="BrakeCheck" />
-            </td>
-            
-        </tr>
-        <tr>
-            <td>Sjekk lager for trommel</td>
-            <td>
-                <input type="radio" id="OK" name="DrumBearingCheck" value="OK" />
-                <label for="OK"></label>
-            </td>
-            
-            <td>
-                <input type="radio" id="Bør_skiftes" name="DrumBearingCheck" value="bør_skiftes" />
-                <label for="bør_skiftes"></label>
-            </td>
-            
-            <td>
-                <input type="radio" id="Defekt" name="DrumBearingCheck" value="Defekt"/>
-                <label for="Defekt"></label>      
-                <input type="hidden" asp-for="DrumBearingCheck" />
-            </td>
-            
-        </tr>
-        <tr>
-            <td>Sjekk PTO og opplagring</td>
-            <td>
-                <input type="radio" id="OK" name="PTOcHECK" value="OK" />
-                <label for="OK"></label>
-            </td>
-            
-            <td>
-                <input type="radio" id="Bør_skiftes" name="PTOcHECK" value="bør_skiftes" />
-                <label for="bør_skiftes"></label>
-            </td>
-            
-            <td>
-                <input type="radio" id="Defekt" name="PTOcHECK" value="Defekt"/>
-                <label for="Defekt"></label>    
-                <input type="hidden" asp-for="PTOCheck" />
-            </td>
-            
-        </tr>
-        <tr>
-            <td>Sjekk kjedestrammer</td>
-            <td>
-                <input type="radio" id="OK" name="ChainTensionCheck" value="OK" />
-                <label for="OK"></label>
-            </td>
-            
-            <td>
-                <input type="radio" id="Bør_skiftes" name="ChainTensionCheck" value="bør_skiftes" />
-                <label for="bør_skiftes"></label>
-            </td>
-            
-            <td>
-                <input type="radio" id="Defekt" name="ChainTensionCheck" value="Defekt"/>
-                <label for="Defekt"></label>   
-                <input type="hidden" asp-for="ChainTensionCheck" />
-            </td>
-            
-        </tr>
-        <tr>
-            <td>Sjekk wire</td>
-            <td>
-                <input type="radio" id="OK" name="WireCheck" value="OK" />
-                <label for="OK"></label>
-            </td>
-            
-            <td>
-                <input type="radio" id="Bør_skiftes" name="WireCheck" value="bør_skiftes" />
-                <label for="bør_skiftes"></label>
-            </td>
-            
-            <td>
-                <input type="radio" id="Defekt" name="WireCheck" value="Defekt"/>
-                <label for="Defekt"></label>    
-                <input type="hidden" asp-for="WireCheck" />
-            </td>
-            
-        </tr>
-        <tr>
-            <td>Sjekk pinion lager</td>
-            <td>
-                <input type="radio" id="OK" name="PinionBearingCheck" value="OK" />
-                <label for="OK"></label>
-            </td>
-            
-            <td>
-                <input type="radio" id="Bør_skiftes" name="PinionBearingCheck" value="bør_skiftes" />
-                <label for="bør_skiftes"></label>
-            </td>
-            
-            <td>
-                <input type="radio" id="Defekt" name="PinionBearingCheck" value="Defekt"/>
-                <label for="Defekt"></label>      
-                <input type="hidden" asp-for="PinionBearingCheck" />
-            </td>
-            
-        </tr>
-        <tr>
-            <td>Sjekk kile på kjedehjul</td>
-            <td>
-                <input type="radio" id="OK" name="ChainWheelKeyCheck" value="OK" />
-                <label for="OK"></label>
-            </td>
-            
-            <td>
-                <input type="radio" id="Bør_skiftes" name="ChainWheelKeyCheck" value="bør_skiftes" />
-                <label for="bør_skiftes"></label>
-            </td>
-            
-            <td>
-                <input type="radio" id="Defekt" name="ChainWheelKeyCheck" value="Defekt"/>
-                <label for="Defekt"></label>   
-                 <input type="hidden" asp-for="ChainWheelKeyCheck" />
-            </td>
-            
-        </tr>
-        
-        <tr>
-            <td rowspan="7">Hydraulisk</td>
-            <td>Sjekk hydraulikk sylinder for lekkasje</td>
-            <td>
-                <input type="radio" id="OK" name="HydraulicCylinderCheck" value="OK" />
-                <label for="OK"></label>
-            </td>
-            
-            <td>
-                <input type="radio" id="Bør_skiftes" name="HydraulicCylinderCheck" value="bør_skiftes" />
-                <label for="bør_skiftes"></label>
-            </td>
-            
-            <td>
-                <input type="radio" id="Defekt" name="HydraulicCylinderCheck" value="Defekt"/>
-                <label for="Defekt"></label>       
-                 <input type="hidden" asp-for="HydraulicCylinderCheck" />
-            </td>
-            
-        </tr>
-        <tr>
-            <td>Sjekk slanger for skader og lekkasje</td>
-            <td>
-                <input type="radio" id="OK" name="HoseCheck" value="OK" />
-                <label for="OK"></label>
-            </td>
-            
-            <td>
-                <input type="radio" id="Bør_skiftes" name="HoseCheck" value="bør_skiftes" />
-                <label for="bør_skiftes"></label>
-            </td>
-            
-            <td>
-                <input type="radio" id="Defekt" name="HoseCheck" value="Defekt"/>
-                <label for="Defekt"></label>       
-                 <input type="hidden" asp-for="HoseCheck" />
-            </td>
-            
-        </tr>
-        <tr>
-            <td>Test hydraulikkblokk i testbenk</td>
-            <td>
-                <input type="radio" id="OK" name="HydraulicBlockTest" value="OK" />
-                <label for="OK"></label>
-            </td>
-            
-            <td>
-                <input type="radio" id="Bør_skiftes" name="HydraulicBlockTest" value="bør_skiftes" />
-                <label for="bør_skiftes"></label>
-            </td>
-            
-            <td>
-                <input type="radio" id="Defekt" name="HydraulicBlockTest" value="Defekt"/>
-                <label for="Defekt"></label>  
-                 <input type="hidden" asp-for="HydraulicBlockTest" />
-            </td>
-            
-        </tr>
-        <tr>
-            <td>Skift olje i tank</td>
-            <td>
-                <input type="radio" id="OK" name="TankOilChange" value="OK" />
-                <label for="OK"></label>
-            </td>
-            
-            <td>
-                <input type="radio" id="Bør_skiftes" name="TankOilChange" value="bør_skiftes" />
-                <label for="bør_skiftes"></label>
-            </td>
-            
-            <td>
-                <input type="radio" id="Defekt" name="TankOilChange" value="Defekt"/>
-                <label for="Defekt"></label>       
-                 <input type="hidden" asp-for="TankOilChange" />
-            </td>
-            
-        </tr>
-        <tr>
-            <td>Skift olje på gir boks</td>
-            <td>
-                <input type="radio" id="OK" name="GearboxOilChange" value="OK" />
-                <label for="OK"></label>
-            </td>
-            
-            <td>
-                <input type="radio" id="Bør_skiftes" name="GearboxOilChange" value="bør_skiftes" />
-                <label for="bør_skiftes"></label>
-            </td>
-            
-            <td>
-                <input type="radio" id="Defekt" name="GearboxOilChange" value="Defekt"/>
-                <label for="Defekt"></label>     
-                 <input type="hidden" asp-for="GearboxOilChange" />
-            </td>
-            
-        </tr>
-        <tr>
-            <td>Sjekk ringsylinder åpne og skift tetninger</td>
-            <td>
-                <input type="radio" id="OK" name="RingCylinderSealsCheck" value="OK" />
-                <label for="OK"></label>
-            </td>
-            
-            <td>
-                <input type="radio" id="Bør_skiftes" name="RingCylinderSealsCheck" value="bør_skiftes" />
-                <label for="bør_skiftes"></label>
-            </td>
-            
-            <td>
-                <input type="radio" id="Defekt" name="RingCylinderSealsCheck" value="Defekt"/>
-                <label for="Defekt"></label>        
-                 <input type="hidden" asp-for="RingCylinderSealsCheck" />
-            </td>
-            
-        </tr>
-        <tr>
-            <td>Sjekk bremse sylinder åpne og skift tetninger</td>
-            <td>
-                <input type="radio" id="OK" name="BrakeCylinderSealsCheck" value="OK" />
-                <label for="OK"></label>
-            </td>
-            
-            <td>
-                <input type="radio" id="Bør_skiftes" name="BrakeCylinderSealsCheck" value="bør_skiftes" />
-                <label for="bør_skiftes"></label>
-            </td>
-            
-            <td>
-                <input type="radio" id="Defekt" name="BrakeCylinderSealsCheck" value="Defekt"/>
-                <label for="Defekt"></label>    
-                 <input type="hidden" asp-for="BrakeCylinderSealsCheck" />
-            </td>
-            
-        </tr>
-        <tr>
-            <td rowspan="3">Elektro</td>
-            <td>Sjekk ledningsnett på vinsj</td>
-            <td>
-                <input type="radio" id="OK" name="WinchWiringCheck" value="OK" />
-                <label for="OK"></label>
-            </td>
-            
-            <td>
-                <input type="radio" id="Bør_skiftes" name="WinchWiringCheck" value="bør_skiftes" />
-                <label for="bør_skiftes"></label>
-            </td>
-            
-            <td>
-                <input type="radio" id="Defekt" name="WinchWiringCheck" value="Defekt"/>
-                <label for="Defekt"></label>        
-                <input type="hidden" asp-for="WinchWiringCheck" />
-            </td>
-            
-        </tr>
-        <tr>
-            <td>Sjekk og test radio</td>
-            <td>
-                <input type="radio" id="OK" name="RadioCheck" value="OK" />
-                <label for="OK"></label>
-            </td>
-            
-            <td>
-                <input type="radio" id="Bør_skiftes" name="RadioCheck" value="bør_skiftes" />
-                <label for="bør_skiftes"></label>
-            </td>
-            
-            <td>
-                <input type="radio" id="Defekt" name="RadioCheck" value="Defekt"/>
-                <label for="Defekt"></label>        
-                 <input type="hidden" asp-for="RadioCheck" />
-            </td>
-            
-        </tr>
-        <tr>
-            <td>Sjekk og test knappekasse</td>
-            <td>
-                <input type="radio" id="OK" name="ButtonBoxCheck" value="OK" />
-                <label for="OK"></label>
-            </td>
-            
-            <td>
-                <input type="radio" id="Bør_skiftes" name="ButtonBoxCheck" value="bør_skiftes" />
-                <label for="bør_skiftes"></label>
-            </td>
-            
-            <td>
-                <input type="radio" id="Defekt" name="ButtonBoxCheck" value="Defekt"/>
-                <label for="Defekt"></label>     
-                   <input type="hidden" asp-for="ButtonBoxCheck" />
-            </td>
-            
-        </tr>
-        <tr>
-            <td rowspan="1">Trykk settinger</td>
-            <td>xx- bar</td> <!-- Spør nøsted om, og endre -->
-            <td>
-                <input type="radio" id="OK" name="PressureSettings" value="OK" /> 
-                <label for="OK"></label>
-            </td>
-            
-            <td>
-                <input type="radio" id="Bør_skiftes" name="PressureSettings" value="bør_skiftes" />
-                <label for="bør_skiftes"></label>
-            </td>
-            
-            <td>
-                <input type="radio" id="Defekt" name="PressureSettings" value="Defekt"/>
-                <label for="Defekt"></label>   
-                   <input type="hidden" asp-for="PressureSettings" />
-            </td>
-        </tr>
-        <tr>
-            <td rowspan="3">Funksjonstest</td>
-            <td>Test vinsj og kjør alle funksjoner</td>
-            <td>
-                <input type="radio" id="OK" name="FunctionTest" value="OK" />
-                <label for="OK"></label>
-            </td>
-            
-            <td>
-                <input type="radio" id="Bør_skiftes" name="FunctionTest" value="bør_skiftes" />
-                <label for="bør_skiftes"></label>
-            </td>
-            
-            <td>
-                <input type="radio" id="Defekt" name="FunctionTest" value="Defekt"/>
-                <label for="Defekt"></label>   
-                   <input type="hidden" asp-for="FunctionTest" />
-            </td>
-            
-        </tr>
-        <tr>
-            <td>Trekkraft KN</td>
-            <td>
-                <input type="radio" id="OK" name="TractionForceKN" value="OK" />
-                <label for="OK"></label>
-            </td>
-            
-            <td>
-                <input type="radio" id="Bør_skiftes" name="TractionForceKN" value="bør_skiftes" />
-                <label for="bør_skiftes"></label>
-            </td>
-            
-            <td>
-                <input type="radio" id="Defekt" name="TractionForceKN" value="Defekt"/>
-                <label for="Defekt"></label>  
-                   <input type="hidden" asp-for="TractionForceKN" />
-            </td>
-            
-        </tr>
-        <tr>
-            <td>Bremsekraft KN</td>
-            <td>
-                <input type="radio" id="OK" name="BrakeForceKN" value="OK" />
-                <label for="OK"></label>
-            </td>
-            
-            <td>
-                <input type="radio" id="Bør_skiftes" name="BrakeForceKN" value="bør_skiftes" />
-                <label for="bør_skiftes"></label>
-            </td>
-            
-            <td>
-                <input type="radio" id="Defekt" name="BrakeForceKN" value="Defekt"/>
-                <label for="Defekt"></label>     
-                <input type="hidden" asp-for="BrakeForceKN" />
-            </td>
-            
-        </tr>
-    </table>
+<!-- Anti-forgery token for security -->
+@Html.ValidationSummary()
+@Html.AntiForgeryToken()
+<table>
+<tr>
+    <th>Kategorier</th>
+    <th>Sjekkpunkter</th>
+    <th>OK</th>
+    <th>Bør skiftes</th>
+    <th>Defekt</th>
+</tr>
+<!-- Structure of the checklist consists of three optional radiobuttons
+-for each field to be checked -->
+<tr>
+    <td rowspan="8">Mekanisk</td> <!--Mekanisk-->
+    <td>Sjekk clutchcheck lameller for slitasje</td>
+    <td>
+        <input type="radio" id="OK" name="Clutchcheck" value="OK"/>
+        <label for="OK"></label>
+    </td>
+    <td>
+        <input type="radio" id="Bør_skiftes" name="Clutchcheck" value="bør_skiftes"/>
+        <label for="bør_skiftes"></label>
+    </td>
+    <td>
+        <input type="radio" id="Defekt" name="Clutchcheck" value="Defekt"/>
+        <label for="Defekt"></label>
+        <input type="hidden" asp-for="ClutchCheck"/>
+    </td>
+</tr>
+<tr>
+    <td>Sjekk bremser. Bånd/pal</td>
+    <td>
+        <input type="radio" id="OK" name="BrakeCheck" value="OK"/>
+        <label for="OK"></label>
+    </td>
+    <td>
+        <input type="radio" id="Bør_skiftes" name="BrakeCheck" value="bør_skiftes"/>
+        <label for="bør_skiftes"></label>
+    </td>
+    <td>
+        <input type="radio" id="Defekt" name="BrakeCheck" value="Defekt"/>
+        <label for="Defekt"></label>
+        <input type="hidden" asp-for="BrakeCheck"/>
+    </td>
 
-    <br>
-    <label for="Freeform">Kommentar:</label>
-    <br> 
-    <textarea id="Freeform" name="Freeform" rows="4" cols="127"></textarea>
-    <br>
-    <br>
-    <label for="Sign">Signatur:</label>
-    <br>
-    <input type="text" id="Sign" name="Sign">
-    <br>
-    <br>
-   <div class="form-group">
-       <label asp-for="CompletionDate" class="control-label" style="width: 200px;">Ferdigstilt dato:</label>
-       <div class="col-md-2">
-           <input asp-for="CompletionDate" class="form-control" type="date" style="width: 200px;">
-           <span asp-validation-for="CompletionDate" class="text-danger"></span>
-       </div>
-   </div>
-    <br><br/>
-    <button type="submit" class="btn btn-primary">Send inn</button>
+</tr>
+<tr>
+    <td>Sjekk lager for trommel</td>
+    <td>
+        <input type="radio" id="OK" name="DrumBearingCheck" value="OK"/>
+        <label for="OK"></label>
+    </td>
+
+    <td>
+        <input type="radio" id="Bør_skiftes" name="DrumBearingCheck" value="bør_skiftes"/>
+        <label for="bør_skiftes"></label>
+    </td>
+
+    <td>
+        <input type="radio" id="Defekt" name="DrumBearingCheck" value="Defekt"/>
+        <label for="Defekt"></label>
+        <input type="hidden" asp-for="DrumBearingCheck"/>
+    </td>
+
+</tr>
+<tr>
+    <td>Sjekk PTO og opplagring</td>
+    <td>
+        <input type="radio" id="OK" name="PTOcHECK" value="OK"/>
+        <label for="OK"></label>
+    </td>
+
+    <td>
+        <input type="radio" id="Bør_skiftes" name="PTOcHECK" value="bør_skiftes"/>
+        <label for="bør_skiftes"></label>
+    </td>
+
+    <td>
+        <input type="radio" id="Defekt" name="PTOcHECK" value="Defekt"/>
+        <label for="Defekt"></label>
+        <input type="hidden" asp-for="PTOCheck"/>
+    </td>
+
+</tr>
+<tr>
+    <td>Sjekk kjedestrammer</td>
+    <td>
+        <input type="radio" id="OK" name="ChainTensionCheck" value="OK"/>
+        <label for="OK"></label>
+    </td>
+
+    <td>
+        <input type="radio" id="Bør_skiftes" name="ChainTensionCheck" value="bør_skiftes"/>
+        <label for="bør_skiftes"></label>
+    </td>
+
+    <td>
+        <input type="radio" id="Defekt" name="ChainTensionCheck" value="Defekt"/>
+        <label for="Defekt"></label>
+        <input type="hidden" asp-for="ChainTensionCheck"/>
+    </td>
+
+</tr>
+<tr>
+    <td>Sjekk wire</td>
+    <td>
+        <input type="radio" id="OK" name="WireCheck" value="OK"/>
+        <label for="OK"></label>
+    </td>
+
+    <td>
+        <input type="radio" id="Bør_skiftes" name="WireCheck" value="bør_skiftes"/>
+        <label for="bør_skiftes"></label>
+    </td>
+
+    <td>
+        <input type="radio" id="Defekt" name="WireCheck" value="Defekt"/>
+        <label for="Defekt"></label>
+        <input type="hidden" asp-for="WireCheck"/>
+    </td>
+
+</tr>
+<tr>
+    <td>Sjekk pinion lager</td>
+    <td>
+        <input type="radio" id="OK" name="PinionBearingCheck" value="OK"/>
+        <label for="OK"></label>
+    </td>
+
+    <td>
+        <input type="radio" id="Bør_skiftes" name="PinionBearingCheck" value="bør_skiftes"/>
+        <label for="bør_skiftes"></label>
+    </td>
+
+    <td>
+        <input type="radio" id="Defekt" name="PinionBearingCheck" value="Defekt"/>
+        <label for="Defekt"></label>
+        <input type="hidden" asp-for="PinionBearingCheck"/>
+    </td>
+
+</tr>
+<tr>
+    <td>Sjekk kile på kjedehjul</td>
+    <td>
+        <input type="radio" id="OK" name="ChainWheelKeyCheck" value="OK"/>
+        <label for="OK"></label>
+    </td>
+
+    <td>
+        <input type="radio" id="Bør_skiftes" name="ChainWheelKeyCheck" value="bør_skiftes"/>
+        <label for="bør_skiftes"></label>
+    </td>
+
+    <td>
+        <input type="radio" id="Defekt" name="ChainWheelKeyCheck" value="Defekt"/>
+        <label for="Defekt"></label>
+        <input type="hidden" asp-for="ChainWheelKeyCheck"/>
+    </td>
+
+</tr>
+
+<tr>
+    <td rowspan="7">Hydraulisk</td>
+    <td>Sjekk hydraulikk sylinder for lekkasje</td>
+    <td>
+        <input type="radio" id="OK" name="HydraulicCylinderCheck" value="OK"/>
+        <label for="OK"></label>
+    </td>
+
+    <td>
+        <input type="radio" id="Bør_skiftes" name="HydraulicCylinderCheck" value="bør_skiftes"/>
+        <label for="bør_skiftes"></label>
+    </td>
+
+    <td>
+        <input type="radio" id="Defekt" name="HydraulicCylinderCheck" value="Defekt"/>
+        <label for="Defekt"></label>
+        <input type="hidden" asp-for="HydraulicCylinderCheck"/>
+    </td>
+
+</tr>
+<tr>
+    <td>Sjekk slanger for skader og lekkasje</td>
+    <td>
+        <input type="radio" id="OK" name="HoseCheck" value="OK"/>
+        <label for="OK"></label>
+    </td>
+
+    <td>
+        <input type="radio" id="Bør_skiftes" name="HoseCheck" value="bør_skiftes"/>
+        <label for="bør_skiftes"></label>
+    </td>
+
+    <td>
+        <input type="radio" id="Defekt" name="HoseCheck" value="Defekt"/>
+        <label for="Defekt"></label>
+        <input type="hidden" asp-for="HoseCheck"/>
+    </td>
+
+</tr>
+<tr>
+    <td>Test hydraulikkblokk i testbenk</td>
+    <td>
+        <input type="radio" id="OK" name="HydraulicBlockTest" value="OK"/>
+        <label for="OK"></label>
+    </td>
+
+    <td>
+        <input type="radio" id="Bør_skiftes" name="HydraulicBlockTest" value="bør_skiftes"/>
+        <label for="bør_skiftes"></label>
+    </td>
+
+    <td>
+        <input type="radio" id="Defekt" name="HydraulicBlockTest" value="Defekt"/>
+        <label for="Defekt"></label>
+        <input type="hidden" asp-for="HydraulicBlockTest"/>
+    </td>
+
+</tr>
+<tr>
+    <td>Skift olje i tank</td>
+    <td>
+        <input type="radio" id="OK" name="TankOilChange" value="OK"/>
+        <label for="OK"></label>
+    </td>
+
+    <td>
+        <input type="radio" id="Bør_skiftes" name="TankOilChange" value="bør_skiftes"/>
+        <label for="bør_skiftes"></label>
+    </td>
+
+    <td>
+        <input type="radio" id="Defekt" name="TankOilChange" value="Defekt"/>
+        <label for="Defekt"></label>
+        <input type="hidden" asp-for="TankOilChange"/>
+    </td>
+
+</tr>
+<tr>
+    <td>Skift olje på gir boks</td>
+    <td>
+        <input type="radio" id="OK" name="GearboxOilChange" value="OK"/>
+        <label for="OK"></label>
+    </td>
+
+    <td>
+        <input type="radio" id="Bør_skiftes" name="GearboxOilChange" value="bør_skiftes"/>
+        <label for="bør_skiftes"></label>
+    </td>
+
+    <td>
+        <input type="radio" id="Defekt" name="GearboxOilChange" value="Defekt"/>
+        <label for="Defekt"></label>
+        <input type="hidden" asp-for="GearboxOilChange"/>
+    </td>
+
+</tr>
+<tr>
+    <td>Sjekk ringsylinder åpne og skift tetninger</td>
+    <td>
+        <input type="radio" id="OK" name="RingCylinderSealsCheck" value="OK"/>
+        <label for="OK"></label>
+    </td>
+
+    <td>
+        <input type="radio" id="Bør_skiftes" name="RingCylinderSealsCheck" value="bør_skiftes"/>
+        <label for="bør_skiftes"></label>
+    </td>
+
+    <td>
+        <input type="radio" id="Defekt" name="RingCylinderSealsCheck" value="Defekt"/>
+        <label for="Defekt"></label>
+        <input type="hidden" asp-for="RingCylinderSealsCheck"/>
+    </td>
+
+</tr>
+<tr>
+    <td>Sjekk bremse sylinder åpne og skift tetninger</td>
+    <td>
+        <input type="radio" id="OK" name="BrakeCylinderSealsCheck" value="OK"/>
+        <label for="OK"></label>
+    </td>
+
+    <td>
+        <input type="radio" id="Bør_skiftes" name="BrakeCylinderSealsCheck" value="bør_skiftes"/>
+        <label for="bør_skiftes"></label>
+    </td>
+
+    <td>
+        <input type="radio" id="Defekt" name="BrakeCylinderSealsCheck" value="Defekt"/>
+        <label for="Defekt"></label>
+        <input type="hidden" asp-for="BrakeCylinderSealsCheck"/>
+    </td>
+
+</tr>
+<tr>
+    <td rowspan="3">Elektro</td>
+    <td>Sjekk ledningsnett på vinsj</td>
+    <td>
+        <input type="radio" id="OK" name="WinchWiringCheck" value="OK"/>
+        <label for="OK"></label>
+    </td>
+
+    <td>
+        <input type="radio" id="Bør_skiftes" name="WinchWiringCheck" value="bør_skiftes"/>
+        <label for="bør_skiftes"></label>
+    </td>
+
+    <td>
+        <input type="radio" id="Defekt" name="WinchWiringCheck" value="Defekt"/>
+        <label for="Defekt"></label>
+        <input type="hidden" asp-for="WinchWiringCheck"/>
+    </td>
+
+</tr>
+<tr>
+    <td>Sjekk og test radio</td>
+    <td>
+        <input type="radio" id="OK" name="RadioCheck" value="OK"/>
+        <label for="OK"></label>
+    </td>
+
+    <td>
+        <input type="radio" id="Bør_skiftes" name="RadioCheck" value="bør_skiftes"/>
+        <label for="bør_skiftes"></label>
+    </td>
+
+    <td>
+        <input type="radio" id="Defekt" name="RadioCheck" value="Defekt"/>
+        <label for="Defekt"></label>
+        <input type="hidden" asp-for="RadioCheck"/>
+    </td>
+
+</tr>
+<tr>
+    <td>Sjekk og test knappekasse</td>
+    <td>
+        <input type="radio" id="OK" name="ButtonBoxCheck" value="OK"/>
+        <label for="OK"></label>
+    </td>
+
+    <td>
+        <input type="radio" id="Bør_skiftes" name="ButtonBoxCheck" value="bør_skiftes"/>
+        <label for="bør_skiftes"></label>
+    </td>
+
+    <td>
+        <input type="radio" id="Defekt" name="ButtonBoxCheck" value="Defekt"/>
+        <label for="Defekt"></label>
+        <input type="hidden" asp-for="ButtonBoxCheck"/>
+    </td>
+
+</tr>
+<tr>
+    <td rowspan="1">Trykk settinger</td>
+    <td>xx- bar</td> <!-- Spør nøsted om, og endre -->
+    <td>
+        <input type="radio" id="OK" name="PressureSettings" value="OK"/>
+        <label for="OK"></label>
+    </td>
+
+    <td>
+        <input type="radio" id="Bør_skiftes" name="PressureSettings" value="bør_skiftes"/>
+        <label for="bør_skiftes"></label>
+    </td>
+
+    <td>
+        <input type="radio" id="Defekt" name="PressureSettings" value="Defekt"/>
+        <label for="Defekt"></label>
+        <input type="hidden" asp-for="PressureSettings"/>
+    </td>
+</tr>
+<tr>
+    <td rowspan="3">Funksjonstest</td>
+    <td>Test vinsj og kjør alle funksjoner</td>
+    <td>
+        <input type="radio" id="OK" name="FunctionTest" value="OK"/>
+        <label for="OK"></label>
+    </td>
+
+    <td>
+        <input type="radio" id="Bør_skiftes" name="FunctionTest" value="bør_skiftes"/>
+        <label for="bør_skiftes"></label>
+    </td>
+
+    <td>
+        <input type="radio" id="Defekt" name="FunctionTest" value="Defekt"/>
+        <label for="Defekt"></label>
+        <input type="hidden" asp-for="FunctionTest"/>
+    </td>
+
+</tr>
+<tr>
+    <td>Trekkraft KN</td>
+    <td>
+        <input type="radio" id="OK" name="TractionForceKN" value="OK"/>
+        <label for="OK"></label>
+    </td>
+
+    <td>
+        <input type="radio" id="Bør_skiftes" name="TractionForceKN" value="bør_skiftes"/>
+        <label for="bør_skiftes"></label>
+    </td>
+
+    <td>
+        <input type="radio" id="Defekt" name="TractionForceKN" value="Defekt"/>
+        <label for="Defekt"></label>
+        <input type="hidden" asp-for="TractionForceKN"/>
+    </td>
+
+</tr>
+<tr>
+    <td>Bremsekraft KN</td>
+    <td>
+        <input type="radio" id="OK" name="BrakeForceKN" value="OK"/>
+        <label for="OK"></label>
+    </td>
+
+    <td>
+        <input type="radio" id="Bør_skiftes" name="BrakeForceKN" value="bør_skiftes"/>
+        <label for="bør_skiftes"></label>
+    </td>
+
+    <td>
+        <input type="radio" id="Defekt" name="BrakeForceKN" value="Defekt"/>
+        <label for="Defekt"></label>
+        <input type="hidden" asp-for="BrakeForceKN"/>
+    </td>
+
+</tr>
+</table>
+
+<br>
+<label for="Freeform">Kommentar:</label>
+<br>
+<textarea id="Freeform" name="Freeform" rows="4" cols="127"></textarea>
+<br>
+<br>
+<label for="Sign">Signatur:</label>
+<br>
+<input type="text" id="Sign" name="Sign">
+<br>
+<br>
+<div class="form-group">
+    <label asp-for="CompletionDate" class="control-label">Ferdigstilt dato:</label>
+    <div class="col-md-2">
+        <input asp-for="CompletionDate" class="form-control" type="date">
+        <span asp-validation-for="CompletionDate" class="text-danger"></span>
+    </div>
+</div>
+<br>
+<!-- Submit button -->
+
+<button type="submit" class="btn btn-primary">Send inn</button>
 </form>
 </body>
 </html>
