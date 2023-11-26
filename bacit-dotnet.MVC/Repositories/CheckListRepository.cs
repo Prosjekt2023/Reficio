@@ -6,8 +6,8 @@ using bacit_dotnet.MVC.Models.Composite;
 namespace bacit_dotnet.MVC.Repositories
 {
     /*
-     *Use public soo other parts of the repository can utilize the repository
-     * -this is self explanatory since the repository is central to all the controller, model and view components.
+     *Use public soo other parts of the repository can utilize the repository,
+     *this is self explanatory since the repository is central to all the controller, model and view components.
      *Implementing an interface with specific methods to simplify data layers
      */
     public class CheckListRepository : ICheckListRepository
