@@ -1,5 +1,10 @@
 ![Nøsted logo](https://raw.githubusercontent.com/Prosjekt2023/Reficio/main/bacit-dotnet.MVC/wwwroot/nlogo.png)
 
+## Før du starter HUSK Docker-Desktop-installasjon:
+* Besøk den offisielle Docker-nettsiden.
+* For mer instruksjoner besøk: https://www.docker.com/products/docker-desktop/
+* Last ned og følg veiledning.
+
 ## Før du kjører programmet:
 * Lag en database i MariaDB
     * Du kan installere lokalt i Docker. Se veiledningen 'MariaDb database som Docker container'.
