@@ -16,7 +16,7 @@ namespace bacit_dotnet.MVC.Repositories
         }
         public void Delete(string email)
         {
-            var sql = $"delete from users where email = '{email}'";
+            var sql = $"delete from Users where email = '{email}'";
             RunCommand(sql);
         }
 
@@ -24,7 +24,7 @@ namespace bacit_dotnet.MVC.Repositories
         {
             using (var connection = sqlConnector.GetDbConnection())
             {
-                var reader = ReadData("Select id, Name, Email, Password,EmployeeNumber,Team, Role from users;", connection);
+                var reader = ReadData("Select id, Name, Email from Users;", connection);
                 var users = new List<UserEntity>();
                 while (reader.Read())
                 {
@@ -57,7 +57,7 @@ namespace bacit_dotnet.MVC.Repositories
             var command = new MySqlCommand();
             command.CommandType = CommandType.Text;
 
-            var sql = $@"update users 
+            var sql = $@"update Users 
                                 set 
                                    Name = '{user.Name}', 
                                 where email = '{user.Email}';";
@@ -73,7 +73,7 @@ namespace bacit_dotnet.MVC.Repositories
                 throw new Exception("User already exists");
             }
 
-            var sql = $"insert into users(Name, Email) values('{user.Name}', '{user.Email}');";
+            var sql = $"insert into Users(Name, Email) values('{user.Name}', '{user.Email}');";
             RunCommand(sql);
         }
 
