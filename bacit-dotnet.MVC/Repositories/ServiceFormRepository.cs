@@ -1,78 +1,68 @@
-﻿using Dapper;
+﻿using System.Data;
+using bacit_dotnet.MVC.Models.Composite;
+using Dapper;
+using MySqlConnector;
 //using Microsoft.Extensions.Configuration;
 //using MySql.Data.MySqlClient;
-using MySqlConnector;
 //using System.Collections.Generic;
-using System.Data;
 //using System.Linq;
-using bacit_dotnet.MVC.Models.Composite;
 
 
-namespace bacit_dotnet.MVC.Repositories
+namespace bacit_dotnet.MVC.Repositories;
+
+public class ServiceFormRepository : IServiceFormRepository
 {
-    public class ServiceFormRepository : IServiceFormRepository
+    private readonly IConfiguration _config;
+
+    public ServiceFormRepository(IConfiguration config)
     {
-        private readonly IConfiguration _config;
+        _config = config;
+    }
 
-        public ServiceFormRepository(IConfiguration config)
-        {
-            _config = config;
-        }
+    public IDbConnection Connection => new MySqlConnection(_config.GetConnectionString("DefaultConnection"));
 
-        public IDbConnection Connection
+    public ServiceFormViewModel GetOneRowById(int id)
+    {
+        using (var dbConnection = Connection)
         {
-            get
-            {
-                return new MySqlConnection(_config.GetConnectionString("DefaultConnection"));
-            }
+            dbConnection.Open();
+            var query = "SELECT * FROM ServiceFormEntry WHERE ServiceFormId = @Id";
+            return dbConnection.QuerySingleOrDefault<ServiceFormViewModel>(query, new { Id = id });
         }
+    }
 
-        public IEnumerable<ServiceFormViewModel> GetAll()
-        {
-            using (IDbConnection dbConnection = Connection)
-            {
-                dbConnection.Open();
-                return dbConnection.Query<ServiceFormViewModel>("SELECT * FROM ServiceFormEntry");
-            }
-        }
 
-        public ServiceFormViewModel GetOneRowById(int id)
+    public IEnumerable<ServiceFormViewModel> GetSomeOrderInfo()
+    {
+        using (var dbConnection = Connection)
         {
-            using (IDbConnection dbConnection = Connection)
-            {
-                dbConnection.Open();
-                var query = "SELECT * FROM ServiceFormEntry WHERE ServiceFormId = @Id";
-                return dbConnection.QuerySingleOrDefault<ServiceFormViewModel>(query, new { Id = id });
-            }
+            dbConnection.Open();
+            return dbConnection.Query<ServiceFormViewModel>(
+                "SELECT ServiceFormId, Customer, DateReceived, OrderNumber FROM ServiceFormEntry");
         }
+    }
 
-        
-        public IEnumerable<ServiceFormViewModel> GetSomeOrderInfo()
+    public ServiceFormViewModel GetRelevantData(int id)
+    {
+        using (var dbConnection = Connection)
         {
-            using (IDbConnection dbConnection = Connection)
-            {
-                dbConnection.Open();
-                return dbConnection.Query<ServiceFormViewModel>("SELECT ServiceFormId, Customer, DateReceived, OrderNumber FROM ServiceFormEntry");
-            }
+            dbConnection.Open();
+            var query =
+                "SELECT ServiceFormId, OrderNumber, Customer, Email, Phone, Address, DateReceived FROM" +
+                " ServiceFormEntry WHERE ServiceFormId = @Id";
+            return dbConnection.QuerySingleOrDefault<ServiceFormViewModel>(query, new { Id = id });
         }
-        
-        public ServiceFormViewModel GetRelevantData(int id)
-        {
-            using (IDbConnection dbConnection = Connection)
-            {
-                dbConnection.Open();
-                var query = "SELECT ServiceFormId, OrderNumber, Customer, Email, Phone, Address, DateReceived FROM ServiceFormEntry WHERE ServiceFormId = @Id";
-                return dbConnection.QuerySingleOrDefault<ServiceFormViewModel>(query, new { Id = id });
-            }
-        }
+    }
 
-        public void Insert(ServiceFormViewModel serviceFormViewModel)
+    public void Insert(ServiceFormViewModel serviceFormViewModel)
+    {
+        using (var dbConnection = Connection)
         {
-            using (IDbConnection dbConnection = Connection)
-            {
-                dbConnection.Open();
-                dbConnection.Execute("INSERT INTO ServiceFormEntry (ServiceFormId, Customer, DateReceived, Address, Email, OrderNumber, Phone, ProductType, Year, Service, Warranty, SerialNumber, Agreement, RepairDescription, UsedParts, WorkHours, CompletionDate,ReplacedPartsReturned, ShippingMethod, CustomerSignature, RepairerSignature) VALUES (@ServiceFormId, @Customer, @DateReceived, @Address, @Email, @OrderNumber, @Phone, @ProductType, @Year, @Service, @Warranty, @SerialNumber, @Agreement, @RepairDescription, @UsedParts, @WorkHours, @CompletionDate, @ReplacedPartsReturned, @ShippingMethod, @CustomerSignature, @RepairerSignature)", serviceFormViewModel);
-            }
+            dbConnection.Open();
+            dbConnection.Execute(
+                "INSERT INTO ServiceFormEntry (ServiceFormId, Customer, DateReceived, Address, Email, OrderNumber, Phone, ProductType, Year, Service, Warranty, SerialNumber, Agreement, RepairDescription, UsedParts, WorkHours, CompletionDate,ReplacedPartsReturned, ShippingMethod, CustomerSignature, RepairerSignature)" +
+                " VALUES (@ServiceFormId, @Customer, @DateReceived, @Address, @Email, @OrderNumber, @Phone, @ProductType, @Year, @Service, @Warranty, @SerialNumber, @Agreement, @RepairDescription, @UsedParts, @WorkHours, @CompletionDate, @ReplacedPartsReturned, @ShippingMethod, @CustomerSignature, @RepairerSignature)",
+                serviceFormViewModel);
         }
     }
 }
