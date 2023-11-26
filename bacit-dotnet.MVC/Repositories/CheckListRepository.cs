@@ -21,7 +21,7 @@ namespace bacit_dotnet.MVC.Repositories
         {
             _config = config;
         }
-       
+   // use our connectionstring "DefaultConnection"  to connect to the database    
         public IDbConnection Connection
         {
             get
@@ -30,7 +30,7 @@ namespace bacit_dotnet.MVC.Repositories
             }
         }
 /*
- * We made an GetOneRowById method to get a specific rowId/
+ * Made GetOneRowById method to get a specific rowId/
  * -entry in the database, this is soo we can retrieve a specific filledoutChecklist razorpage
  */  
         public CheckListViewModel GetOneRowById(int id)
@@ -43,9 +43,9 @@ namespace bacit_dotnet.MVC.Repositories
             }
         }
 /*
- * We made an GetRelevantData method to get a specific parameters as
- * - and int, this is soo we can query the database for a specific ChecklistId that is type int.
- * The id is the only we need to GetOneRowById un the ServiceOrderConnector
+ * Made a GetRelevantData method to get a specific parameters as and int,
+ * this is soo we can query the database for a specific ChecklistId that is type int.
+ * The id is the only we need of checklist data in the ServiceOrderConnector
  */
         
         public CheckListViewModel GetRelevantData(int id)
@@ -57,8 +57,9 @@ namespace bacit_dotnet.MVC.Repositories
                 return dbConnection.QuerySingleOrDefault<CheckListViewModel>(query, new { Id = id });
             }
         }
-/* Insert method that returns the inserted int Id to the viewmodel
-*The function makes the checklist visible after its filled out 
+/*
+ * The sql commandss returns the Id after insertion by SELECT LAST_INSERT
+ *The function makes the checklist visible after its filled out
 */
         public int Insert(CheckListViewModel checkListViewModel)
         {
@@ -79,7 +80,8 @@ namespace bacit_dotnet.MVC.Repositories
                           "@WinchWiringCheck, @RadioCheck, @ButtonBoxCheck, @PressureSettings, " +
                           "@FunctionTest, @TractionForceKN, @BrakeForceKN, @Sign, @Freeform, @CompletionDate); " +
                           "SELECT LAST_INSERT_ID()";
-
+// Use ExecuteScalar to return the newly inserted int.
+// The checklist to provide the necessary parameter
                 int insertedId = dbConnection.ExecuteScalar<int>(sql, checkListViewModel);
                 return insertedId;
             }

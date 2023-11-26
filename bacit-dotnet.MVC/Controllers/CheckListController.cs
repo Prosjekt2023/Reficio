@@ -11,8 +11,8 @@ using bacit_dotnet.MVC.Repositories;
 namespace bacit_dotnet.MVC.Controllers
 {
     /*
-     *The controller's constructor accepts an ICheckListRepository object.
-     *The _repository private readonly field stores the repository object.*/
+     *The controller's constructor accepts an ICheckListRepository instance.
+     *The _repository private readonly field stores the repository instance.*/
     public class CheckListController : Controller
     {
         private readonly ICheckListRepository _repository;
@@ -33,7 +33,6 @@ namespace bacit_dotnet.MVC.Controllers
         /*
          * [HttpPost]from the Index method deals with POST requests
          * -from CheckList viewpage that uses the POST Method to submit the form data
-         * 
          */
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -41,8 +40,10 @@ namespace bacit_dotnet.MVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                var id = _repository.Insert(checkListViewModel); // Returns the entry that was created using the defined method in the repository
-                return RedirectToAction("Index", "FilledOutCheckList", new { id = id }); // Reddirects to FilledOutCheckListController
+                // Insert the repository in the controller
+                // Reddirects to FilledOutCheckListController
+                var id = _repository.Insert(checkListViewModel);
+                return RedirectToAction("Index", "FilledOutCheckList", new { id = id }); 
             }
             
             return View(checkListViewModel);

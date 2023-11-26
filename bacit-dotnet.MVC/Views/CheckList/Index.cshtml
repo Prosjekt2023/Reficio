@@ -19,12 +19,13 @@
 <h2>Sjekkliste</h2>
 
 
-<!-- *Using Form element to collect data from the form when the submit button is initialized
+<!-- Using Form element to collect data from the form when the submit button is initialized
 *Post data specified for sending data to the Server
 *CheckListController is specified with the asp-controller attribute
 *Hidden fields input type="hidden" asp-for= are used to bind these inputs to the corresponding properties in the CheckListViewModel -->
 <form asp-controller="CheckList" asp-action="Index" method="post">
-<!-- Anti-forgery token for security -->
+
+<!-- Anti-forgery token for security, protection for xss and csrf -->
 @Html.ValidationSummary()
 @Html.AntiForgeryToken()
 <table>
