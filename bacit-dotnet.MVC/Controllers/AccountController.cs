@@ -10,6 +10,10 @@ using bacit_dotnet.MVC.Repositories;
 
 namespace bacit_dotnet.MVC.Controllers
 {
+    /// <summary>
+    /// Account Controller is responsible for user authentication, with login and register, and general user management.
+    /// </summary>
+    
     [Authorize]
     public class AccountController : Controller
     {
@@ -39,6 +43,9 @@ namespace bacit_dotnet.MVC.Controllers
 
         //
         // POST: /Account/Login
+        // [HttpPost] deals with the POST request from Login Viewpage.
+        // Checks is the data is valid, and logs the user in.
+        //
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -88,8 +95,10 @@ namespace bacit_dotnet.MVC.Controllers
 
         //
         // POST: /Account/Register
+        // [HttpPost] takes the input from user.
+        // If successful, add the user, and logs them in.
         [HttpPost]
-        [AllowAnonymous] //legg til [Authorize(roles:"Admin")]
+        [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(RegisterViewModel model, string returnUrl = null)
         {
@@ -131,7 +140,8 @@ namespace bacit_dotnet.MVC.Controllers
             return View(model);
         }
 
-   
+        
+        // Logs the user out.
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
