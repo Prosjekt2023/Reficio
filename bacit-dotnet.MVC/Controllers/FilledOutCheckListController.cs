@@ -8,7 +8,11 @@ namespace bacit_dotnet.MVC.Controllers
     public class FilledOutCheckListController : Controller
     {
         private readonly ICheckListRepository _repository;
-
+/*
+ * Use a dependency injection soo the controller
+ * -can leave the implementation to the repository instance
+ * - "Irepository"
+ */
         public FilledOutCheckListController(ICheckListRepository repository)
         {
             _repository = repository;
