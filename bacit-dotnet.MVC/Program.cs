@@ -24,12 +24,11 @@ namespace bacit_dotnet.MVC
         /// <summary>
         /// The main entry point of the application.
         /// </summary>
-        /// <param name="args">Command line arguments passed to the program.</param>
         public static void Main(string[] args)
         {
             // Initialize the WebApplication builder
             var builder = WebApplication.CreateBuilder(args);
-            // Configure the Kestrel web server
+            // Configures the Kestrel web server to not include the server header in HTTP responses. 
             builder.WebHost.ConfigureKestrel(x => x.AddServerHeader = false);
             
             // Add MVC controllers with views and configure anti-forgery measures
@@ -71,7 +70,7 @@ namespace bacit_dotnet.MVC
                 app.UseHsts();
             }
             
-            // Custom middleware to add various security headers to every HTTP response.
+            // Adds custom middleware to set security-related headers in HTTP responses.
             app.Use(async (context, next) =>
             {
                 context.Response.Headers.Add("X-Xss-Protection", "1");
@@ -88,32 +87,38 @@ namespace bacit_dotnet.MVC
                     "frame-src 'self';" +
                     "connect-src 'self';");
                 
-                // Proceed to the next middleware in the pipeline.
                 await next();
             });
             
-            // Enables serving static files (like images, CSS, JavaScript files) from the wwwroot folder.
+            // Enables serving static files and sets up routing for the application.
             app.UseStaticFiles();
-            // Adds middleware for routing. This is necessary to map incoming HTTP requests to appropriate route handlers.
-            app.UseStaticFiles();
-            // "Måt finne ut av
             app.UseRouting();
             
-            // Apply authentication
+            // Configures authentication and authorization for the application.
             UseAuthentication(app);
 
-            // Map controller routes
+            // Defines the default route for the application and maps the controllers.
             app.MapControllerRoute(name: "default", pattern: "{controller=Account}/{action=Login}/{id?}");
             app.MapControllers();
-            // Runs the application. This is the call that starts listening for incoming HTTP requests.
+            
             app.Run();
         }
 
-        
+        /// <summary>
+        /// Configures and sets up the data connections for the web application. To be able to connect to the database
+        /// </summary>
+        /// <remarks>
+        /// This method is responsible for adding and configuring services related to data access.
+        /// It registers data connection interfaces and configures the data context for the application.
+        /// </remarks>
         private static void SetupDataConnections(WebApplicationBuilder builder)
-        {
+        {   
+            // Registers the ISqlConnector interface with its concrete implementation SqlConnector.
+            // The service is registered with a transient lifetime, meaning a new instance will be created each time it is injected.
             builder.Services.AddTransient<ISqlConnector, SqlConnector>();
             
+            // Adds and configures the DataContext for Entity Framework Core.
+            // Configures the DataContext to use a MySQL database, with the connection string being retrieved from the application's configuration.
             builder.Services.AddDbContext<DataContext>(options =>
             {
                 options.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"),
