@@ -30,16 +30,7 @@ namespace bacit_dotnet.MVC
             {
                 options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
             });
-
-            // Configure the database connection.
-            var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-            builder.Services.AddScoped<IDbConnection>(_ => new MySqlConnection(connectionString));
             
-            builder.Services.AddScoped<IDbConnection>(_ =>
-            {
-                var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-                return new MySqlConnection(connectionString);
-            });
 
             // Register your repository here.
             builder.Services.AddTransient<IServiceFormRepository, ServiceFormRepository>();
@@ -87,7 +78,7 @@ namespace bacit_dotnet.MVC
                 await next();
             });
             
-            //app.UseHttpsRedirection();
+            
             app.UseStaticFiles();
 
             app.UseRouting();
