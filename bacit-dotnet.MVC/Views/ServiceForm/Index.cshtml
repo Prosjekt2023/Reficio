@@ -2,7 +2,7 @@
 
 @{
     // Setting the title for the page
-    ViewData["Title"] = "ServiceSkjema";
+    ViewData["Title"] = "Serviceskjema";
 }
 
 <!DOCTYPE html>
@@ -15,6 +15,7 @@
     <title>Serviceskjema</title>
     <!-- Linking the external stylesheet-->
     <link rel="stylesheet" href="/css/ServiceForm.css">
+    <script src="/js/yearOptions.js" defer></script>
 </head>
 
 <body>
@@ -100,19 +101,9 @@
                     <select id="Year" name="Year" class="form-control">
                         <option value="">Velg år</option>
                         <!-- Adding options for years starting from 1950 using JavaScript -->
-                        <script>
-                                const currentYear = new Date().getFullYear();
-                                for (let year = 1950; year <= currentYear; year++) {
-                                    const option = document.createElement("option");
-                                    option.value = year;
-                                    option.textContent = year;
-                                    document.getElementById("Year").appendChild(option);
-                                }
-                            </script>
                     </select>
                     <span class="text-danger" id="yearValidation"></span>
                 </div>
-
             </div>
         </div>
 
