@@ -5,15 +5,23 @@ using bacit_dotnet.MVC.Models.Composite;
 
 namespace bacit_dotnet.MVC.Repositories
 {
+    /*
+     *Use public soo other parts of the repository can utilize the repository
+     * -this is self explanatory since the repository is central to all the controller, model and view components.
+     *Implementing an interface with specific methods to simplify data layers
+     */
     public class CheckListRepository : ICheckListRepository
     {
         private readonly IConfiguration _config;
-
+    /*
+     *  Our constructor must make an Iconfiguration objekt
+     * Then insert config value as a dependency injections
+     */
         public CheckListRepository(IConfiguration config)
         {
             _config = config;
         }
-
+       
         public IDbConnection Connection
         {
             get
@@ -22,8 +30,8 @@ namespace bacit_dotnet.MVC.Repositories
             }
         }
 /*
- * We made an GetOneRowById to get a specific row
- * entry in the database, this is soo we can retrieve a specific filledoutChecklist
+ * We made an GetOneRowById method to get a specific rowId/
+ * -entry in the database, this is soo we can retrieve a specific filledoutChecklist razorpage
  */  
         public CheckListViewModel GetOneRowById(int id)
         {
@@ -35,8 +43,9 @@ namespace bacit_dotnet.MVC.Repositories
             }
         }
 /*
- * We made an GetRelevantData to get a specific parameters as
- * - and int, this is soo we can query the database for a specific ChecklistId that is type int
+ * We made an GetRelevantData method to get a specific parameters as
+ * - and int, this is soo we can query the database for a specific ChecklistId that is type int.
+ * The id is the only we need to GetOneRowById un the ServiceOrderConnector
  */
         
         public CheckListViewModel GetRelevantData(int id)
