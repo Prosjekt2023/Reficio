@@ -15,6 +15,7 @@
     <title>Serviceskjema</title>
     <!-- Linking the external stylesheet-->
     <link rel="stylesheet" href="/css/ServiceForm.css">
+    <script src="/js/yearOptions.js" defer></script>
 </head>
 
 <body>
@@ -96,9 +97,12 @@
 
                 <!-- Column for Year select -->
                 <div class="form-col">
-                    <label asp-for="Year" class="control-label">Årsmodell:</label>
-                    <input asp-for="Year" class="form-control" type="text" maxlength="4"/>
-                    <span asp-validation-for="Year" class="text-danger"></span>
+                    <label for="Year" class="control-label">Årsmodell:</label>
+                    <select id="Year" name="Year" class="form-control">
+                        <option value="">Velg år</option>
+                        <!-- Adding options for years starting from 1950 using JavaScript -->
+                    </select>
+                    <span class="text-danger" id="yearValidation"></span>
                 </div>
             </div>
         </div>

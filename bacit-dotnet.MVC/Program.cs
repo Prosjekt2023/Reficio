@@ -80,9 +80,9 @@ namespace bacit_dotnet.MVC
                 context.Response.Headers.Add("Content-Security-Policy",
                     "default-src 'self'; " +
                     "img-src 'self'; " +
-                    "font-src 'self' https://fonts.gstatic.com; " +
-                    "style-src 'self' https://fonts.googleapis.com; " + // Allowing styles from Google Fonts
-                    "script-src 'self'; " +
+                    "font-src 'self' https://fonts.gstatic.com; " + // Allowing Font from Google
+                    "style-src 'self' https://fonts.googleapis.com; " + // Allowing Styles from Google 
+                    "script-src 'self'; " + //
                     "frame-src 'self'; " +
                     "connect-src 'self';");
 
