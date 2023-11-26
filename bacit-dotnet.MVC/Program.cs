@@ -18,9 +18,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace bacit_dotnet.MVC
 {
-    /// <summary>
-    /// The Program class is the main entry point for an ASP.NET Core web application.
-    /// </summary>
+    
     public class Program
     {
         /// <summary>
@@ -50,8 +48,8 @@ namespace bacit_dotnet.MVC
                 return new MySqlConnection(connectionString);
             });
 
-            // Register your repository here.
-            builder.Services.AddTransient<IServiceFormRepository, ServiceFormRepository>();
+            // Registering various services with dependency injection container
+            builder.Services.AddTransient<IServiceFormRepository, ServiceFormRepository>(); 
             builder.Services.AddTransient<ICheckListRepository, CheckListRepository>();
             builder.Services.AddTransient<IUserRepository, InMemoryUserRepository>();
             builder.Services.AddTransient<IUserRepository, SqlUserRepository>();
@@ -69,6 +67,8 @@ namespace bacit_dotnet.MVC
             });
 
             // Build the application
+            // This step builds the application using the configurations and services defined in 'builder'.
+            // 'app' will be an instance of the application that can be used to run and handle web requests.
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -120,23 +120,10 @@ namespace bacit_dotnet.MVC
         }
 
         
-        /// <summary>
-        /// Configures and sets up the data connections for the web application.
-        /// </summary>
-        /// <remarks>
-        /// This method is responsible for registering services related to database connectivity and operations.
-        /// It adds the necessary DbContext and configures it for use with a MySQL database.
-        /// </remarks>
-        /// <param name="builder">The WebApplicationBuilder instance used to configure and build the application.</param>
         private static void SetupDataConnections(WebApplicationBuilder builder)
         {
-            // Registers the ISqlConnector interface with its concrete implementation SqlConnector.
-            // The service is registered with a transient lifetime, meaning a new instance will be created each time it is injected
             builder.Services.AddTransient<ISqlConnector, SqlConnector>();
             
-            // Adds and configures the DataContext for Entity Framework Core.
-            // Configures the DataContext to use MySQL with the connection string from the application configuration.
-            // The MySQL server version is auto-detected for compatibility.
             builder.Services.AddDbContext<DataContext>(options =>
             {
                 options.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"),
@@ -144,56 +131,28 @@ namespace bacit_dotnet.MVC
             });
 
         }
-
         
-        /// <summary>
-        /// Configures the authentication and authorization middleware for the web application.
-        /// </summary>
-        /// <remarks>
-        /// This method is critical for enforcing security in the application. It enables the middleware 
-        /// that processes authentication and authorization headers in incoming HTTP requests. 
-        /// Authentication middleware identifies the user making the request, while authorization middleware 
-        /// checks if the authenticated user has the necessary permissions to access the requested resources.
-        /// </remarks>
-        /// <param name="app">The WebApplication instance representing the running application.</param>
         private static void UseAuthentication(WebApplication app)
         {
-            // Enables authentication middleware, which processes authentication data in the request headers 
-            // to identify the user on each request.
             app.UseAuthentication();
             app.UseAuthorization();
         }
         
-        /// <summary>
-        /// Configures authentication services and settings for the web application.
-        /// </summary>
-        /// <remarks>
-        /// This method sets up the necessary components for handling user authentication in the application.
-        /// It configures the identity options, adds the identity services, and specifies the authentication 
-        /// schemes. The method is integral for managing user accounts, roles, and how users sign in.
-        /// </remarks>
-        /// <param name="builder">The WebApplicationBuilder used to configure services for the application.</param>
+        
         private static void SetupAuthentication(WebApplicationBuilder builder)
         {
-            // Configures the IdentityOptions for the application.
-            // This includes lockout settings, sign-in requirements, and user options.
+            
             builder.Services.Configure<IdentityOptions>(options =>
             {
-                // Sets the default lockout duration to 5 minutes and maximum failed access attempts to 5.
-                // Disables lockout for new users.
                 options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
                 options.Lockout.MaxFailedAccessAttempts = 5;
                 options.Lockout.AllowedForNewUsers = false;
-                // Disables requirements for confirmed phone number, email, and confirmed accounts for signing in.
-                // Requires a unique email for each user.
                 options.SignIn.RequireConfirmedPhoneNumber = false;
                 options.SignIn.RequireConfirmedEmail = false;
                 options.SignIn.RequireConfirmedAccount = false;
                 options.User.RequireUniqueEmail = true;
             });
-            // Adds and configures the Identity services.
-            // This includes setting up roles, entity framework stores for data persistence,
-            // sign-in management, and token providers.
+            
             builder.Services
                 .AddIdentityCore<IdentityUser>()
                 .AddRoles<IdentityRole>()
@@ -201,7 +160,6 @@ namespace bacit_dotnet.MVC
                 .AddSignInManager()
                 .AddDefaultTokenProviders();
             
-            // Configures the authentication schemes for the application.
             builder.Services.AddAuthentication(o =>
             {
                 o.DefaultScheme = IdentityConstants.ApplicationScheme;
@@ -209,31 +167,12 @@ namespace bacit_dotnet.MVC
 
             }).AddIdentityCookies(o => { });
             
-            // Registers a transient service for sending emails, using the AuthMessageSender implementation.
             builder.Services.AddTransient<IEmailSender, AuthMessageSender>();
         }
         
-        /// <summary>
-        /// A class that implements the IEmailSender interface for sending emails.
-        /// </summary>
-        /// <remarks>
-        /// This implementation is a basic example and only writes the email details to the console.
-        /// In a production scenario, this method should be replaced with actual email sending logic,
-        /// potentially using an email service provider.
-        /// </remarks>
         public class AuthMessageSender : IEmailSender
         {
-            /// <summary>
-            /// Asynchronously sends an email.
-            /// </summary>
-            /// <param name="email">The destination email address.</param>
-            /// <param name="subject">The subject of the email.</param>
-            /// <param name="htmlMessage">The HTML message body of the email.</param>
-            /// <returns>A task that represents the asynchronous operation.</returns>
-            /// <remarks>
-            /// This implementation is for demonstration purposes and does not actually send an email.
-            /// It writes the email details to the console. Replace this with actual email sending logic.
-            /// </remarks>
+            
             public Task SendEmailAsync(string email, string subject, string htmlMessage)
             {
                 Console.WriteLine(email);
