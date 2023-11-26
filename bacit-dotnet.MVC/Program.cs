@@ -38,16 +38,6 @@ namespace bacit_dotnet.MVC
                 options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
             });
 
-            // Configure database connection
-            var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-            builder.Services.AddScoped<IDbConnection>(_ => new MySqlConnection(connectionString));
-            
-            builder.Services.AddScoped<IDbConnection>(_ =>
-            {
-                var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-                return new MySqlConnection(connectionString);
-            });
-
             // Registering various services with dependency injection container
             builder.Services.AddTransient<IServiceFormRepository, ServiceFormRepository>(); 
             builder.Services.AddTransient<ICheckListRepository, CheckListRepository>();
