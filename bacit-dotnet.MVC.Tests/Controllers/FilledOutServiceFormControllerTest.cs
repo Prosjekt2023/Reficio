@@ -91,12 +91,10 @@ namespace bacit_dotnet.MVC.Tests.Controllers
 
             var controller = new FilledOutServiceFormController(mockRepository.Object);
 
-            // Act
-            var result = controller.Index(1) as ViewResult;
-
-            // Assert
-            Assert.NotNull(result);
-            Assert.Equal("Error", result.ViewName);
+            // Act & Assert
+            var ex = Assert.Throws<Exception>(() => controller.Index(1));
+            Assert.Equal("Simulated error", ex.Message);
         }
+
     }
 }
