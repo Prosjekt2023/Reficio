@@ -6,6 +6,12 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace bacit_dotnet.MVC.Controllers
 {
+    /// <summary>
+    ///  The User contoller is resposible for handling, editing user information.
+    /// </summary>
+    
+    //Takes the interface IUserRepitory when making userRepository.
+    // Allows only Admin user.
     [Authorize(Roles = "Admin")]
     public class UsersController : Controller
     {
@@ -34,7 +40,10 @@ namespace bacit_dotnet.MVC.Controllers
             }
             return View(model);
         }
-
+        
+        
+        // [HttpPost] Takes the user input data, and saves the information.
+        // Checks if user isAdmin, and updates the database accordingly.
         [HttpPost]
         public IActionResult Save(UserViewModel model)
         {
@@ -56,6 +65,7 @@ namespace bacit_dotnet.MVC.Controllers
             return RedirectToAction("Index");
         }
 
+        // [HttpPost] takes the input data, and deletes the user.
         [HttpPost]
         public IActionResult Delete(string email)
         {
