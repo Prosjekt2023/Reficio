@@ -5,15 +5,23 @@ using bacit_dotnet.MVC.Models.Composite;
 
 namespace bacit_dotnet.MVC.Repositories
 {
+    /*
+     *Use public soo other parts of the repository can utilize the repository,
+     *this is self explanatory since the repository is central to all the controller, model and view components.
+     *Implementing an interface with specific methods to simplify data layers
+     */
     public class CheckListRepository : ICheckListRepository
     {
         private readonly IConfiguration _config;
-
+    /*
+     *  Our constructor must make an Iconfiguration objekt
+     * Then insert config value as a dependency injections
+     */
         public CheckListRepository(IConfiguration config)
         {
             _config = config;
         }
-
+   // use our connectionstring "DefaultConnection"  to connect to the database    
         public IDbConnection Connection
         {
             get
@@ -22,8 +30,8 @@ namespace bacit_dotnet.MVC.Repositories
             }
         }
 /*
- * We made an GetOneRowById to get a specific row
- * entry in the database, this is soo we can retrieve a specific filledoutChecklist
+ * Made GetOneRowById method to get a specific rowId/
+ * -entry in the database, this is soo we can retrieve a specific filledoutChecklist razorpage
  */  
         public CheckListViewModel GetOneRowById(int id)
         {
@@ -35,8 +43,9 @@ namespace bacit_dotnet.MVC.Repositories
             }
         }
 /*
- * We made an GetRelevantData to get a specific parameters as
- * - and int, this is soo we can query the database for a specific ChecklistId that is type int
+ * Made a GetRelevantData method to get a specific parameters as and int,
+ * this is soo we can query the database for a specific ChecklistId that is type int.
+ * The id is the only we need of checklist data in the ServiceOrderConnector
  */
         
         public CheckListViewModel GetRelevantData(int id)
@@ -48,8 +57,10 @@ namespace bacit_dotnet.MVC.Repositories
                 return dbConnection.QuerySingleOrDefault<CheckListViewModel>(query, new { Id = id });
             }
         }
-/* Insert method that returns the inserted int Id to the viewmodel
-*The function makes the checklist visible after its filled out 
+/*
+ *The sql commands returns the Id after insertion by SELECT LAST_INSERT
+ * We use the parameters from our model, checklist and database
+ *The function makes the checklist visible after its filled out
 */
         public int Insert(CheckListViewModel checkListViewModel)
         {
@@ -70,7 +81,8 @@ namespace bacit_dotnet.MVC.Repositories
                           "@WinchWiringCheck, @RadioCheck, @ButtonBoxCheck, @PressureSettings, " +
                           "@FunctionTest, @TractionForceKN, @BrakeForceKN, @Sign, @Freeform, @CompletionDate); " +
                           "SELECT LAST_INSERT_ID()";
-
+// We use ExecuteScalar command to return the newly inserted int.
+// The checklistviewmodel provides the necessary parameter for Id
                 int insertedId = dbConnection.ExecuteScalar<int>(sql, checkListViewModel);
                 return insertedId;
             }
