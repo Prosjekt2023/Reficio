@@ -1,152 +1,129 @@
-drop database if exists ReficioDB;
-create database if not exists ReficioDB;
-use ReficioDB;
-
-create table if not EXISTS Users
+CREATE TABLE IF NOT EXISTS Customer
 (
-    Id int not null unique auto_increment,
-    Name varchar(255),
-    Email varchar(255) UNIQUE,
-
-    CONSTRAINT U_User_ID_PK PRIMARY KEY (Id)
-);
-
-create table if not EXISTS AspNetRoles
-(
-    Id varchar(255) not null,
-    Name varchar(255),
-    NormalizedName  varchar(255),
-    ConcurrencyStamp  varchar(255),
-    CONSTRAINT U_ROLE_ID_PK PRIMARY KEY (Id)
-);
-INSERT INTO AspNetRoles (Id, Name, NormalizedName) VALUES ('Admin', 'Admin', 'Admin');
-
-create table if not EXISTS AspNetUsers
-(
-    Id varchar(255) not null unique,
-    UserName varchar(255),
-    NormalizedUserName varchar(255),
-    Email varchar(255),
-    NormalizedEmail varchar(255),
-    EmailConfirmed bit not null,
-    PasswordHash varchar(255),
-    SecurityStamp varchar(255),
-    ConcurrencyStamp varchar(255),
-    PhoneNumber varchar(50),
-    PhoneNumberConfirmed bit not null,
-    TwoFactorEnabled bit not null,
-    LockoutEnd TIMESTAMP,
-    LockoutEnabled bit not null,
-    AccessFailedCount int not null,
-    CONSTRAINT PK_AspNetUsers PRIMARY KEY (Id)
-);
-create table if not EXISTS AspNetUserTokens
-(
-    UserId varchar(255) not null,
-    LoginProvider varchar(255) not null ,
-    Name  varchar(255) not null,
-    Value  varchar(255),
-    CONSTRAINT PK_AspNetUserTokens PRIMARY KEY (UserId, LoginProvider)
-);
-
-create table if not EXISTS AspNetRoleClaims
-(
-    Id int UNIQUE auto_increment,
-    ClaimType varchar(255) not null ,
-    ClaimValue  varchar(255) not null,
-    RoleId  varchar(255),
-    CONSTRAINT PK_AspNetRoleClaims PRIMARY KEY (Id),
-    foreign key(RoleId)
-        references AspNetRoles(Id)
-);
-
-create table if not EXISTS AspNetUserClaims
-(
-    Id int UNIQUE auto_increment,
-    ClaimType varchar(255) ,
-    ClaimValue  varchar(255),
-    UserId  varchar(255),
-    CONSTRAINT PK_AspNetRoleClaims PRIMARY KEY (Id),
-    foreign key(UserId)
-        references AspNetUsers(Id)
-);
-
-create table if not EXISTS AspNetUserLogins
-(
-    LoginProvider int UNIQUE auto_increment,
-    ProviderKey varchar(255) not null ,
-    ProviderDisplayName  varchar(255) not null,
-    UserId  varchar(255) not null,
-    CONSTRAINT PK_AspNetUserLogins PRIMARY KEY (LoginProvider),
-    foreign key(UserId)
-        references AspNetUsers(Id)
-);
-
-create table if not EXISTS AspNetUserRoles
-(
-    UserId varchar(255) not null,
-    RoleId varchar(255) not null,
-    CONSTRAINT PK_AspNetUserRoles PRIMARY KEY (UserId,RoleId),
-    foreign key(UserId)
-        references AspNetUsers(Id),
-    foreign key(RoleId)
-        references AspNetRoles(Id)
-);
-
-
--- Create table ServiceFormEntry, if it doesn't exist
-create table if not EXISTS ServiceFormEntry
-(
-    ServiceFormId INT not null unique auto_increment PRIMARY KEY,
-    Customer NVARCHAR(255) NOT NULL,
-    DateReceived DATE NOT NULL,
+    CustomerId INT NOT NULL UNIQUE AUTO_INCREMENT PRIMARY KEY,
+    CustomerName NVARCHAR(255) NOT NULL,
     Address NVARCHAR(255),
     Email NVARCHAR(255),
-    OrderNumber INT,
-    Phone INT,
+    Phone INT
+);
+
+CREATE TABLE IF NOT EXISTS ProductInfo
+(
+    ProductId INT NOT NULL UNIQUE AUTO_INCREMENT PRIMARY KEY,
     ProductType NVARCHAR(255),
     Year INT,
     Service NVARCHAR(255),
     Warranty NVARCHAR(255),
-    SerialNumber INT,
-    Agreement NVARCHAR(255),
-    RepairDescription NVARCHAR(255),
+    SerialNumber INT
+);
+
+CREATE TABLE IF NOT EXISTS PartsInfo
+(
+    PartsId INT NOT NULL UNIQUE AUTO_INCREMENT PRIMARY KEY,
     UsedParts NVARCHAR(255),
-    WorkHours NVARCHAR(255),
-    CompletionDate NVARCHAR(255),
-    ReplacedPartsReturned NVARCHAR(255),
-    ShippingMethod NVARCHAR(255),
+    ReplacedPartsReturned NVARCHAR(255)
+);
+
+CREATE TABLE IF NOT EXISTS Signatures
+(
+    SignatureId INT NOT NULL UNIQUE AUTO_INCREMENT PRIMARY KEY,
     CustomerSignature NVARCHAR(255),
     RepairerSignature NVARCHAR(255)
 );
 
--- Table for the Checklist
+CREATE TABLE IF NOT EXISTS ServiceDates
+(
+    DateId INT NOT NULL UNIQUE AUTO_INCREMENT PRIMARY KEY,
+    DateReceived DATE NOT NULL,
+    CompletionDate DATE NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS ServiceFormEntry
+(
+    ServiceFormId INT NOT NULL UNIQUE AUTO_INCREMENT PRIMARY KEY,
+    CustomerId INT,
+    ProductId INT,
+    PartsId INT,
+    SignatureId INT,
+    DateId INT,
+    OrderNumber INT,
+    Agreement NVARCHAR(255),
+    RepairDescription NVARCHAR(255),
+    WorkHours NVARCHAR(255),
+    ShippingMethod NVARCHAR(255),
+    FOREIGN KEY (CustomerId) REFERENCES Customer(CustomerId),
+    FOREIGN KEY (ProductId) REFERENCES ProductInfo(ProductId),
+    FOREIGN KEY (PartsId) REFERENCES PartsInfo(PartsId),
+    FOREIGN KEY (SignatureId) REFERENCES Signatures(SignatureId),
+    FOREIGN KEY (DateId) REFERENCES ServiceDates(DateId)
+);
+
 CREATE TABLE IF NOT EXISTS Checklist
 (
-    ChecklistId INT AUTO_INCREMENT PRIMARY KEY,
+    ChecklistId INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    MechanicalCheckId INT,
+    HydraulicCheckId INT,
+    ElectricalCheckId INT,
+    GeneralCheckId INT,
+    Sign VARCHAR(255),
+    Freeform TEXT,
+    CompletionDate DATE NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS MechanicalChecks
+(
+    MechanicalCheckId INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    ChecklistId INT,
     ClutchCheck VARCHAR(50),
     BrakeCheck VARCHAR(50),
     DrumBearingCheck VARCHAR(50),
     PTOCheck VARCHAR(50),
-    ChainTensionCheck VARCHAR(50),
-    WireCheck VARCHAR(50),
-    PinionBearingCheck VARCHAR(50),
-    ChainWheelKeyCheck VARCHAR(50),
+    ChainTensionCheck VARCHAR(50)
+);
+
+CREATE TABLE IF NOT EXISTS HydraulicChecks
+(
+    HydraulicCheckId INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    ChecklistId INT,
     HydraulicCylinderCheck VARCHAR(50),
     HoseCheck VARCHAR(50),
     HydraulicBlockTest VARCHAR(50),
-    TankOilChange VARCHAR(50),
-    GearboxOilChange VARCHAR(50),
-    RingCylinderSealsCheck VARCHAR(50),
-    BrakeCylinderSealsCheck VARCHAR(50),
+    TankOilChange VARCHAR(50)
+);
+
+CREATE TABLE IF NOT EXISTS ElectricalChecks
+(
+    ElectricalCheckId INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    ChecklistId INT,
     WinchWiringCheck VARCHAR(50),
     RadioCheck VARCHAR(50),
-    ButtonBoxCheck VARCHAR(50),
+    ButtonBoxCheck VARCHAR(50)
+);
+
+CREATE TABLE IF NOT EXISTS GeneralChecks
+(
+    GeneralCheckId INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    ChecklistId INT,
     PressureSettings VARCHAR(50),
     FunctionTest VARCHAR(50),
     TractionForceKN VARCHAR(50),
-    BrakeForceKN VARCHAR(50),
-    Sign VARCHAR(255), -- Signature
-    Freeform TEXT, -- Any additional freeform text or comments
-    CompletionDate DATE NOT NULL -- The date the checklist was completed
+    BrakeForceKN VARCHAR(50)
 );
+
+ALTER TABLE Checklist
+    ADD FOREIGN KEY (MechanicalCheckId) REFERENCES MechanicalChecks(MechanicalCheckId),
+    ADD FOREIGN KEY (HydraulicCheckId) REFERENCES HydraulicChecks(HydraulicCheckId),
+    ADD FOREIGN KEY (ElectricalCheckId) REFERENCES ElectricalChecks(ElectricalCheckId),
+    ADD FOREIGN KEY (GeneralCheckId) REFERENCES GeneralChecks(GeneralCheckId);
+
+ALTER TABLE MechanicalChecks
+    ADD FOREIGN KEY (ChecklistId) REFERENCES Checklist(ChecklistId);
+
+ALTER TABLE HydraulicChecks
+    ADD FOREIGN KEY (ChecklistId) REFERENCES Checklist(ChecklistId);
+
+ALTER TABLE ElectricalChecks
+    ADD FOREIGN KEY (ChecklistId) REFERENCES Checklist(ChecklistId);
+
+ALTER TABLE GeneralChecks
+    ADD FOREIGN KEY (ChecklistId) REFERENCES Checklist(ChecklistId);
