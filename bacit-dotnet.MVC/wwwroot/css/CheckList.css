@@ -23,3 +23,6 @@ input[type='radio'] {
     transform: scale(1.5);
 }
 
+.validation-summary-valid {
+    display: none;
+}
